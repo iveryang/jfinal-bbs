@@ -42,15 +42,4 @@ public class Post extends Model<Post> {
         CacheKit.removeAll(POST_PAGE_CACHE);
         return post.get("topicID");
     }
-
-    /* tool */
-    public Page<Post> restoreEmotionSrc(Page<Post> postPage){
-        for (Post post : postPage.getList()) {
-            restoreEmotionSrc(post);
-        }
-        return postPage;
-    }
-    public void restoreEmotionSrc(Post post){
-        post.set("content", HtmlTagKit.restoreImgSrc(post.getStr("content")));
-    }
 }

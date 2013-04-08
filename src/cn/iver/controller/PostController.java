@@ -17,7 +17,7 @@ public class PostController extends Controller {
         int topicID = getParaToInt(0);
         int pageNumber = getParaToInt(1, 1);
         Page<Post> postPage = Post.dao.getPostPage(topicID, pageNumber);
-        setAttr("postPage", Post.dao.restoreEmotionSrc(postPage));
+        setAttr("postPage", postPage);
         setAttr("topic", Topic.dao.getTopicByID(topicID));
         render("/user/post.html");
     }
