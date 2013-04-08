@@ -1,5 +1,4 @@
-jfinal_beetl_blog
-=================
-
-a simple blog : )
-采用JFinal和Beetl开发的简单个人博客。
+采用JFinal和Beetl开发的一个简单BBS。
+目前还没有达到预期效果，很多地方也做的不好，我将利用我的空闲时间，持续改进它。
+同时，它作为一个JFinal、Beetl入门的DEMO还是蛮不错的：）
+最后，向开源前辈们致敬。
