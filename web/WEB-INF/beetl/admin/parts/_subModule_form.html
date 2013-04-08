@@ -1,0 +1,16 @@
+<input type="hidden" name="subModule.id" value="${subModule.id!}">
+<table>
+    <tr><td>主模块：</td><td><select name="subModule.moduleID">
+        @ for(v in moduleList!){
+            <option value="${v.id!}"
+            @ if(v.id == subModule.moduleID!){
+                selected="selected"
+            @}
+            >${v.name!}</option>
+        @ }
+    </select></td></tr>
+    <tr><td>名称：</td><td><input type="text" name="subModule.name" value="${subModule.name!}"></td></tr>
+    <tr><td>简要描述：</td><td><input type="text" name="subModule.detail" value="${subModule.detail!}"></td></tr>
+    <tr><td>显示顺序：</td><td><input type="text" name="subModule.turn" value="${subModule.turn!}"></td></tr>
+    <tr><td></td><td><input type="submit" value="保存" class="btn"></td></tr>
+</table>

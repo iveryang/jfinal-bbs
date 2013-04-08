@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/img/1.ico">
+<title>${topic.content!'welcome to'}--紫电清霜的BLOG</title>
+<script src="/js/cool.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/ext/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/user.css"/>
+<script src="/ext/bootstrap/js/jquery.js" type="text/javascript"></script>
+<script src="/ext/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/js/user.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        @ include("/common/_header.html"){}
+        <div class="row-fluid">
+            ${layoutContent}
+            @ include("/common/_sidebar.html"){}
+        </div>
+        <hr>
+        @ include("/common/_footer.html"){}
+    </div>
+</body>
+</html>

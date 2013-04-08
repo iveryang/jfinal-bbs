@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Here :)</title>
+    <script type="text/javascript" src="/ext/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="/ext/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#username").val($.cookie("username"));
+            $("#password").val($.cookie("password"));
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <form action="/admin/welcome/login" method="post">
+            <p><input type="text" name="username" id="username"></p>
+            <p><input type="password" name="password" id="password"></p>
+            <p><input type="submit" value="Login Now"></p>
+        </form>
+    </div>
+</body>
+</html>

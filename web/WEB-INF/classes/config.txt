@@ -1,0 +1,17 @@
+## 常量
+page_size = 8
+page_size_of_reply = 3
+page_size_for_admin = 30
+topic_preview_size = 280
+admin_name = IVER_YANG
+admin_password = OH_MY_GOD
+sidebar_topic_size = 8
+
+## 本地开发环境上 data source 的配置
+driverClass = com.mysql.jdbc.Driver
+devMode = true
+host = localhost
+dbname = bbs
+port = 3306
+username = root
+password = go

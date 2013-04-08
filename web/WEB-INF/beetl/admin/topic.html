@@ -1,0 +1,19 @@
+@ layout("/admin/_layout.html"){
+<div class="span9 _topic_save_edit">
+    @ if(exist("topic")){
+        <form action="/topic/update" method="post">
+            @ include("/admin/parts/_topic_form.html"){}
+            <hr>
+            <p><span>&nbsp;</span><input type="submit" class="btn btn-info" value="保存修改"></p>
+        </form>
+    @ }else{
+        <!-- save包含：topic + post -->
+        <form action="/topic/save" method="post">
+            @ include("/admin/parts/_topic_form.html"){}
+            @ include("/admin/parts/_post_form.html"){}
+            <hr>
+            <p><span>&nbsp;</span><input type="submit" class="btn btn-info" value="发布"></p>
+        </form>
+    @ }
+</div>
+@ }

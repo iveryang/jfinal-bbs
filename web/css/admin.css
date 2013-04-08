@@ -1,0 +1,12 @@
+._admin_header>p{
+    margin: 20px 120px;
+}
+._topic_save_edit>form>p>span{
+    width: 80px; text-align: center; display: inline-block;
+}
+._module_list{
+    width: 600px; float: left;
+}
+._module_form{
+    display: inline-block; margin-left: 60px;
+}

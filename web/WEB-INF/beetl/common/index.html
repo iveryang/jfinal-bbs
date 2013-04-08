@@ -1,0 +1,27 @@
+@ layout("/common/_layout.html"){
+<div class="span9">
+    @ for(topic in topicPage.list!){
+    <div class="_topic _random_border_${random.number!}">
+        <div class="_topic_title">
+            <h4>
+                <a href="/topic/${topic.id}">${ topic.content }</a>
+                @ if(session.isAdminLogin!'' == 'true'){
+                    <a href="/topic/edit/${topic.id}" class="btn btn-danger _topic_title_edit">编辑</a>
+                @ }
+            </h4>
+        </div>
+        <div class="_topic_text">
+            <p>${ topic.firstPostPreview }……<a href="/topic/${topic.id}">继续阅读</a></p>
+        </div>
+        <div class="_topic_post_info">
+            <ul>
+                <li class="muted"><i class="icon-time" title="发表时间"></i>${topic.createdTime, dateFormat='yyyy-MM-dd'}发表</li>
+                <li class="muted"><i class="icon-eye-open" title="浏览次数"></i>${topic.pv}次浏览</li>
+                <li class="muted"><i class="icon-comment" title="回复次数"></i>${topic.postCount}篇回复</li>
+            </ul>
+        </div>
+    </div>
+    @ }
+    @ include("/common/_paginate.html", {"currentPage":topicPage.pageNumber,"totalPage":topicPage.totalPage,"actionUrl":"/"}) {}
+</div>
+@ }
