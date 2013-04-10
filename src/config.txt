@@ -1,12 +1,22 @@
 ## 常量
+##########################################################################
+## “topic、post--话题及回帖”分页的大小
 page_size = 8
+
+## “reply--帖子回复”分页的大小
 page_size_of_reply = 3
+
+## “后台管理--topic、reply列表”分页的大小
 page_size_for_admin = 30
+
+## “post--楼主的帖子，即第一楼，的帖子内容预览”文字数目，目前该字段属性是：varchar(300)
 topic_preview_size = 280
-admin_name =
-admin_password =
+
+## “置顶、热门”侧边栏的显示数目
 sidebar_topic_size = 8
 
+
+##########################################################################
 ## 本地开发环境上 data source 的配置
 driverClass = com.mysql.jdbc.Driver
 devMode = true

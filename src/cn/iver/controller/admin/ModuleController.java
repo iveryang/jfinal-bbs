@@ -15,13 +15,9 @@ import com.jfinal.core.Controller;
 public class ModuleController extends Controller {
 
     public void index(){
-        setAttr("moduleList", Module.dao.find("select * from module"));
+        Module.dao.removeCache();
+        setAttr("moduleList", Module.dao.getModuleList());
         render("/admin/module.html");
-    }
-
-    public void refreshModuleList(){
-        Module.dao.refreshModuleListInMyConstants();
-        index();
     }
 
     public void save(){
@@ -45,14 +41,14 @@ public class ModuleController extends Controller {
     }
 
     /* Sub Module */
-    private int currentModuleID = 0 ;
+    private int currentModuleID = 0;
 
     public void indexSub(){
         if (getPara("flag") != null){
-            currentModuleID = getParaToInt();
+            currentModuleID = getParaToInt(0);
         }
-        setAttr("subModuleList", SubModule.dao.find("select * from sub_module where moduleID=?",currentModuleID));
-        setAttr("currentModule", Module.dao.findFirst("select * from module where id=?", currentModuleID));
+        setAttr("subModuleList", SubModule.dao.getSubModuleList(currentModuleID));
+        setAttr("currentModule", Module.dao.findById(currentModuleID));
         index();
     }
 

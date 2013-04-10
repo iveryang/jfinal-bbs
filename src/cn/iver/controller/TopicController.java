@@ -2,6 +2,7 @@ package cn.iver.controller;
 
 import cn.iver.common.MyConstants;
 import cn.iver.interceptor.AdminInterceptor;
+import cn.iver.model.Module;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
@@ -30,7 +31,7 @@ public class TopicController extends Controller {
 
     @Before(AdminInterceptor.class)
     public void add(){
-        setAttr("moduleList", MyConstants.MODULE_LIST);
+        setAttr("moduleList", Module.dao.getModuleList());
         render("/admin/topic.html");
     }
 

@@ -13,4 +13,7 @@ public class IndexController extends Controller {
         setAttr("topicPage", Topic.dao.getTopicPage(getParaToInt(0, 1)));
         render("/common/index.html");
     }
+    public void test(){
+        render("/common/test.html");
+    }
 }

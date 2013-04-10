@@ -4,8 +4,10 @@
 
     <diskStore path="java.io.tmpdir"/>
 
-    <defaultCache maxEntriesLocalHeap="3600" eternal="false" overflowToDisk="true" timeToIdleSeconds="180" timeToLiveSeconds="180"/>
+    <defaultCache maxEntriesLocalHeap="3600" eternal="false" overflowToDisk="true"
+                  timeToIdleSeconds="180" timeToLiveSeconds="180"/>
 
+    <!-- 话题相关的cache -->
     <cache name="topic"
            maxElementsInMemory="1000"
            eternal="false"
@@ -38,6 +40,11 @@
            overflowToDisk="true"
            diskSpoolBufferSizeMB="10" />
 
+    <!-- 主界面及侧边栏相关的cache -->
+    <cache name="moduleList"
+           maxElementsInMemory="3"
+           eternal="true" />
+
     <cache name="upTopicList"
            maxElementsInMemory="3"
            eternal="true" />
@@ -46,12 +53,14 @@
            maxElementsInMemory="3"
            eternal="true" />
 
+    <!-- 回帖相关的cache -->
     <cache name="postPage"
            maxElementsInMemory="3000"
            eternal="true"
            overflowToDisk="true"
            diskSpoolBufferSizeMB="50" />
 
+    <!-- 回帖的回复相关的cache -->
     <cache name="replyPage"
            maxElementsInMemory="8000"
            eternal="true"

@@ -34,7 +34,7 @@ public class ReplyController extends Controller {
     public void delete(){
         int id = getParaToInt(1);
         int postID = getParaToInt(0);
-        Reply.dao.deleteByID(postID, id);
+        Reply.dao.deleteByID(id);
         forwardAction("/reply/" + postID);
     }
 

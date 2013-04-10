@@ -65,7 +65,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu{
     margin-left: 50px;
 }
 ._post_content_footer>p>span:first-child{
-    margin: 0 180px 0 220px;
+    margin-left: 200px;
 }
 ._post_content_footer>p v{
     display: none; margin-left: 80px;
@@ -74,7 +74,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu{
     float: right; margin-right: 50px;
 }
 ._reply_submit{
-    margin-left: 40px;
+    margin-left: 46px;
 }
 ._post_content_footer>form{
     margin-left: 60px; display: none;

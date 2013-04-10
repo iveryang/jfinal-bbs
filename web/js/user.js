@@ -1,5 +1,5 @@
 function _reply(v){
-    $(v).parent().next().toggle("normal");
+    $(v).parent().next().toggle();
 }
 function _ajax_reply_save(v){
     var name = $(v).parent().find("[name='reply.userName']").val().trim();

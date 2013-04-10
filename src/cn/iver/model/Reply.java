@@ -22,24 +22,16 @@ public class Reply extends Model<Reply> {
     }
     public void saveReply(int postID){
         Post.dao.setHasReplyTrue(postID);
-        removeCache(postID);
+        CacheKit.removeAll(REPLY_PAGE_CACHE);
         this.set("content", HtmlTagKit.processHtmlSpecialTag(this.getStr("content")));
         this.set("userName", HtmlTagKit.processHtmlSpecialTag(this.getStr("userName")));
         this.save();
     }
-    public void deleteByID(int postID, int id){
-        removeCache(postID);
+    public void deleteByID(int id){
+        CacheKit.removeAll(REPLY_PAGE_CACHE);
         dao.deleteById(id);
     }
     public Page<Reply> getReplyPageForAdmin(int pageNumber){
         return dao.paginate(pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select *", "from reply order by createdTime desc");
-    }
-
-    /* private */
-    private void removeCache(int postID) {
-        int totalPage = dao.paginate(1, MyConstants.PAGE_SIZE_OF_REPLY, "select *", "from reply").getTotalPage();
-        for (int i = 1; i < totalPage; i++) {
-            CacheKit.remove(REPLY_PAGE_CACHE, postID + CACHE_KEY_SEPARATE + i);
-        }
     }
 }
