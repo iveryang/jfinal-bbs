@@ -4,5 +4,6 @@
 
 *.iml
 *.yml
+*.log
 .idea/
 
