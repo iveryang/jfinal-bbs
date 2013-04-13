@@ -42,15 +42,15 @@
 
     <!-- 主界面及侧边栏相关的cache -->
     <cache name="moduleList"
-           maxElementsInMemory="3"
+           maxElementsInMemory="1"
            eternal="true" />
 
     <cache name="upTopicList"
-           maxElementsInMemory="3"
+           maxElementsInMemory="1"
            eternal="true" />
 
     <cache name="hotTopicList"
-           maxElementsInMemory="3"
+           maxElementsInMemory="1"
            eternal="true" />
 
     <!-- 回帖相关的cache -->

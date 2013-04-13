@@ -18,7 +18,7 @@ public class Module extends Model<Module> {
     private List<SubModule> subModuleList;
 
     public List<Module> getModuleList(){
-        return CacheKit.get(MODULE_LIST_CACHE, MODULE_LIST_CACHE, new IDataLoader() {
+        return CacheKit.get(MODULE_LIST_CACHE, 1, new IDataLoader() {
             @Override
             public Object load() {
                 List<Module> moduleList = dao.find("select * from module order by turn");

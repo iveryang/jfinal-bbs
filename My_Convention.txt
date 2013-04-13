@@ -12,7 +12,7 @@ My_Convention_For_Programming：
     4 当和sql保留字相同时，在结尾加“s”或者“es”；
 
 ################# JAVA ###############
-    1 Cache里出现类似于“导航栏，侧边文章列表”这样的只有一个Object在Cache里的情况，让CacheNamae = CacheKey；
+    1 Cache里出现类似于“导航栏，侧边文章列表”这样的只有一个Object在Cache里的情况，让CacheKey = 1；
     2 Controller里不要出现任何SQL语句，一律放到Model或者Service里；
 
     命名风格：xxxDAO, xxxID, xxxList, xxxMap

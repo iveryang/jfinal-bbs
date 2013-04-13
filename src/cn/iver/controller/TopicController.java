@@ -1,13 +1,11 @@
 package cn.iver.controller;
 
-import cn.iver.common.MyConstants;
 import cn.iver.interceptor.AdminInterceptor;
 import cn.iver.model.Module;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.plugin.activerecord.Page;
 
 /**
  * Created with IntelliJ IDEA.

@@ -17,7 +17,16 @@ ul.nav li.dropdown:hover > ul.dropdown-menu{
     background-image: -webkit-linear-gradient(top,rgb(78, 172, 42),rgb(22, 153, 111));
 }
 /* 自定义的元素 */
-/* topic and post and reply */
+/* header , title , topic and post and reply */
+._header{
+    height: 108px;
+}
+._title{
+    width: 940px;
+}
+._title_fixed{
+    position: fixed; top: 0; z-index: 9999;
+}
 ._topic{
     border: 3px solid; border-radius: 15px; margin-bottom: 15px;
 }

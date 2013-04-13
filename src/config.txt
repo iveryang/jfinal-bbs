@@ -4,7 +4,7 @@
 page_size = 8
 
 ## “reply--帖子回复”分页的大小
-page_size_of_reply = 3
+page_size_of_reply = 5
 
 ## “后台管理--topic、reply列表”分页的大小
 page_size_for_admin = 30
@@ -13,7 +13,7 @@ page_size_for_admin = 30
 topic_preview_size = 280
 
 ## “置顶、热门”侧边栏的显示数目
-sidebar_topic_size = 8
+sidebar_topic_size = 12
 
 
 ##########################################################################

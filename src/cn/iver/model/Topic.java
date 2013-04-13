@@ -39,7 +39,7 @@ public class Topic extends Model<Topic>{
     }
     public List<Topic> getUpTopic(){
         return dao.findByCache(UP_TOPIC_LIST_CACHE, 1,
-                "select * from topic where isUp=true order by createdTime limit ?", MyConstants.SIDEBAR_TOPIC_SIZE);
+                "select * from topic where isUp=true order by createdTime desc limit ?", MyConstants.SIDEBAR_TOPIC_SIZE);
     }
     public List<Topic> getHotTopic(){
         return dao.findByCache(HOT_TOPIC_LIST_CACHE, 1,

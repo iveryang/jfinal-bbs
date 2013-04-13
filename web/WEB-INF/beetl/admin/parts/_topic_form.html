@@ -5,10 +5,10 @@
     }
 </script>
 
-<p><span>标题：</span><input type="text" name="topic.content" value="${topic.content!}" style="width: 600px;"></p>
+<div><span>标题：</span><input type="text" name="topic.content" value="${topic.content!}" style="width: 600px;"></div>
 <input type="hidden" name="topic.id" value="${topic.id!}">
 <input type="hidden" name="topic.moduleID" value="${moduleList[0].id!}" id="_moduleID">
-<p><span>类别：</span><select name="topic.subModuleID" onchange="setModuleID()" id="sub_moduleID">
+<div><span>类别：</span><select name="topic.subModuleID" onchange="setModuleID()" id="sub_moduleID">
     @ for(v in moduleList!){
         @ for(s in v.subModuleList!){
             <option value="${s.id}" moduleID="${v.id}"
@@ -18,8 +18,8 @@
             >${v.name} - ${s.name}</option>
         @ }
     @ }
-</select></p>
-<p>
+</select></div>
+<div>
     <span>是否发布：</span>
     <input type="radio" name="topic.isPublished" value="true"
         @ if(topic.isPublished!'0' == true){
@@ -31,8 +31,8 @@
             checked="checked"
         @ }
     ><v>&nbsp;草稿</v>
-</p>
-<p>
+</div>
+<div>
     <span>是否置顶：</span>
     <input type="radio" name="topic.isUp" value="false"
         @ if(topic.isUp!'0' == false){
@@ -44,4 +44,12 @@
             checked="checked"
         @ }
     ><v>&nbsp;置顶</v>
-</p>
+</div>
+@ if(exist("topic")){
+    <div>
+        <span>预览内容：</span>
+        <div>
+            @ include("/common/_editer.html", {"textarea_name" : "topic.firstPostPreview", "textarea_content" : topic.firstPostPreview!}){}
+        </div>
+    </div>
+@ }
