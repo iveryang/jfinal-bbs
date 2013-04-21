@@ -19,7 +19,7 @@ public class PostController extends Controller {
         Page<Post> postPage = Post.dao.getPostPage(topicID, pageNumber);
         setAttr("postPage", postPage);
         setAttr("topic", Topic.dao.getTopicByID(topicID));
-        render("/user/post.html");
+        render("/post/post.html");
     }
 
     /* ----------------------admin---------------------- */
@@ -33,7 +33,7 @@ public class PostController extends Controller {
     @Before(AdminInterceptor.class)
     public void edit(){
         setAttr("post", Post.dao.findById(getParaToInt(0)));
-        render("/admin/post.html");
+        render("/post/editPost.html");
     }
 
     @Before(AdminInterceptor.class)

@@ -1,0 +1,23 @@
+@ for(r in replyPage.list!){
+    <p class="-reply-info">
+        <i class="icon-user"></i><span>${r.userName}</span><i class="icon-time"></i><span>${r.createdTime, dateFormat='yyyy-MM-dd'}</span>
+        @ if(session.isAdminLogin!'' == 'true'){
+            <i class="icon-trash"></i>
+            <span><a href="javascript:;" data="/reply/delete/${postID}-${r.id}" onclick="deleteReply(this)">删除</a></span>
+        @ }
+    </p>
+    <p class="-reply-content">${r.content}</p>
+@ }
+<p class="-reply-paginate">
+    @ if(replyPage.pageNumber > 1){
+    <a data="/reply/${postID}-${ replyPage.pageNumber! - 1 }" href="javascript:;" class="_reply_prev_page btn btn-mini btn-success" onclick="replyPaginate(this)">上一页</a>
+    @ }
+    @ if(replyPage.pageNumber < replyPage.totalPage){
+    <a data="/reply/${postID}-${ replyPage.pageNumber! + 1 }" href="javascript:;" class="_reply_next_page btn btn-mini btn-success" onclick="replyPaginate(this)">下一页</a>
+    @ }
+    @ if(replyPage.totalPage!'0' > 0){
+        <span>&nbsp;&nbsp;共${replyPage.totalPage!}页</span>
+    @ }else{
+        <span>还没有评论，快来评论吧：)</span>
+    @ }
+</p>

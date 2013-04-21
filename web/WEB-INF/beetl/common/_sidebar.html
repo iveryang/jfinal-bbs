@@ -1,37 +1,41 @@
-<div class="span3">
-<div class="_sidebar  _random_border_${random.number!}">
-    <div>
-        <p class="_my_head"><img src="/img/head.jpg"></p>
-        <p class="_my_name muted">紫电清霜</p>
-        <p></p>
+<div class="pull-left -sidebar">
+    <div class="_sidebar  _random_border_${random.number!}">
+        <div>
+            <p class="_my_head"><img src=""></p>
+
+            <p class="my_name muted">紫电清霜</p>
+
+            <p></p>
+        </div>
+        <p>
+            沧海一声笑　滔滔两岸潮<br>
+            浮沉随浪只记今朝<br>
+            苍天笑　纷纷世上潮<br>
+            谁负谁胜出天知晓<br>
+            江山笑　烟雨遥<br>
+            涛浪淘尽红尘俗世几多娇<br>
+            清风笑　竟惹寂寥<br>
+            豪情还剩了一襟晚照<br>
+            苍生笑　不再寂寥<br>
+            豪情仍在痴痴笑笑
+        </p>
     </div>
-    <p>
-        沧海一声笑　滔滔两岸潮<br>
-        浮沉随浪只记今朝<br>
-        苍天笑　纷纷世上潮<br>
-        谁负谁胜出天知晓<br>
-        江山笑　烟雨遥<br>
-        涛浪淘尽红尘俗世几多娇<br>
-        清风笑　竟惹寂寥<br>
-        豪情还剩了一襟晚照<br>
-        苍生笑　不再寂寥<br>
-        豪情仍在痴痴笑笑
-    </p>
-</div>
-<div class="_sidebar  _random_border_${random.number!}">
-    <h4 class="muted">置顶文章：</h4>
-    @ for(v in upTopicList!){
-        <span>
-            <i class="icon-bookmark"></i><a href="/post/${v.id}" title="${v.content}">${v.content}</a>
-        </span><hr>
-    @ }
-</div>
-<div class="_sidebar  _random_border_${random.number!}">
-    <h4 class="muted">浏览最多：</h4>
-    @ for(v in hotTopicList!){
+    <div class="_sidebar  _random_border_${random.number!}">
+        <h4 class="muted">置顶文章：</h4>
+        @ for(v in upTopicList!){
     <span>
-        <i class="icon-fire"></i><a href="/post/${v.id}" title="共有${v.pv}次浏览">${v.content}</a>
-    </span><hr>
-    @ }
-</div>
+        <i class="icon-bookmark"></i><a href="/post/${v.id}" title="${v.content}">${v.content}</a>
+    </span>
+        <hr>
+        @ }
+    </div>
+    <div class="_sidebar  _random_border_${random.number!}">
+        <h4 class="muted">浏览最多：</h4>
+        @ for(v in hotTopicList!){
+    <span>
+    <i class="icon-fire"></i><a href="/post/${v.id}" title="共有${v.pv}次浏览">${v.content}</a>
+    </span>
+        <hr>
+        @ }
+    </div>
 </div>

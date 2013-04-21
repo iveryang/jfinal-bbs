@@ -14,6 +14,9 @@ public class IndexController extends Controller {
         render("/common/index.html");
     }
     public void leaveMsg (){
-        render("/user/leaveMsg.html");
+        render("/common/leaveMsg.html");
+    }
+    public void test (){
+        render("/common/test.html");
     }
 }

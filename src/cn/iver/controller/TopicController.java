@@ -20,27 +20,10 @@ public class TopicController extends Controller {
         setAttr("topicPage", Topic.dao.getTopicPageForModule(getParaToInt(0), getParaToInt(1, 1)));
         render("/common/index.html");
     }
-    public void showSub(){
-        setAttr("topicPage", Topic.dao.getTopicPageForSubModule(getParaToInt(0), getParaToInt(1, 1)));
-        render("/common/index.html");
-    }
-
-    /* ----------------------admin---------------------- */
-
-    @Before(AdminInterceptor.class)
     public void add(){
         setAttr("moduleList", Module.dao.getModuleList());
-        render("/admin/topic.html");
+        render("/topic/addTopic.html");
     }
-
-    @Before(AdminInterceptor.class)
-    public void edit(){
-        Topic topic = Topic.dao.findById(getParaToInt(0));
-        setAttr("topic", topic);
-        render("/admin/topic.html");
-    }
-
-    @Before(AdminInterceptor.class)
     public void save(){
         Topic topic = getModel(Topic.class);
         Post post = getModel(Post.class);
@@ -48,17 +31,24 @@ public class TopicController extends Controller {
         redirect("/post/" + topicID);
     }
 
-    @Before(AdminInterceptor.class)
-    public void update(){
-        Topic topic = getModel(Topic.class);
-        int topicID = Topic.dao.updateTopic(topic);
-        redirect("/post/" + topicID);
-    }
+    /* ----------------------admin---------------------- */
 
     @Before(AdminInterceptor.class)
     public void showTopicList(){
         setAttr("unPublishedTopicList", Topic.dao.getAllUnPublishedTopic());
         setAttr("topicPage", Topic.dao.getTopicPageForAdmin(getParaToInt(0, 1)));
         render("/admin/topicList.html");
+    }
+    @Before(AdminInterceptor.class)
+    public void edit(){
+        Topic topic = Topic.dao.findById(getParaToInt(0));
+        setAttr("topic", topic);
+        render("/admin/editTopic.html");
+    }
+    @Before(AdminInterceptor.class)
+    public void update(){
+        Topic topic = getModel(Topic.class);
+        int topicID = Topic.dao.updateTopic(topic);
+        redirect("/post/" + topicID);
     }
 }

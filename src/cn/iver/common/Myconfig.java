@@ -7,6 +7,7 @@ import cn.iver.controller.ReplyController;
 import cn.iver.controller.TopicController;
 import cn.iver.controller.admin.WelcomeController;
 import cn.iver.interceptor.GlobalInterceptor;
+import cn.iver.kit.BeetlFunctionKit;
 import cn.iver.model.*;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.config.*;
@@ -40,6 +41,7 @@ public class Myconfig extends JFinalConfig {
         me.setError500View("/common/500.html");
 		me.setMainRenderFactory(new BeetlRenderFactory());
 		GroupTemplate gt = BeetlRenderFactory.groupTemplate;
+        gt.registerFunction("isSame", new BeetlFunctionKit());
 		gt.setStatementStart("@");
         gt.setStatementEnd(null);
 	}
@@ -81,7 +83,8 @@ public class Myconfig extends JFinalConfig {
             arp.setShowSql(true);
         }
         arp.addMapping("module", Module.class).addMapping("topic", Topic.class).addMapping("post", Post.class);
-        arp.addMapping("reply", Reply.class).addMapping("user", User.class).addMapping("sub_module", SubModule.class);
+        arp.addMapping("reply", Reply.class).addMapping("user", User.class).addMapping("tag", Tag.class);
+        arp.addMapping("topic_tag", TopicTag.class);
 		me.add(arp);
         // 缓存插件
         me.add(new EhCachePlugin());
@@ -110,7 +113,6 @@ public class Myconfig extends JFinalConfig {
         TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai"));
         MyConstants.PAGE_SIZE = getPropertyToInt("page_size", 10);
         MyConstants.PAGE_SIZE_OF_REPLY = getPropertyToInt("page_size_of_reply", 3);
-        MyConstants.TOPIC_CONTENT_PREVIEW_SIZE = getPropertyToInt("topic_preview_size", 280);
         MyConstants.SIDEBAR_TOPIC_SIZE = getPropertyToInt("sidebar_topic_size", 6);
         MyConstants.PAGE_SIZE_FOR_ADMIN = getPropertyToInt("page_size_for_admin", 30);
     }

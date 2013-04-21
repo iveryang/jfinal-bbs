@@ -17,7 +17,7 @@ public class ReplyController extends Controller {
     public void index(){
         setAttr("replyPage", Reply.dao.getReplyPage(getParaToInt(0), getParaToInt(1, 1)));
         setAttr("postID", getPara(0));
-        render("/user/parts/_ajax_reply.html");
+        render("/reply/_ajaxReply.html");
     }
 
     @Before(ReplyValidator.class)

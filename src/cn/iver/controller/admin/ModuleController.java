@@ -2,7 +2,6 @@ package cn.iver.controller.admin;
 
 import cn.iver.interceptor.AdminInterceptor;
 import cn.iver.model.Module;
-import cn.iver.model.SubModule;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 
@@ -38,43 +37,5 @@ public class ModuleController extends Controller {
     public void delete(){
         Module.dao.deleteById(getParaToInt());
         index();
-    }
-
-    /* Sub Module */
-    private int currentModuleID = 0;
-
-    public void indexSub(){
-        if (getPara("flag") != null){
-            currentModuleID = getParaToInt(0);
-        }
-        setAttr("subModuleList", SubModule.dao.getSubModuleList(currentModuleID));
-        setAttr("currentModule", Module.dao.findById(currentModuleID));
-        index();
-    }
-
-    public void saveSub(){
-        SubModule subModule = getModel(SubModule.class);
-        subModule.save();
-        currentModuleID = subModule.getInt("moduleID");
-        indexSub();
-    }
-
-    public void editSub(){
-        setAttr("subModule", SubModule.dao.findById(getParaToInt(1)));
-        currentModuleID = getParaToInt(0);
-        indexSub();
-    }
-
-    public void updateSub(){
-        SubModule subModule = getModel(SubModule.class);
-        subModule.update();
-        currentModuleID = subModule.getInt("moduleID");
-        indexSub();
-    }
-
-    public void deleteSub(){
-        SubModule.dao.deleteById(getParaToInt(1));
-        currentModuleID = getParaToInt(0);
-        indexSub();
     }
 }

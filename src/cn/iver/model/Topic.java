@@ -63,7 +63,6 @@ public class Topic extends Model<Topic>{
         return Topic.dao.paginate(pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select *", "from topic order by createdTime desc");
     }
     public int saveTopicAndPost(Topic topic, Post post) {
-        topic = createFisrtPostPreview(topic, post);
         topic.save();
         int topicID = topic.getInt("id");
         post.set("topicID", topicID);
@@ -86,12 +85,5 @@ public class Topic extends Model<Topic>{
         CacheKit.removeAll(SUB_MODULE_TOPIC_PAGE_CACHE);
         CacheKit.removeAll(UP_TOPIC_LIST_CACHE);
         CacheKit.removeAll(HOT_TOPIC_LIST_CACHE);
-    }
-    private Topic createFisrtPostPreview(Topic topic, Post post){
-        String postContent = post.getStr("content");
-        int endIndex = postContent.length() > MyConstants.TOPIC_CONTENT_PREVIEW_SIZE ?
-                MyConstants.TOPIC_CONTENT_PREVIEW_SIZE : postContent.length();
-        topic.set("firstPostPreview", postContent.substring(0, endIndex));
-        return topic;
     }
 }

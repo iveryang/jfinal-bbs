@@ -1,133 +1,55 @@
-::selection{
-    background: #FA8072; color: #000000;
-}
-ul.nav li.dropdown:hover > ul.dropdown-menu{
-    display: block; margin-top: 0px;
-}
-.navbar .nav>li:hover{
-    background-color: #eeeeee;
-}
-.navbar .nav>li>a:hover{
-    color: #51a351;
-}
-.navbar .nav>li>a{
-    font-weight: bold;
-}
-.dropdown-menu>li>a:hover{
-    background-image: -webkit-linear-gradient(top,rgb(78, 172, 42),rgb(22, 153, 111));
-}
-/* 自定义的元素 */
-/* header , title , topic and post and reply */
-._header{
-    height: 108px;
-}
-._title{
-    width: 940px;
-}
-._title_fixed{
-    position: fixed; top: 0; z-index: 9999;
-}
-._topic{
-    border: 3px solid; border-radius: 15px; margin-bottom: 15px;
-}
-._topic_title{
-    margin-left: 50px;
-}
-._topic_title_edit{
-    float: right; margin-right: 30px;
-}
-._topic_text{
-    margin: 20px;
-}
-._topic_text p, ._post_content p{
-    text-indent: 2em; line-height: 1.8em; font-size: 16px;
-}
-._topic_post_info{
-    background: #f7f7f7; border-top: 1px solid #eee; padding: 10px 40px 10px 40px; border-radius: 0 0 15px 15px;
-}
-._topic_post_info>ul{
-    margin-bottom: 0; font-size: 12px;
-}
-._topic_post_info>ul>li{
-    display: inline-block; margin: 0 10px;
-}
-._topic_post_info>ul>li>i{
-    margin: 0 5px;
-}
-._post_container{
-    padding-left: 50px;
-}
-._post_header{
-    background: url(/img/bg_postdate.png) no-repeat; height: 48px; position: relative; top: 20px; left: -83px; width: 80px; color: #fff; text-align: right; margin-bottom: 0;
-}
-._post_header_date{
-    font-size: 12px;
-}
-._post_content{
-    position: relative; top: -30px; padding: 15px 36px 0 36px;
-}
+::selection{ background: #FA8072; color: #000000; }
+/* 对已经存在的bootstrap css属性进行覆盖 */
+.container{ margin-top: 55px; width: 940px; border-bottom: 2px solid gray; }
+/* 通用的css属性 */
+.-main-border{ border: 1px solid #ddd; border-radius: 15px; margin-bottom: 15px; }
+.-clear{ clear: both; }
+.-label{ height: 30px; line-height: 30px; margin-left: 0; }
+.-inline-block{ display: inline-block }
+/* 自定义的css属性 */
+/* ====================== navBar ====================== */
+.-navbar{ position: fixed; z-index: 1; margin: 0 auto; background-color: #50b7dc; color: #ffffff; top: 0; height: 45px; left: 0; right: 0; }
+.-navbar-inner{ width: 940px; margin: 0 auto; }
+.-nav{ margin: 0; }
+.-nav a{ color: #ffffff; }
+.-nav a:hover{ text-decoration: none; }
+.-nav>li{ display: inline-block; list-style: none; font-size: 18px; }
+.-nav a:hover{ font-weight: bold; background-color: #2aa4cf; }
+.-nav a{ font-weight: bold; padding: 0 20px; line-height: 45px; display: block;}
+/* ====================== main ====================== */
+.-main{ margin: 0; width: 650px; }
+/* topic */
+.-topic{ width: 210px; height: 300px; background-image: linear-gradient(to bottom right, rgb(232, 236, 228), rgb(248, 188, 176)); margin: 12px 3px; border-radius: 10px; cursor: pointer; }
+.-topic:hover{ box-shadow: 3px 3px 12px gray; }
+.-topic-header{ text-align: center; }
+.-topic-header p{ font-size: 12px; margin: 0; }
+.-topic-header h3{ margin: 0; }
+.-topic-header-num{ width: 100px; }
+.-topic-main{ height: 160px; }
+.-topic-main h3{ margin: 8px 18px; line-height: 36px; color: #ffffff; text-shadow: 1px 2px 10px black; }
+.-topic-main a{ display: block; height: 0; overflow: hidden; }
+.-topic-footer{ text-align: center }
+.-topic-footer p{ margin-top: 12px; }
+/* post */
+.-post-header{ background: url(/img/bg_postdate.png) no-repeat; height: 48px; position: relative; top: 20px; left: -80px; width: 80px; color: #fff; text-align: right; margin-bottom: 0; }
+.-post-header-date{ font-size: 11px; }
+.-post-main{ position: relative; top: -30px; padding: 15px 36px 0 36px; }
+.-post-main p{ text-indent: 2em; line-height: 1.8em; font-size: 16px; }
+.-post-reply-form form{ padding-left: 50px; display: none; }
+.-edit-post-btn{ margin-left: 20px; display: inline-block; width: 55px; }
+.-reply-success-info{ margin-left: 120px; display: inline-block; width: 130px; }
+.-show-reply-form-btn{ margin-left: 230px; }
+.-reply-submit{ margin-left: 46px; }
+.-post-footer{ background: #f7f7f7; border-top: 1px solid #eee; padding: 10px 40px 10px 40px; border-radius: 0 0 15px 15px; font-size: 12px; }
+.-reply-info i{ margin-right: 10px; }
+.-reply-info span{ margin-right: 30px; }
+.-reply-content{ text-indent: 2em; border-bottom: 1px solid rgb(133, 197, 230); }
+.-reply-paginate{ margin-left: 400px; }
+/* ====================== sidebar ====================== */
+.-sidebar{ margin: 0; width: 288px; }
 
-._post_content_footer{
-    position: relative; top: -15px;
-}
-._post_content_footer>p>a{
-    margin-left: 50px;
-}
-._post_content_footer>p>span:first-child{
-    margin-left: 200px;
-}
-._post_content_footer>p v{
-    display: none; margin-left: 80px;
-}
-._reply_button{
-    float: right; margin-right: 50px;
-}
-._reply_submit{
-    margin-left: 46px;
-}
-._post_content_footer>form{
-    margin-left: 60px; display: none;
-}
-._reply_info{
-    font-size: 12px;
-}
-._reply_info>i{
-    margin: 0 10px 0 20px;
-}
-._reply_content{
-    font-size: 12px; margin-left: 40px; border-bottom: 1px solid rgb(133, 197, 230); text-indent: 2em;
-}
-._reply_paginate{
-    margin-left: 410px; font-size: 11px;
-}
-/* side bar */
-._sidebar{
-    border: 3px solid; border-radius: 15px; padding: 10px; margin-bottom: 15px;
-}
-._sidebar>p{
-    line-height: 2.0em; font-size: 16px;
-}
-._sidebar>hr{
-    margin: 3px;
-}
-._my_head{
-    padding: 0 5px; display: inline-block;
-}
-._my_name{
-    width: 24px; font-size: 16px; letter-spacing: 40px; display: inline-block; top: 33px; position: relative; margin-left: 13px;
-}
-._my_head>img{
-    border-radius: 5px;
-}
-._sidebar h4{
-    text-align: center;
-}
-._sidebar span{
-    font-size: 14px; line-height: 25px;
-}
-._sidebar span i{
-    margin: 3px 6px;
-}
+
+
 /*Random Color*/
 ._random_border_1{border-color:rgba(206, 102, 206, 0.5)}._random_border_2{border-color:rgba(206, 102, 119, 0.5)}._random_border_3{border-color:rgba(102, 181, 206, 0.5)}
 ._random_border_4{border-color:rgba(247, 181, 138, 0.5)}._random_border_5{border-color:rgba(219, 204, 121, 0.5)}._random_border_6{border-color:rgba(102, 156, 206, 0.5)}

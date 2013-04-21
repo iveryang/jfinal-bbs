@@ -1,9 +1,0 @@
-<style type="text/css">
-    .ke-container-default{ margin-left: 80px; }
-</style>
-<div>
-    <span>内容：</span>
-    @ include("/common/_editer.html", {"textarea_name" : "post.content", "textarea_content" : post.content!}){}
-</div>
-<input type="hidden" name="post.id" value="${post.id!}">
-<input type="hidden" name="post.topicID" value="${post.topicID!}">

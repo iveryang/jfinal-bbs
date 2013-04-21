@@ -12,12 +12,12 @@ import com.jfinal.kit.StringKit;
 public class AdminInterceptor implements Interceptor {
     @Override
     public void intercept(ActionInvocation ai) {
-        String isAdminLogin = ai.getController().getSessionAttr("isAdminLogin");
-        if (StringKit.notBlank(isAdminLogin) && isAdminLogin.equals("true")){
+//        String isAdminLogin = ai.getController().getSessionAttr("isAdminLogin");
+//        if (StringKit.notBlank(isAdminLogin) && isAdminLogin.equals("true")){
             ai.invoke();
-        }else{
-            ai.getController().setAttr("msg", "权限不够啊");
-            ai.getController().renderError500();
-        }
+//        }else{
+//            ai.getController().setAttr("msg", "权限不够啊");
+//            ai.getController().renderError500();
+//        }
     }
 }
