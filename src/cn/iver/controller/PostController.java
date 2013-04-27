@@ -26,8 +26,9 @@ public class PostController extends Controller {
 
     @Before(AdminInterceptor.class)
     public void save(){
-        int topicID = Post.dao.save(getModel(Post.class));
-        redirect("/post/" + topicID);
+        Post post = getModel(Post.class);
+        post.mySave();
+        redirect("/post/" + post.getStr("topicID"));
     }
 
     @Before(AdminInterceptor.class)
@@ -38,7 +39,8 @@ public class PostController extends Controller {
 
     @Before(AdminInterceptor.class)
     public void update(){
-        int topicID = Post.dao.update(getModel(Post.class));
-        redirect("/post/" + topicID);
+        Post post = getModel(Post.class);
+        post.myUpdate();
+        redirect("/post/" + post.getStr("topicID"));
     }
 }

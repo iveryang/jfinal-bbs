@@ -15,6 +15,7 @@ import com.jfinal.core.JFinal;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import org.bee.tl.core.GroupTemplate;
@@ -60,21 +61,16 @@ public class Myconfig extends JFinalConfig {
 	 */
 	public void configPlugin(Plugins me) {
 		// [ copy from @ mike 的适配器 ：） ]
-        String dbname, username, password, host, port, driver;
+        String jdbcUrl, username, password, driver;
         driver = getProperty("driverClass");
         if (isLocal) {
-            dbname = getProperty("dbname");     username = getProperty("username");     port = getProperty("port");
-            host = getProperty("host");         password = getProperty("password");
+            jdbcUrl = getProperty("jdbcUrl");     username = getProperty("username");   password = getProperty("password");
         } else {
-            JSONObject credentials = JSONObject.parseObject(json).getJSONArray("mysql-5.1")
-                    .getJSONObject(0).getJSONObject("credentials");
-            host = credentials.getString("host");
-            port = credentials.getString("port");
-            dbname = credentials.getString("name");
-            username = credentials.getString("username");
-            password = credentials.getString("password");
+            JSONObject json = JSONObject.parseObject(this.json).getJSONArray("mysql-5.1").getJSONObject(0).getJSONObject("credentials");
+            username = json.getString("username");      password = json.getString("password");
+            jdbcUrl = "jdbc:mysql://" + json.getString("host") + ":" + json.getString("port") + "/" + json.getString("name");
         }
-        DruidPlugin druidPlugin = new DruidPlugin("jdbc:mysql://" + host + ":" + port + "/" + dbname, username, password, driver);
+        DruidPlugin druidPlugin = new DruidPlugin(jdbcUrl, username, password, driver);
         druidPlugin.setInitialSize(3).setMaxActive(10);
         me.add(druidPlugin);
         // 配置ActiveRecord插件
@@ -85,6 +81,8 @@ public class Myconfig extends JFinalConfig {
         arp.addMapping("module", Module.class).addMapping("topic", Topic.class).addMapping("post", Post.class);
         arp.addMapping("reply", Reply.class).addMapping("user", User.class).addMapping("tag", Tag.class);
         arp.addMapping("topic_tag", TopicTag.class);
+        // 让字段大小写不敏感
+        arp.setContainerFactory(new CaseInsensitiveContainerFactory(true));
 		me.add(arp);
         // 缓存插件
         me.add(new EhCachePlugin());
@@ -122,6 +120,10 @@ public class Myconfig extends JFinalConfig {
 	 * 运行此 main 方法可以启动项目，此main方法可以放置在任意的Class类定义中，不一定要放于此
 	 */
 	public static void main(String[] args) throws Exception{
+        // 第一个参数填写的是“WEB-INF”文件夹的父文件夹名称
+        // 第二个参数是设置访问的端口号
+        // 第三个参数是设置该项目的访问根目录
+        // 第四个参数是设置jetty每隔几秒钟扫描文件变化并重启应用
 		JFinal.start("Web", 80, "/", 5);
 	}
 }

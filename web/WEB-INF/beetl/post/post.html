@@ -47,19 +47,17 @@
                 </div>
             </div>
         @ }
-        <div class="_post_container">
+        <div>
             @ include("/common/_paginate.html", {"currentPage":postPage.pageNumber,"totalPage":postPage.totalPage,"actionUrl":"/post/" + topic.id! + "-"}) {}
-            @ if(session.isAdminLogin!'' == 'true'){
-                <div>
-                    <form action="/post/save" method="post">
-                        <p>回复内容：</p>
-                        @ include("/common/_editer.html", {"textarea_name" : "post.content"}){}
-                        <input type="hidden" name="post.topicID" value="${topic.id!}">
-                        <br>
-                        <input type="submit" class="btn btn-info" value="回复">
-                    </form>
-                </div>
-            @ }
+            <div>
+                <form action="/post/save" method="post">
+                    <p>回复内容：</p>
+                    @ include("/common/_editer.html", {"textarea_name" : "post.content"}){}
+                    <input type="hidden" name="post.topicID" value="${topic.id!}">
+                    <br>
+                    <input type="submit" class="btn btn-info" value="回复">
+                </form>
+            </div>
         </div>
     </div>
 @ }

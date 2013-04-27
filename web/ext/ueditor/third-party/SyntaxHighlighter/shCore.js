@@ -3272,7 +3272,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 						'imatch ine inotcontains inotlike inotmatch ireplace is isnot le like ' +
 						'lt match ne not notcontains notlike notmatch or regex replace wildcard';
 						
-		var verbs =		'write where wait use update unregister undo trace test tee take suspend ' +
+		var verbs =		'write where wait use myUpdate unregister undo trace test tee take suspend ' +
 						'stop start split sort skip show set send select scroll resume restore ' +
 						'restart resolve resize reset rename remove register receive read push ' +
 						'pop ping out new move measure limit join invoke import group get format ' +
@@ -3536,7 +3536,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 						'restrict return returns revoke rollback rollup rows rule schema scroll ' +
 						'second section select sequence serializable set size smallint static ' +
 						'statistics table temp temporary then time timestamp to top transaction ' +
-						'translation trigger true truncate uncommitted union unique update values ' +
+						'translation trigger true truncate uncommitted union unique myUpdate values ' +
 						'varchar varying view when where with work';
 
 		var operators =	'all and any between cross in join like not null or outer some';

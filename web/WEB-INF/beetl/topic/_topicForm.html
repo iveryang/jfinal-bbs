@@ -1,7 +1,6 @@
 <div>
     <input type="hidden" name="topic.id" value="${topic.id!}">
-    <input type="hidden" name="topic.userID" value="${topic.userID!}">
-    <input type="hidden" name="topic.tag" value="${topic.tag!}" id="topic_tag">
+    <input type="hidden" name="topic.userID" value="${topic.userID!'0'}">
     <div class="row">
         <span class="span1 -label">标题：</span><input type="text" name="topic.content" value="${topic.content!}" class="span7">
     </div>
@@ -16,7 +15,7 @@
         <span class="span1 -label">标签：</span>
         @ var i = 0;
         @ while( i < 3 ){
-            <input type="text" class="span2">
+            <input type="text" class="span2" name="topic.tag">
             @ i = i + 1;
         @ }
     </div>

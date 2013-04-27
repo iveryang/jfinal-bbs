@@ -1004,7 +1004,7 @@ var CodeMirror = (function() {
         }
         // Update the selection. Last two args are only used by
         // updateLines, since they have to be expressed in the line
-        // numbers before the update.
+        // numbers before the myUpdate.
         function setSelection(from, to, oldFrom, oldTo) {
             goalColumn = null;
             if (oldFrom == null) {oldFrom = sel.from.line; oldTo = sel.to.line;}
@@ -1655,7 +1655,7 @@ var CodeMirror = (function() {
         }
 
         // Operations are used to wrap changes in such a way that each
-        // change won't have to update the cursor and display (which would
+        // change won't have to myUpdate the cursor and display (which would
         // be awkward, slow, and error-prone), but instead updates are
         // batched and then all combined and executed at once.
         function startOperation() {
@@ -2179,7 +2179,7 @@ var CodeMirror = (function() {
             this.marked.push(mark);
             this.marked.sort(function(a, b){return (a.from || 0) - (b.from || 0);});
         },
-        // Run the given mode's parser over a line, update the styles
+        // Run the given mode's parser over a line, myUpdate the styles
         // array, which contains alternating fragments of text and CSS
         // classes.
         highlight: function(mode, state, tabSize) {

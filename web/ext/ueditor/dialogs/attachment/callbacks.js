@@ -73,9 +73,9 @@ function fileQueueError(file, errorCode, message) {
 
 function uploadStart(file) {
 	try {
-		/* I don't want to do any file validation or anything,  I'll just update the UI and
+		/* I don't want to do any file validation or anything,  I'll just myUpdate the UI and
 		return true to indicate that the upload should start.
-		It's important to update the UI here because in Linux no uploadProgress events are called. The best
+		It's important to myUpdate the UI here because in Linux no uploadProgress events are called. The best
 		we can do is say we are uploading.
 		 */
 		var progress = new FileProgress(file, this.customSettings.progressTarget);

@@ -16,9 +16,7 @@ sidebar_topic_size = 10
 ##########################################################################
 ## 本地开发环境上 data source 的配置
 driverClass = com.mysql.jdbc.Driver
+jdbcUrl = jdbc:mysql://localhost:3306/bbs
 devMode = true
-host = localhost
-dbname = bbs
-port = 3306
 username = root
 password = go

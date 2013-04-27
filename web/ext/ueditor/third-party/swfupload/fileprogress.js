@@ -7,7 +7,7 @@
 // Constructor
 // file is a SWFUpload file object
 // targetID is the HTML element id attribute that the FileProgress HTML structure will be added to.
-// Instantiating a new FileProgress object with an existing file will reuse/update the existing DOM elements
+// Instantiating a new FileProgress object with an existing file will reuse/myUpdate the existing DOM elements
 function FileProgress(file, targetID) {
 	this.fileProgressID = file.id;
 
