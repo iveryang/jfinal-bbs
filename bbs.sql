@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2013-04-20 21:23:41
+Date: 2013-04-27 22:05:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,25 +40,23 @@ DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `topicID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL DEFAULT '0',
   `content` text NOT NULL,
-  `createdTime` timestamp NULL DEFAULT NULL,
+  `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `hasReply` bit(1) NOT NULL DEFAULT b'0',
-  `updatedTime` timestamp NULL DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('14', '10', '0', '<p>高效的CSS已经不是一个新话题，也不是一个我非得重拾的话题，但是，它却是自我在SKY工作以后，真正感兴趣并始终关注的一个话题。</p><p>很多人或者忘记了，或者仅仅是没有意识到，CSS可以是高效的也可能导致低能。然而，我们可以不考虑当你自认为会的太少而使用了低效的CSS这种情况。</p><p>这些规则只真正用在性能要求很高的网站上，这些网站对速度要求很高，任何一个页面可能含有成百上千个DOM元素。但是实践出真理，不管你是在打造下一个facebook 还是在开发一个本地的展示网页，多学点总是好的</p><p><br /></p>', '2013-04-09 10:08:07', '', null);
-INSERT INTO `post` VALUES ('15', '10', '0', '<p>欢迎使用ueditor!<img src=\"http://img.baidu.com/hi/jx2/j_0015.gif\" /></p>', '2013-04-10 20:28:23', '', null);
-INSERT INTO `post` VALUES ('16', '11', '0', '<p>^O^<span style=\"color:#333333;font-family:微软雅黑;font-size:14px;line-height:20px;background-color:#ffffff;\">是否发布<span style=\"color:#333333;font-family:微软雅黑;font-size:14px;line-height:20px;background-color:#ffffff;\">是否发布<img src=\"http://img.baidu.com/hi/jx2/j_0005.gif\" />11</span></span></p>', '2013-04-13 15:31:23', '', null);
-INSERT INTO `post` VALUES ('17', '12', '0', '<p>^O^^O^^O^</p>', '2013-04-13 15:53:28', '', null);
-INSERT INTO `post` VALUES ('18', '13', '0', '<p>由于微软已经确认对 Sliverlight 插件的支持将结束，因此 Netflix 在 2008 年建立的这套到 PC 的流数据解决方案就必须寻找替代方案。该公司已经基于 <a href=\"http://www.engadget.com/2013/03/11/samsung-chromebook-netflix-html5-streaming/\">Samsung&#39;s ARM Chromebooks</a> 实现了一个新的实例。并计划将这项技术带到 PC 和 Mac 上的 Chrome 浏览器。目前 Netflix 正在等待很多 W3C 的举措来处理 HTML5 视频扩展可支持高清和 DRM 的完全实现。一旦最新的 (Web Cryptography API 推出，就可以放弃定制 API 插件的方式</p>', '2013-04-16 20:38:21', '', null);
-INSERT INTO `post` VALUES ('19', '14', '0', '<p style=\"color:#333333;font-family:&#39;helvetica neue&#39;, helvetica, arial, sans-serif;font-size:14px;line-height:20px;background-color:#ffffff;margin-top:0px;margin-bottom:10px;\">Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p><ul style=\"padding:0px;margin:0px 0px 10px 25px;color:#333333;font-family:&#39;helvetica neue&#39;, helvetica, arial, sans-serif;font-size:14px;line-height:20px;background-color:#ffffff;\"><li style=\"margin-bottom:5px;\"><p>Remove <code style=\"padding:2px 4px;font-family:monaco, menlo, consolas, &#39;courier new&#39;, monospace;font-size:12px;color:#dd1144;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background-color:#f7f7f9;border:1px solid #e1e1e8;\">margin</code> on the body</p></li><li style=\"margin-bottom:5px;\"><p>Set <code style=\"padding:2px 4px;font-family:monaco, menlo, consolas, &#39;courier new&#39;, monospace;font-size:12px;color:#dd1144;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background-color:#f7f7f9;border:1px solid #e1e1e8;\">background-color: white;</code> on the <code style=\"padding:2px 4px;font-family:monaco, menlo, consolas, &#39;courier new&#39;, monospace;font-size:12px;color:#dd1144;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background-color:#f7f7f9;border:1px solid #e1e1e8;\">body</code></p></li><li style=\"margin-bottom:5px;\"><p>Use the <code style=\"padding:2px 4px;font-family:monaco, menlo, consolas, &#39;courier new&#39;, monospace;font-size:12px;color:#dd1144;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background-color:#f7f7f9;border:1px solid #e1e1e8;\">@baseFontFamily</code>, <code style=\"padding:2px 4px;font-family:monaco, menlo, consolas, &#39;courier new&#39;, monospace;font-size:12px;color:#dd1144;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background-color:#f7f7f9;border:1px solid #e1e1e8;\">@baseFontSize</code>, and <code style=\"padding:2px 4px;font-family:monaco, menlo, consolas, &#39;courier new&#39;, monospace;font-size:12px;color:#dd1144;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background-color:#f7f7f9;border:1px solid #e1e1e8;\">@baseLineHeight</code> attributes as our typographyic base</p></li><li style=\"margin-bottom:5px;\"><p>Set the global link color via <code style=\"padding:2px 4px;font-family:monaco, menlo, consolas, &#39;courier new&#39;, monospace;font-size:12px;color:#dd1144;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background-color:#f7f7f9;border:1px solid #e1e1e8;\">@linkColor</code> and apply link underlines only on <code style=\"padding:2px 4px;font-family:monaco, menlo, consolas, &#39;courier new&#39;, monospace;font-size:12px;color:#dd1144;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background-color:#f7f7f9;border:1px solid #e1e1e8;\">:hover</code></p></li></ul><p style=\"color:#333333;font-family:&#39;helvetica neue&#39;, helvetica, arial, sans-serif;font-size:14px;line-height:20px;background-color:#ffffff;margin-top:0px;margin-bottom:10px;\">These styles can be found within <strong>scaffolding.less</strong>.</p><p><br /></p>', '2013-04-16 20:42:54', '', null);
-INSERT INTO `post` VALUES ('20', '15', '0', '<p>^O^<span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">沧海一声笑　滔滔两岸潮</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">浮沉随浪只记今朝</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">苍天笑　纷纷世上潮</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">谁负谁胜出天知晓</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">江山笑　烟雨遥</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">涛浪淘尽红尘俗世几多娇</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">清风笑　竟惹寂寥</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">豪情还剩了一襟晚照</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">苍生笑　不再寂寥</span><br style=\"font-family:微软雅黑;color:#333333;line-height:32px;background-color:#ffffff;\" /><span style=\"color:#333333;font-family:微软雅黑;line-height:32px;background-color:#ffffff;\">豪情仍在痴痴笑笑</span></p>', '2013-04-16 20:43:25', '', null);
-INSERT INTO `post` VALUES ('21', '16', '0', '<p>^O^O^O^O^</p><div><p>谁负谁胜出天知晓<br />江山笑　烟雨遥<br />涛浪淘尽红尘俗世几多娇<br />清风笑　竟惹寂寥<br />豪情还剩了一襟晚照<br />苍生笑　不再寂寥<br />豪情仍在痴痴笑笑</p></div>', '2013-04-16 20:44:03', '', null);
+INSERT INTO `post` VALUES ('1', '1', '0', '222', '2013-04-26 20:04:11', '', null);
+INSERT INTO `post` VALUES ('2', '1', '0', '<p>最近想在产品中加入即时通讯的功能.BS架构的程序.实现方式不外乎两大标准下的各种奇淫技巧.</p><p>这两大标准就是 HTML5 HTML4</p><p>为啥这两个呢..因为HTML5里面有websocket.这个彻底颠覆http请求的东西,使得请求不再是无状态的.</p><p>当然websocket目前支持不是很好.也没办法.看着好东西没法用.这是一种何种的煎熬....搞得我总是想在产品里面内嵌chromeFrame.然后强制给客户装上.哈哈...当然客户没准会和我拼命呢...</p><p>没办法,在现有的需求中基本上,实现思路只有一个了.也就是第一个让我头疼了一阵的关键词</p><p><br /></p>', '2013-04-26 20:28:50', '', null);
+INSERT INTO `post` VALUES ('3', '2', '0', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0001.gif\" />^O^</p>', '2013-04-27 21:14:15', '', null);
+INSERT INTO `post` VALUES ('4', '1', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" /></p>', '2013-04-27 22:02:32', '', null);
+INSERT INTO `post` VALUES ('5', '1', '0', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" />^O^</p>', '2013-04-27 22:03:56', '', null);
+INSERT INTO `post` VALUES ('6', '1', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\" /></p>', '2013-04-27 22:04:10', '', null);
 
 -- ----------------------------
 -- Table structure for `reply`
@@ -70,9 +68,9 @@ CREATE TABLE `reply` (
   `postID` int(11) NOT NULL,
   `userName` varchar(15) NOT NULL DEFAULT '0',
   `content` varchar(300) NOT NULL,
-  `createdTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reply
@@ -94,6 +92,8 @@ INSERT INTO `reply` VALUES ('62', '11', '16', '发布', '声笑', '2013-04-13 15
 INSERT INTO `reply` VALUES ('63', '11', '16', '发布', '天', '2013-04-13 15:51:02');
 INSERT INTO `reply` VALUES ('64', '11', '16', '发布', '胜出', '2013-04-13 15:51:11');
 INSERT INTO `reply` VALUES ('65', '11', '16', '发布', '胜出胜出', '2013-04-13 15:51:17');
+INSERT INTO `reply` VALUES ('66', '1', '1', '22', '2222', '2013-04-26 20:30:20');
+INSERT INTO `reply` VALUES ('67', '1', '1', '昵称', '昵称昵称', '2013-04-27 22:04:25');
 
 -- ----------------------------
 -- Table structure for `tag`
@@ -116,7 +116,7 @@ CREATE TABLE `tag` (
 DROP TABLE IF EXISTS `topic`;
 CREATE TABLE `topic` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL DEFAULT '0',
   `moduleID` int(11) NOT NULL,
   `postCount` int(11) NOT NULL DEFAULT '1',
   `replyCount` int(11) NOT NULL DEFAULT '0',
@@ -124,28 +124,17 @@ CREATE TABLE `topic` (
   `content` varchar(60) NOT NULL,
   `emotion` tinyint(2) DEFAULT NULL,
   `tag` varchar(80) DEFAULT NULL,
-  `createdTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `isPublished` bit(1) NOT NULL DEFAULT b'1',
   `isUp` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of topic
 -- ----------------------------
-INSERT INTO `topic` VALUES ('10', '0', '6', '2', '0', '37', '每个程序员都应该学习使用Python或Ruby', null, 'ddr', '2013-04-09 10:08:07', '', '');
-INSERT INTO `topic` VALUES ('11', '0', '6', '1', '0', '75', '每个程序员都应该学习使用Python或Ruby', null, '老北', '2013-04-13 15:31:23', '', '');
-INSERT INTO `topic` VALUES ('12', '0', '6', '1', '0', '1', '每个程序员都应该学习使用Python或Ruby', null, '嫌大冰', '2013-04-13 15:53:28', '', '');
-INSERT INTO `topic` VALUES ('13', '0', '4', '1', '0', '1', '每个程序员都应该学习使用Python或Ruby', null, 'jfinal', '2013-04-16 20:38:21', '', '');
-INSERT INTO `topic` VALUES ('14', '0', '4', '1', '0', '1', '每个程序员都应该学习使用Python或Ruby', null, 'beetl，嫌大冰', '2013-04-16 20:42:54', '', '');
-INSERT INTO `topic` VALUES ('15', '0', '4', '1', '0', '1', '每个程序员都应该学习使用Python或Ruby', null, 'hello', '2013-04-16 20:43:25', '', '');
-INSERT INTO `topic` VALUES ('16', '0', '4', '1', '0', '7', '每个程序员都应该学习使用Python或Ruby', null, 'world', '2013-04-16 20:44:02', '', '');
-INSERT INTO `topic` VALUES ('17', '0', '4', '1', '0', '7', '每个程序员都应该学习使用Python或Ruby', null, 'world', '2013-04-16 20:44:02', '', '');
-INSERT INTO `topic` VALUES ('18', '0', '4', '1', '0', '7', '每个程序员都应该学习使用Python或Ruby', null, 'world', '2013-04-16 20:44:02', '', '');
-INSERT INTO `topic` VALUES ('19', '0', '4', '1', '0', '7', '每个程序员都应该学习使用Python或Ruby', null, 'world', '2013-04-16 20:44:02', '', '');
-INSERT INTO `topic` VALUES ('20', '0', '4', '1', '0', '7', '每个程序员都应该学习使用Python或Ruby', null, 'world', '2013-04-16 20:44:02', '', '');
-INSERT INTO `topic` VALUES ('21', '0', '4', '1', '0', '8', '每个程序员都应该学习使用Python或Ruby', null, 'world', '2013-04-16 20:44:02', '', '');
-INSERT INTO `topic` VALUES ('22', '0', '4', '1', '0', '9', '每个程序员都应该学习使用Python或Ruby', null, 'world', '2013-04-16 20:44:02', '', '');
+INSERT INTO `topic` VALUES ('1', '0', '4', '4', '0', '6', 'omet 异步请求技术中相关关', null, 'xx', '2013-04-26 20:28:50', '', '');
+INSERT INTO `topic` VALUES ('2', '0', '4', '1', '0', '4', 'aaa', null, 'aaa,bbb,ccc', '2013-04-27 21:14:15', '', '');
 
 -- ----------------------------
 -- Table structure for `topic_tag`

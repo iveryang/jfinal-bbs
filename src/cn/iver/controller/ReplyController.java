@@ -23,7 +23,7 @@ public class ReplyController extends Controller {
     @Before(ReplyValidator.class)
     public void save(){
         Reply reply = getModel(Reply.class);
-        int postID = reply.get("postID");
+        int postID = reply.getInt("postID");
         reply.saveReply(postID);
         forwardAction("/reply/" + postID);
     }

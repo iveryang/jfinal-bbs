@@ -33,7 +33,7 @@ public class Post extends Model<Post> {
     }
     public void mySave(){
         this.save();
-        int topicID = this.get("topicID");
+        int topicID = this.getInt("topicID");
         Topic.dao.increaseTopicPostCount(topicID);
         CacheKit.removeAll(POST_PAGE_CACHE);
     }

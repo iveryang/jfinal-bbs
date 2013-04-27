@@ -28,8 +28,7 @@ public class TopicController extends Controller {
     public void save(){
         Topic topic = getModel(Topic.class);
         topic.createTag(getParaValues("topic.tag"));
-        Post post = getModel(Post.class);
-        topic.saveTopicAndPost(post);
+        topic.saveTopicAndPost(getModel(Post.class));
         redirect("/post/" + topic.get("id"));
     }
 

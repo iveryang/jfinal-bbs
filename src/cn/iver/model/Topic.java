@@ -37,16 +37,16 @@ public class Topic extends Model<Topic>{
     public Page<Topic> getTopicPage(int pageNumber){
         return dao.paginateByCache(INDEX_TOPIC_PAGE_CACHE, pageNumber,
                 pageNumber, MyConstants.PAGE_SIZE,
-                "select *", "from topic where isPublished=true order by createdTime desc");
+                "select *", "from topic where isPublished=true order by createTime desc");
     }
     public Page<Topic> getTopicPageForModule(int moduleID, int pageNumber){
         return dao.paginateByCache(MODULE_TOPIC_PAGE_CACHE, moduleID + CACHE_KEY_SEPARATE + pageNumber,
                 pageNumber, MyConstants.PAGE_SIZE,
-                "select *", "from topic where moduleID=? and isPublished=true order by createdTime desc", moduleID);
+                "select *", "from topic where moduleID=? and isPublished=true order by createTime desc", moduleID);
     }
     public List<Topic> getUpTopic(){
         return dao.findByCache(UP_TOPIC_LIST_CACHE, 1,
-                "select * from topic where isUp=true order by createdTime desc limit ?", MyConstants.SIDEBAR_TOPIC_SIZE);
+                "select * from topic where isUp=true order by createTime desc limit ?", MyConstants.SIDEBAR_TOPIC_SIZE);
     }
     public List<Topic> getHotTopic(){
         return dao.findByCache(HOT_TOPIC_LIST_CACHE, 1,
@@ -67,7 +67,7 @@ public class Topic extends Model<Topic>{
         return Topic.dao.find("select * from topic where isPublished=false");
     }
     public Page<Topic> getTopicPageForAdmin(int pageNumber){
-        return Topic.dao.paginate(pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select *", "from topic order by createdTime desc");
+        return Topic.dao.paginate(pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select *", "from topic order by createTime desc");
     }
     public void saveTopicAndPost(Post post) {
         this.save();

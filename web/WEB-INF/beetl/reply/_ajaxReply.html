@@ -1,6 +1,6 @@
 @ for(r in replyPage.list!){
     <p class="-reply-info">
-        <i class="icon-user"></i><span>${r.userName}</span><i class="icon-time"></i><span>${r.createdTime, dateFormat='yyyy-MM-dd'}</span>
+        <i class="icon-user"></i><span>${r.userName}</span><i class="icon-time"></i><span>${r.createTime, dateFormat='yyyy-MM-dd'}</span>
         @ if(session.isAdminLogin!'' == 'true'){
             <i class="icon-trash"></i>
             <span><a href="javascript:;" data="/reply/delete/${postID}-${r.id}" onclick="deleteReply(this)">删除</a></span>

@@ -81,8 +81,8 @@ public class Myconfig extends JFinalConfig {
         arp.addMapping("module", Module.class).addMapping("topic", Topic.class).addMapping("post", Post.class);
         arp.addMapping("reply", Reply.class).addMapping("user", User.class).addMapping("tag", Tag.class);
         arp.addMapping("topic_tag", TopicTag.class);
-        // 让字段大小写不敏感
-        arp.setContainerFactory(new CaseInsensitiveContainerFactory(true));
+//        让字段大小写不敏感（注：驼峰式的字段命名方式下，如果设置了大小写敏感，会导致getModel()无法获取同时含有大小写的字段，所以如果用MYSQL开发，此时不用对大小写问题进行人工干预）
+//        arp.setContainerFactory(new CaseInsensitiveContainerFactory(true));
 		me.add(arp);
         // 缓存插件
         me.add(new EhCachePlugin());

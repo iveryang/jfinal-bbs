@@ -32,6 +32,6 @@ public class Reply extends Model<Reply> {
         dao.deleteById(id);
     }
     public Page<Reply> getReplyPageForAdmin(int pageNumber){
-        return dao.paginate(pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select *", "from reply order by createdTime desc");
+        return dao.paginate(pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select *", "from reply order by createTime desc");
     }
 }

@@ -28,7 +28,7 @@ public class PostController extends Controller {
     public void save(){
         Post post = getModel(Post.class);
         post.mySave();
-        redirect("/post/" + post.getStr("topicID"));
+        redirect("/post/" + post.getInt("topicID"));
     }
 
     @Before(AdminInterceptor.class)
@@ -41,6 +41,6 @@ public class PostController extends Controller {
     public void update(){
         Post post = getModel(Post.class);
         post.myUpdate();
-        redirect("/post/" + post.getStr("topicID"));
+        redirect("/post/" + post.getInt("topicID"));
     }
 }
