@@ -1,10 +1,7 @@
 package cn.iver.common;
 
+import cn.iver.controller.*;
 import cn.iver.controller.admin.ModuleController;
-import cn.iver.controller.IndexController;
-import cn.iver.controller.PostController;
-import cn.iver.controller.ReplyController;
-import cn.iver.controller.TopicController;
 import cn.iver.controller.admin.WelcomeController;
 import cn.iver.interceptor.GlobalInterceptor;
 import cn.iver.kit.BeetlFunctionKit;
@@ -53,6 +50,7 @@ public class Myconfig extends JFinalConfig {
 	public void configRoute(Routes me) {
         me.add("/", IndexController.class).add("/topic", TopicController.class);
         me.add("/post", PostController.class).add("/reply", ReplyController.class);
+        me.add("/tag", TagController.class);
         me.add("/admin/welcome", WelcomeController.class).add("/admin/module", ModuleController.class);
 	}
 	

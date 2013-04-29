@@ -1,7 +1,5 @@
 $(function(){
-    $(".-topic").click(function(){
-        window.open($(this).attr("href"));
-    });
+
 });
 function saveTopic(v){
 

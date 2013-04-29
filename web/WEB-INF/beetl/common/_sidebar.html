@@ -1,13 +1,11 @@
-<div class="pull-left -sidebar">
-    <div class="_sidebar  _random_border_${random.number!}">
+<div class="pull-left -sidebar -border">
+    <div class="">
         <div>
-            <p class="_my_head"><img src=""></p>
-
-            <p class="my_name muted">紫电清霜</p>
-
-            <p></p>
+            <p><img src="/img/logo.jpg"></p>
         </div>
-        <p>
+        <div>
+            <p>
+            <h3 class="muted">笑傲江湖</h3>
             沧海一声笑　滔滔两岸潮<br>
             浮沉随浪只记今朝<br>
             苍天笑　纷纷世上潮<br>
@@ -18,24 +16,23 @@
             豪情还剩了一襟晚照<br>
             苍生笑　不再寂寥<br>
             豪情仍在痴痴笑笑
-        </p>
+            </p>
+        </div>
     </div>
-    <div class="_sidebar  _random_border_${random.number!}">
+    <div class="">
         <h4 class="muted">置顶文章：</h4>
         @ for(v in upTopicList!){
-    <span>
-        <i class="icon-bookmark"></i><a href="/post/${v.id}" title="${v.content}">${v.content}</a>
-    </span>
-        <hr>
+            <p>
+                <i class="icon-bookmark"></i><a href="/post/${v.id}" title="${v.content}">${v.content}</a>
+            </p>
         @ }
     </div>
-    <div class="_sidebar  _random_border_${random.number!}">
+    <div class="">
         <h4 class="muted">浏览最多：</h4>
         @ for(v in hotTopicList!){
-    <span>
-    <i class="icon-fire"></i><a href="/post/${v.id}" title="共有${v.pv}次浏览">${v.content}</a>
-    </span>
-        <hr>
+            <p>
+                <i class="icon-fire"></i><a href="/post/${v.id}" title="共有${v.pv}次浏览">${v.content}</a>
+            </p>
         @ }
     </div>
 </div>

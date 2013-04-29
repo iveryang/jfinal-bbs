@@ -1,24 +1,26 @@
 @ layout("/common/_layout.html"){
 <div class="pull-left -main">
     @ for(topic in topicPage.list!){
-        <div class="pull-left -topic" href="/topic/${topic.id}">
-            <div class="clearfix -topic-header">
-                <div class="pull-left -topic-header-num">
-                    <h3>${topic.postCount}</h3>
-                    <p>个回帖</p>
+        <div class="clearfix -topic -border" href="/topic/${topic.id}">
+            <div class="pull-left -topic-left">
+                <div class="-user-img"></div>
+            </div>
+            <div class="pull-left -topic-main">
+                <div class="-topic-content">
+                    <a href="/topic/${topic.id}">${topic.content}</a>
                 </div>
-                <div class="pull-left -topic-header-num">
-                    <h3>${topic.pv}</h3>
-                    <p>次浏览</p>
+                <div class="-topic-info">
+                    <span>${topic.createTime, dateFormat='yyyy-MM-dd HH:mm'}</span>
+                    <span>标签：
+                        @ for(tag in topic.tagList!){
+                            <a href="/tag/${tag.id}">${tag.tagName}</a>
+                        @ }
+                    </span>
                 </div>
             </div>
-            <div class="-topic-main">
-                <h3>${ topic.content }</h3>
-                <a href="/topic/${topic.id}">${ topic.content }</a>
-            </div>
-            <div class="-topic-footer">
-                <h4><a href="/xx/oo">admin</a></h4>
-                <p>于： ${topic.createTime, dateFormat='yyyy-MM-dd HH:mm'} 发表</p>
+            <div class="pull-left -topic-right">
+                <span>${topic.postCount}个回帖</span><br>
+                <span>${topic.pv}次浏览</span>
             </div>
         </div>
     @ }

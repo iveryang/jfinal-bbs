@@ -17,30 +17,29 @@ import java.util.List;
 public class Topic extends Model<Topic>{
     public static final Topic dao = new Topic();
     private static final String TOPIC_CACHE = "topic";
-    private static final String INDEX_TOPIC_PAGE_CACHE = "indexTopicPage";
-    private static final String MODULE_TOPIC_PAGE_CACHE = "moduleTopicPage";
+    private static final String TOPIC_PAGE_FOR_INDEX_CACHE = "topicPageForIndex";
+    private static final String TOPIC_PAGE_FOR_MODULE_CACHE = "topicPageForModule";
+    private static final String TOPIC_PAGE_FOR_TAG_CACHE = "topicPageForTag";
     private static final String UP_TOPIC_LIST_CACHE = "upTopicList";
     private static final String HOT_TOPIC_LIST_CACHE = "hotTopicList";
     private static final String CACHE_KEY_SEPARATE = "-";
 
     public Topic getTopicByID(int id){
         final int ID = id;
-        List<Topic> topicList = dao.findByCache(TOPIC_CACHE, ID, "select * from topic where id=?", ID);
-        CacheKit.get(TOPIC_CACHE, ID, new IDataLoader() {
+        return CacheKit.get(TOPIC_CACHE, ID, new IDataLoader() {
             @Override
             public Object load() {
                 return dao.findById(ID);
             }
         });
-        return topicList == null ? null : topicList.get(0);
     }
     public Page<Topic> getTopicPage(int pageNumber){
-        return dao.paginateByCache(INDEX_TOPIC_PAGE_CACHE, pageNumber,
+        return dao.paginateByCache(TOPIC_PAGE_FOR_INDEX_CACHE, pageNumber,
                 pageNumber, MyConstants.PAGE_SIZE,
                 "select *", "from topic where isPublished=true order by createTime desc");
     }
     public Page<Topic> getTopicPageForModule(int moduleID, int pageNumber){
-        return dao.paginateByCache(MODULE_TOPIC_PAGE_CACHE, moduleID + CACHE_KEY_SEPARATE + pageNumber,
+        return dao.paginateByCache(TOPIC_PAGE_FOR_MODULE_CACHE, moduleID + CACHE_KEY_SEPARATE + pageNumber,
                 pageNumber, MyConstants.PAGE_SIZE,
                 "select *", "from topic where moduleID=? and isPublished=true order by createTime desc", moduleID);
     }
@@ -69,34 +68,47 @@ public class Topic extends Model<Topic>{
     public Page<Topic> getTopicPageForAdmin(int pageNumber){
         return Topic.dao.paginate(pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select *", "from topic order by createTime desc");
     }
-    public void saveTopicAndPost(Post post) {
-        this.save();
-        post.set("topicID",  this.getInt("id"));
-        post.save();
-        removeAllCache();
-    }
     public void updateTopic() {
         this.update();
         removeAllCache();
     }
-    public void createTag(String[] tagsArray){
-        String tags = "";
-        for (String tag : tagsArray) {
-            if (StringKit.notBlank(tag.trim())){
-                tags = tags + tag + ",";
+    public void createNewTopic(Post post, String[] tagsArray){
+        this.save();
+        int topicID = this.getInt("id");
+        post.set("topicID", topicID);
+        post.save();
+        for (String tagName : tagsArray) {
+            if (StringKit.notBlank(tagName.trim())){
+                Tag tag = Tag.dao.getTagByTagName(tagName);
+                if (tag == null){
+                    Tag tagTemp = new Tag();
+                    tagTemp.set("tagName", tagName).save();
+                    new TopicTag().set("tagID", tagTemp.getInt("id")).set("topicID", topicID).save();
+                } else {
+                    tag.set("topicCount", tag.getInt("topicCount") + 1).update();
+                    new TopicTag().set("tagID", tag.getInt("id")).set("topicID", topicID).save();
+                }
             }
         }
-        if (StringKit.notBlank(tags)){
-            tags = tags.substring(0, tags.length() - 1);
-            this.set("tag", tags);
-        }
+        Tag.dao.removeAllCache();
+    }
+    public Page<Topic> getTopicPageByTagID(int tagID, int pageNumber){
+        return dao.paginateByCache(TOPIC_PAGE_FOR_TAG_CACHE, tagID + CACHE_KEY_SEPARATE + pageNumber,
+                pageNumber, MyConstants.PAGE_SIZE,
+                "select topic.*", "from topic, topic_tag where topic_tag.tagID = ? and topic.id = topic_tag.topicID", tagID);
+    }
+
+    /* getter */
+    public List<Tag> getTagList(){
+        int topicID = this.getInt("id");
+        return Tag.dao.getTagListByTopicID(topicID);
     }
 
     /* private */
     private void removeAllCache() {
         CacheKit.removeAll(TOPIC_CACHE);
-        CacheKit.removeAll(INDEX_TOPIC_PAGE_CACHE);
-        CacheKit.removeAll(MODULE_TOPIC_PAGE_CACHE);
+        CacheKit.removeAll(TOPIC_PAGE_FOR_INDEX_CACHE);
+        CacheKit.removeAll(TOPIC_PAGE_FOR_MODULE_CACHE);
         CacheKit.removeAll(UP_TOPIC_LIST_CACHE);
         CacheKit.removeAll(HOT_TOPIC_LIST_CACHE);
     }

@@ -1,9 +1,0 @@
----
-applications:
-- name: iver
-  framework: java_web
-  runtime: java7
-  memory: 512M
-  instances: 1
-  url: iver.${target-base}
-  path: .

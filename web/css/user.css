@@ -6,6 +6,7 @@
 .-clear{ clear: both; }
 .-label{ height: 30px; line-height: 30px; margin-left: 0; }
 .-inline-block{ display: inline-block }
+.-border{ border-radius: 10px; border: 2px solid #eee; }
 /* 自定义的css属性 */
 /* ====================== navBar ====================== */
 .-navbar{ position: fixed; z-index: 1; margin: 0 auto; background-color: #50b7dc; color: #ffffff; top: 0; height: 45px; left: 0; right: 0; }
@@ -17,19 +18,14 @@
 .-nav a:hover{ font-weight: bold; background-color: #2aa4cf; }
 .-nav a{ font-weight: bold; padding: 0 20px; line-height: 45px; display: block;}
 /* ====================== main ====================== */
-.-main{ margin: 0; width: 650px; }
+.-main{ margin: 0; width: 650px; min-height: 300px; }
 /* topic */
-.-topic{ width: 210px; height: 300px; background-image: linear-gradient(to bottom right, rgb(232, 236, 228), rgb(248, 188, 176)); margin: 12px 3px; border-radius: 10px; cursor: pointer; }
-.-topic:hover{ box-shadow: 3px 3px 12px gray; }
-.-topic-header{ text-align: center; }
-.-topic-header p{ font-size: 12px; margin: 0; }
-.-topic-header h3{ margin: 0; }
-.-topic-header-num{ width: 100px; }
-.-topic-main{ height: 160px; }
-.-topic-main h3{ margin: 8px 18px; line-height: 36px; color: #ffffff; text-shadow: 1px 2px 10px black; }
-.-topic-main a{ display: block; height: 0; overflow: hidden; }
-.-topic-footer{ text-align: center }
-.-topic-footer p{ margin-top: 12px; }
+.-topic{ width: 640px; height: 60px; margin: 12px 5px; }
+.-topic-left{ height: 60px; width: 60px; }
+.-user-img{ height: 100%; width: 100%; background-image: url("/img/head.jpg") }
+.-topic-main{ height: 60px; width: 500px; }
+.-topic-main a{ margin: 8px 18px; line-height: 30px; font-size: 18px; }
+.-topic-right{ height: 60px; width: 60px; text-align: center }
 /* post */
 .-post-header{ background: url(/img/bg_postdate.png) no-repeat; height: 48px; position: relative; top: 20px; left: -80px; width: 80px; color: #fff; text-align: right; margin-bottom: 0; }
 .-post-header-date{ font-size: 11px; }
@@ -46,7 +42,7 @@
 .-reply-content{ text-indent: 2em; border-bottom: 1px solid rgb(133, 197, 230); }
 .-reply-paginate{ margin-left: 400px; }
 /* ====================== sidebar ====================== */
-.-sidebar{ margin: 0; width: 288px; }
+.-sidebar{ margin: 0 0 0 15px; width: 270px; }
 
 
 

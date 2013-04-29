@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : local_mysql
+Source Server         : localhost
 Source Server Version : 50525
 Source Host           : localhost:3306
 Source Database       : bbs
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2013-04-27 22:05:36
+Date: 2013-04-29 22:37:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,7 +46,7 @@ CREATE TABLE `post` (
   `hasReply` bit(1) NOT NULL DEFAULT b'0',
   `updateTime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
@@ -57,6 +57,13 @@ INSERT INTO `post` VALUES ('3', '2', '0', '<p><img src=\"http://img.baidu.com/hi
 INSERT INTO `post` VALUES ('4', '1', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" /></p>', '2013-04-27 22:02:32', '', null);
 INSERT INTO `post` VALUES ('5', '1', '0', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" />^O^</p>', '2013-04-27 22:03:56', '', null);
 INSERT INTO `post` VALUES ('6', '1', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\" /></p>', '2013-04-27 22:04:10', '', null);
+INSERT INTO `post` VALUES ('7', '2', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0017.gif\" /></p>', '2013-04-28 21:10:33', '', null);
+INSERT INTO `post` VALUES ('8', '3', '0', '<p>沧海一声笑　滔滔两岸潮<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />浮沉随浪只记今朝<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />苍天笑　纷纷世上潮<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />谁负谁胜出天知晓<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />江山笑　烟雨遥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />涛浪淘尽红尘俗世几多娇<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />清风笑　竟惹寂寥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />豪情还剩了一襟晚照<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />苍生笑　不再寂寥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />豪情仍在痴痴笑笑</p>', '2013-04-28 21:58:32', '', null);
+INSERT INTO `post` VALUES ('9', '4', '0', '<p>本文作者Cliff Meyers是一个前端工程师，熟悉HTML5、JavaScript、J2EE开发，他在开发过程中总结了自己在应对JavaScript应用越来越庞大情况下的文件结构，深得其他开发者认可。以下为CSDN编译： 地板上堆放的衣服 首先，我们来看看angular-seed，它是AngularJS应用开发的官方入门项目，其文件结构是这样的：</p>', '2013-04-29 13:27:14', '', null);
+INSERT INTO `post` VALUES ('10', '5', '0', '<p>本文作者Cliff Meyers是一个前端工程师，熟悉HTML5、JavaScript、J2EE开发，他在开发过程中总结了自己在应对JavaScript应用越来越庞大情况下的文件结构，深得其他开发者认可。以下为CSDN编译： 地板上堆放的衣服 首先，我们来看看angular-seed，它是AngularJS应用开发的官方入门项目，其文件结构是这样的：</p>', '2013-04-29 13:33:39', '', null);
+INSERT INTO `post` VALUES ('11', '6', '0', '<p>我自己定义了一个指令text-tile 可以把一个普通的html变成一个metro风格的瓷贴（主要是做一些样式的计算） angular.module(&quot;metro.directive&quot;, []) .directive(&quot;textTile&quot;, function () { return { templateUrl: &#39;tpl/tile_text.html&#39;, transclude: true, link: function (scope, element, attrs) { var css …</p>', '2013-04-29 13:36:53', '', null);
+INSERT INTO `post` VALUES ('12', '7', '0', '<p>俺注册的邮箱是 zoomquiet+js@gmail.com</p><p>点击邮件中的链接 不论 FF / Chrome 中,都无法完成验证! 报告错误如下:</p><p>{&quot;err&quot;:{ &quot;name&quot;:&quot;请求错误&quot; ,&quot;message&quot;:&quot;对不起，请求出错了！&quot; ,&quot;type&quot;:&quot;error&quot;,&quot;url&quot;:&quot;/&quot;} }</p><p>怀疑是不支持 gmail +缀形式邮箱 或是本身功能已经受损?</p>', '2013-04-29 13:42:38', '', null);
+INSERT INTO `post` VALUES ('13', '7', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" /></p>', '2013-04-29 22:29:30', '', null);
 
 -- ----------------------------
 -- Table structure for `reply`
@@ -101,14 +108,18 @@ INSERT INTO `reply` VALUES ('67', '1', '1', '昵称', '昵称昵称', '2013-04-2
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tagName` varchar(20) DEFAULT NULL,
-  `topicCount` int(11) NOT NULL DEFAULT '0',
+  `tagName` varchar(20) NOT NULL,
+  `topicCount` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tag
 -- ----------------------------
+INSERT INTO `tag` VALUES ('2', 'js', '2');
+INSERT INTO `tag` VALUES ('3', 'java', '1');
+INSERT INTO `tag` VALUES ('4', 'ruby', '1');
+INSERT INTO `tag` VALUES ('5', '屌丝', '1');
 
 -- ----------------------------
 -- Table structure for `topic`
@@ -128,13 +139,14 @@ CREATE TABLE `topic` (
   `isPublished` bit(1) NOT NULL DEFAULT b'1',
   `isUp` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of topic
 -- ----------------------------
-INSERT INTO `topic` VALUES ('1', '0', '4', '4', '0', '6', 'omet 异步请求技术中相关关', null, 'xx', '2013-04-26 20:28:50', '', '');
-INSERT INTO `topic` VALUES ('2', '0', '4', '1', '0', '4', 'aaa', null, 'aaa,bbb,ccc', '2013-04-27 21:14:15', '', '');
+INSERT INTO `topic` VALUES ('5', '0', '4', '1', '0', '0', '如何组织大型AngularJS应用中的代码？', null, 'js', '2013-04-29 13:33:38', '', '');
+INSERT INTO `topic` VALUES ('6', '0', '4', '1', '0', '2', '哪位牛给解释下这段代码在干什么', null, 'js', '2013-04-29 13:36:53', '', '');
+INSERT INTO `topic` VALUES ('7', '0', '4', '2', '0', '6', '无法完成邮箱认证?!', null, 'js', '2013-04-29 13:42:38', '', '');
 
 -- ----------------------------
 -- Table structure for `topic_tag`
@@ -145,11 +157,17 @@ CREATE TABLE `topic_tag` (
   `topicID` int(11) NOT NULL,
   `tagID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of topic_tag
 -- ----------------------------
+INSERT INTO `topic_tag` VALUES ('1', '5', '2');
+INSERT INTO `topic_tag` VALUES ('2', '5', '3');
+INSERT INTO `topic_tag` VALUES ('3', '6', '2');
+INSERT INTO `topic_tag` VALUES ('4', '6', '4');
+INSERT INTO `topic_tag` VALUES ('5', '7', '2');
+INSERT INTO `topic_tag` VALUES ('6', '7', '5');
 
 -- ----------------------------
 -- Table structure for `user`

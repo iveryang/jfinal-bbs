@@ -6,7 +6,6 @@ import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.StringKit;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,9 +26,8 @@ public class TopicController extends Controller {
     }
     public void save(){
         Topic topic = getModel(Topic.class);
-        topic.createTag(getParaValues("topic.tag"));
-        topic.saveTopicAndPost(getModel(Post.class));
-        redirect("/post/" + topic.get("id"));
+        topic.createNewTopic(getModel(Post.class), getParaValues("topic.tag"));
+        redirect("/post/" + topic.getInt("id"));
     }
 
     /* ----------------------admin---------------------- */
@@ -50,6 +48,6 @@ public class TopicController extends Controller {
     public void update(){
         Topic topic = getModel(Topic.class);
         topic.updateTopic();
-        redirect("/post/" + topic.getStr("id"));
+        redirect("/post/" + topic.getInt("id"));
     }
 }
