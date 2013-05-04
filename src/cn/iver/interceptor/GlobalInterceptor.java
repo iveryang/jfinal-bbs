@@ -1,7 +1,5 @@
 package cn.iver.interceptor;
 
-import cn.iver.common.MyConstants;
-import cn.iver.kit.RandomKit;
 import cn.iver.model.Module;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Interceptor;
@@ -20,8 +18,6 @@ public class GlobalInterceptor implements Interceptor {
         // 侧边栏列表
         ai.getController().setAttr("upTopicList", Topic.dao.getUpTopic());
         ai.getController().setAttr("hotTopicList", Topic.dao.getHotTopic());
-        // 随机border颜色
-        ai.getController().setAttr("random", RandomKit.getRandomKit());
         ai.invoke();
     }
 }

@@ -44,3 +44,10 @@ function deleteReply(v){
         "html"
     );
 }
+function login(v){
+    $.dialog({
+        title : '登录：)',
+        content : $('#tool-login').html(),
+        lock : true
+    });
+}

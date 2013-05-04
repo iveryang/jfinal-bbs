@@ -6,7 +6,7 @@
 .-clear{ clear: both; }
 .-label{ height: 30px; line-height: 30px; margin-left: 0; }
 .-inline-block{ display: inline-block }
-.-border{ border-radius: 10px; border: 2px solid #eee; }
+.-border{ border: 1px solid #eee; }
 /* 自定义的css属性 */
 /* ====================== navBar ====================== */
 .-navbar{ position: fixed; z-index: 1; margin: 0 auto; background-color: #50b7dc; color: #ffffff; top: 0; height: 45px; left: 0; right: 0; }
@@ -20,12 +20,15 @@
 /* ====================== main ====================== */
 .-main{ margin: 0; width: 650px; min-height: 300px; }
 /* topic */
-.-topic{ width: 640px; height: 60px; margin: 12px 5px; }
+.-topic{ width: 100%; height: 60px; margin: 12px 0; border-bottom: 2px solid #eee; }
 .-topic-left{ height: 60px; width: 60px; }
-.-user-img{ height: 100%; width: 100%; background-image: url("/img/head.jpg") }
+.-user-img{ height: 100%; width: 100%; background-image: url("http://himg.bdimg.com/sys/portrait/item/5b076976657279616e67303037303038f306.jpg"); background-size: 100%; }
 .-topic-main{ height: 60px; width: 500px; }
 .-topic-main a{ margin: 8px 18px; line-height: 30px; font-size: 18px; }
-.-topic-right{ height: 60px; width: 60px; text-align: center }
+.-topic-info{ margin-top: 6px; }
+.-topic-info span{ font-size: 13px; margin-left: 20px; }
+.-topic-info a{ font-size: 13px; line-height: 13px; margin: 0 10px 0 10px; }
+.-topic-right{ height: 60px; width: 60px; text-align: center; margin-top: 10px; }
 /* post */
 .-post-header{ background: url(/img/bg_postdate.png) no-repeat; height: 48px; position: relative; top: 20px; left: -80px; width: 80px; color: #fff; text-align: right; margin-bottom: 0; }
 .-post-header-date{ font-size: 11px; }
@@ -43,11 +46,9 @@
 .-reply-paginate{ margin-left: 400px; }
 /* ====================== sidebar ====================== */
 .-sidebar{ margin: 0 0 0 15px; width: 270px; }
-
-
-
-/*Random Color*/
-._random_border_1{border-color:rgba(206, 102, 206, 0.5)}._random_border_2{border-color:rgba(206, 102, 119, 0.5)}._random_border_3{border-color:rgba(102, 181, 206, 0.5)}
-._random_border_4{border-color:rgba(247, 181, 138, 0.5)}._random_border_5{border-color:rgba(219, 204, 121, 0.5)}._random_border_6{border-color:rgba(102, 156, 206, 0.5)}
-._random_border_7{border-color:rgba(198, 206, 102, 0.5)}._random_border_8{border-color:rgba(148, 206, 102, 0.5)}._random_border_9{border-color:rgba(102, 123, 206, 0.5)}
-._random_border_10{border-color:rgba(102, 206, 102, 0.5)}._random_border_11{border-color:rgba(102, 206, 185, 0.5)}._random_border_0{border-color:rgba(139, 102, 206, 0.5)}
+.-sidebar>div{ padding: 0 10px; }
+.-logo img{ display: block; width: 192; height: 90px; margin: 10px auto; }
+.-desc{ text-indent: 2em; }
+.-regist-or-login p{ margin: 10px 0; text-align: center; }
+/* ====================== regist ====================== */
+.-label{ width: 80px; display: inline-block; font-size: 16px; text-align: right; }

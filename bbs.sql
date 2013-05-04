@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2013-04-29 22:37:57
+Date: 2013-05-04 14:47:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -145,8 +145,8 @@ CREATE TABLE `topic` (
 -- Records of topic
 -- ----------------------------
 INSERT INTO `topic` VALUES ('5', '0', '4', '1', '0', '0', '如何组织大型AngularJS应用中的代码？', null, 'js', '2013-04-29 13:33:38', '', '');
-INSERT INTO `topic` VALUES ('6', '0', '4', '1', '0', '2', '哪位牛给解释下这段代码在干什么', null, 'js', '2013-04-29 13:36:53', '', '');
-INSERT INTO `topic` VALUES ('7', '0', '4', '2', '0', '6', '无法完成邮箱认证?!', null, 'js', '2013-04-29 13:42:38', '', '');
+INSERT INTO `topic` VALUES ('6', '0', '4', '1', '0', '4', '哪位牛给解释下这段代码在干什么', null, 'js', '2013-04-29 13:36:53', '', '');
+INSERT INTO `topic` VALUES ('7', '0', '4', '2', '0', '9', '无法完成邮箱认证?!', null, 'js', '2013-03-29 13:42:38', '', '');
 
 -- ----------------------------
 -- Table structure for `topic_tag`
@@ -185,9 +185,10 @@ CREATE TABLE `user` (
   `feeling` varchar(100) DEFAULT NULL,
   `registDate` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'iver', 'A040B1E5BD598DEE34F8B6D954EB657B', '', 'iver@qq.com', null, null, 'hello world.', 'happy.', '2013-04-10');
+INSERT INTO `user` VALUES ('3', '管理员', '5A035E2B5A9013E45EF9D5669F88C22E', '', 'iveryang@sina.cn', null, null, null, null, '2013-05-03');

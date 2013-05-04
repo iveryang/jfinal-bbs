@@ -3,6 +3,7 @@ package cn.iver.model;
 import com.jfinal.plugin.activerecord.Model;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,10 +18,16 @@ public class User extends Model<User> {
         User user = dao.findFirst("select * from user where username=? and password=?", username, getMD5(password.getBytes()));
         if(user == null){
             return false;
-        }else{
-            return true;
         }
+        return true;
     }
+    public void createNewUser(){
+        String password = getMD5(this.getStr("password").getBytes());
+        this.set("password", password).set("registDate", new Date());
+        this.save();
+    }
+
+    /* private */
     private String getMD5(byte[] bytes){
         java.security.MessageDigest md = null;
         try {

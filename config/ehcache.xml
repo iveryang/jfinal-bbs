@@ -4,8 +4,13 @@
 
     <diskStore path="java.io.tmpdir"/>
 
-    <defaultCache maxEntriesLocalHeap="3600" eternal="false" overflowToDisk="true"
-                  timeToIdleSeconds="180" timeToLiveSeconds="180"/>
+    <defaultCache
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="3600"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="10" />
 
     <!-- 话题相关的cache -->
     <cache name="topic"

@@ -1,4 +1,4 @@
-package cn.iver.kit;
+package cn.iver.ext.beetlfunction;
 
 import org.bee.tl.core.Context;
 import org.bee.tl.core.Function;
@@ -8,7 +8,7 @@ import org.bee.tl.core.Function;
  * Author: iver
  * Date: 13-4-20
  */
-public class BeetlFunctionKit implements Function {
+public class IsSame implements Function {
     @Override
     public String call(Object[] params, Context ctx) {
         if (params.length != 3){

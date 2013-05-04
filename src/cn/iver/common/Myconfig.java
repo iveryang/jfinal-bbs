@@ -3,8 +3,9 @@ package cn.iver.common;
 import cn.iver.controller.*;
 import cn.iver.controller.admin.ModuleController;
 import cn.iver.controller.admin.WelcomeController;
+import cn.iver.ext.beetlfunction.IsSame;
+import cn.iver.ext.beetlfunction.PrintTime;
 import cn.iver.interceptor.GlobalInterceptor;
-import cn.iver.kit.BeetlFunctionKit;
 import cn.iver.model.*;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.config.*;
@@ -12,7 +13,6 @@ import com.jfinal.core.JFinal;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import org.bee.tl.core.GroupTemplate;
@@ -39,7 +39,8 @@ public class Myconfig extends JFinalConfig {
         me.setError500View("/common/500.html");
 		me.setMainRenderFactory(new BeetlRenderFactory());
 		GroupTemplate gt = BeetlRenderFactory.groupTemplate;
-        gt.registerFunction("isSame", new BeetlFunctionKit());
+        gt.registerFunction("isSame", new IsSame());
+        gt.registerFunction("printTime", new PrintTime());
 		gt.setStatementStart("@");
         gt.setStatementEnd(null);
 	}

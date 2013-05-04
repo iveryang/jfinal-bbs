@@ -1,7 +1,7 @@
 @ layout("/common/_layout.html"){
-<div class="pull-left -main">
+<div class="pull-left -main -border">
     @ for(topic in topicPage.list!){
-        <div class="clearfix -topic -border" href="/topic/${topic.id}">
+        <div class="clearfix -topic" href="/topic/${topic.id}">
             <div class="pull-left -topic-left">
                 <div class="-user-img"></div>
             </div>
@@ -10,21 +10,24 @@
                     <a href="/topic/${topic.id}">${topic.content}</a>
                 </div>
                 <div class="-topic-info">
-                    <span>${topic.createTime, dateFormat='yyyy-MM-dd HH:mm'}</span>
-                    <span>标签：
+                    <span>
                         @ for(tag in topic.tagList!){
-                            <a href="/tag/${tag.id}">${tag.tagName}</a>
+                            <a class="btn btn-success" href="/tag/${tag.id}">${tag.tagName}</a>
                         @ }
                     </span>
+                    <span>${printTime(topic.createTime)}</span>
                 </div>
             </div>
             <div class="pull-left -topic-right">
-                <span>${topic.postCount}个回帖</span><br>
-                <span>${topic.pv}次浏览</span>
+                <p>
+                    <span>${topic.postCount} 个回帖</span>
+                    <span>${topic.pv} 次浏览</span>
+                </p>
             </div>
         </div>
     @ }
     <div class="-clear"></div>
     @ include("/common/_paginate.html", {"currentPage":topicPage.pageNumber,"totalPage":topicPage.totalPage,"actionUrl":"/"}) {}
 </div>
+@ include("/common/_sidebar.html"){}
 @ }
