@@ -13,11 +13,7 @@ import com.jfinal.core.ActionInvocation;
 public class GlobalInterceptor implements Interceptor {
     @Override
     public void intercept(ActionInvocation ai) {
-        // 导航标题
         ai.getController().setAttr("moduleList", Module.dao.getModuleList());
-        // 侧边栏列表
-        ai.getController().setAttr("upTopicList", Topic.dao.getUpTopic());
-        ai.getController().setAttr("hotTopicList", Topic.dao.getHotTopic());
         ai.invoke();
     }
 }

@@ -1,6 +1,7 @@
 package cn.iver.controller;
 
 import cn.iver.interceptor.AdminInterceptor;
+import cn.iver.interceptor.LoginInterceptor;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
@@ -18,13 +19,11 @@ public class PostController extends Controller {
         int pageNumber = getParaToInt(1, 1);
         Page<Post> postPage = Post.dao.getPostPage(topicID, pageNumber);
         setAttr("postPage", postPage);
-        setAttr("topic", Topic.dao.getTopicByID(topicID));
+        setAttr("topic", Topic.dao.getTopic(topicID));
         render("/post/post.html");
     }
 
-    /* ----------------------admin---------------------- */
-
-    @Before(AdminInterceptor.class)
+    @Before(LoginInterceptor.class)
     public void save(){
         Post post = getModel(Post.class);
         post.mySave();

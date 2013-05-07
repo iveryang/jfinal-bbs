@@ -5,7 +5,7 @@ function saveTopic(v){
 
 }
 function showReplyForm(v){
-    $(v).parent().next().toggle();
+    $(v).closest(".-post-main").next().toggle().find("textarea").focus();
 }
 function saveReply(v){
     $.post(
@@ -13,13 +13,30 @@ function saveReply(v){
         $(v).parent().serialize(),
         function(data){
             if(data == "error"){
-                alert("你输入的不科学~！");
+                alert("评论不能为空，且不超过200字:(");
             }else{
-                $(v).parent().hide("normal");
-                var post_content_footer = $(v).closest("._post_content_footer");
-                post_content_footer.find("p:eq(0) span:eq(0) v").show().fadeOut(5000);
-                post_content_footer.next().html(data).hide().fadeIn("normal");
-                $(v).parent().find("textarea").val("");
+                var form = $(v).closest(".-post-reply-form");
+                form.hide("normal");
+                form.prev().find(".alert-success").show().fadeOut(5000);
+                form.next().html(data).hide().fadeIn("normal");
+                form.find("textarea").val("");
+            }
+        },
+        "html"
+    );
+    return false;
+}
+function saveReplyForThisUser(v){
+    $.post(
+        "/reply/save",
+        $(v).parent().serialize(),
+        function(data){
+            if(data == "error"){
+                alert("评论不能为空，且不超过200字:(");
+            }else{
+                var form = $(v).closest(".-reply-user-form");
+                form.hide();
+                form.closest(".-post-footer").html(data).hide().fadeIn(2000);
             }
         },
         "html"
@@ -30,10 +47,21 @@ function replyPaginate(v){
     $.post(
         $(v).attr("data"),
         function(data){
-            $(v).closest("._topic_post_info").html(data).hide().fadeIn("normal");
+            $(v).closest(".-post-footer").html(data).hide().fadeIn("normal");
         },
         "html"
     );
+}
+function replyThisUser(v){
+    var reply_form = $(v).closest(".-reply").next();
+    if(reply_form.attr("data") == '0'){
+        var form = $(v).closest(".-post-footer").prev();
+        form.find(":submit").attr("onclick", "return saveReplyForThisUser(this)");
+        reply_form.append(form.html()).attr("data", 1);
+        reply_form.find("textarea").focus().val("回复@" + $(v).attr("data") + ": ");
+    }else if(reply_form.attr("data") == '1'){
+        reply_form.toggle().find("textarea").focus();
+    }
 }
 function deleteReply(v){
     $.post(
@@ -43,11 +71,4 @@ function deleteReply(v){
         },
         "html"
     );
-}
-function login(v){
-    $.dialog({
-        title : '登录：)',
-        content : $('#tool-login').html(),
-        lock : true
-    });
 }

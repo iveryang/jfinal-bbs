@@ -2,11 +2,9 @@ package cn.iver.controller;
 
 import cn.iver.interceptor.AdminInterceptor;
 import cn.iver.interceptor.ReplyValidator;
-import cn.iver.model.Post;
 import cn.iver.model.Reply;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.plugin.ehcache.CacheKit;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +14,7 @@ import com.jfinal.plugin.ehcache.CacheKit;
 public class ReplyController extends Controller {
     public void index(){
         setAttr("replyPage", Reply.dao.getReplyPage(getParaToInt(0), getParaToInt(1, 1)));
-        setAttr("postID", getPara(0));
+        setAttr("postID", getParaToInt(0));
         render("/reply/_ajaxReply.html");
     }
 
@@ -24,7 +22,7 @@ public class ReplyController extends Controller {
     public void save(){
         Reply reply = getModel(Reply.class);
         int postID = reply.getInt("postID");
-        reply.saveReply(postID);
+        reply.mySave(postID);
         forwardAction("/reply/" + postID);
     }
 
@@ -36,11 +34,5 @@ public class ReplyController extends Controller {
         int postID = getParaToInt(0);
         Reply.dao.deleteByID(id);
         forwardAction("/reply/" + postID);
-    }
-
-    @Before(AdminInterceptor.class)
-    public void showReplyList(){
-        setAttr("replyPage", Reply.dao.getReplyPageForAdmin(getParaToInt(0, 1)));
-        render("/admin/replyList.html");
     }
 }

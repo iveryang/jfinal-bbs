@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2013-05-04 14:47:18
+Date: 2013-05-08 00:09:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,24 +46,29 @@ CREATE TABLE `post` (
   `hasReply` bit(1) NOT NULL DEFAULT b'0',
   `updateTime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('1', '1', '0', '222', '2013-04-26 20:04:11', '', null);
-INSERT INTO `post` VALUES ('2', '1', '0', '<p>最近想在产品中加入即时通讯的功能.BS架构的程序.实现方式不外乎两大标准下的各种奇淫技巧.</p><p>这两大标准就是 HTML5 HTML4</p><p>为啥这两个呢..因为HTML5里面有websocket.这个彻底颠覆http请求的东西,使得请求不再是无状态的.</p><p>当然websocket目前支持不是很好.也没办法.看着好东西没法用.这是一种何种的煎熬....搞得我总是想在产品里面内嵌chromeFrame.然后强制给客户装上.哈哈...当然客户没准会和我拼命呢...</p><p>没办法,在现有的需求中基本上,实现思路只有一个了.也就是第一个让我头疼了一阵的关键词</p><p><br /></p>', '2013-04-26 20:28:50', '', null);
-INSERT INTO `post` VALUES ('3', '2', '0', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0001.gif\" />^O^</p>', '2013-04-27 21:14:15', '', null);
-INSERT INTO `post` VALUES ('4', '1', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" /></p>', '2013-04-27 22:02:32', '', null);
-INSERT INTO `post` VALUES ('5', '1', '0', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" />^O^</p>', '2013-04-27 22:03:56', '', null);
-INSERT INTO `post` VALUES ('6', '1', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\" /></p>', '2013-04-27 22:04:10', '', null);
-INSERT INTO `post` VALUES ('7', '2', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0017.gif\" /></p>', '2013-04-28 21:10:33', '', null);
-INSERT INTO `post` VALUES ('8', '3', '0', '<p>沧海一声笑　滔滔两岸潮<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />浮沉随浪只记今朝<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />苍天笑　纷纷世上潮<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />谁负谁胜出天知晓<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />江山笑　烟雨遥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />涛浪淘尽红尘俗世几多娇<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />清风笑　竟惹寂寥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />豪情还剩了一襟晚照<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />苍生笑　不再寂寥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />豪情仍在痴痴笑笑</p>', '2013-04-28 21:58:32', '', null);
-INSERT INTO `post` VALUES ('9', '4', '0', '<p>本文作者Cliff Meyers是一个前端工程师，熟悉HTML5、JavaScript、J2EE开发，他在开发过程中总结了自己在应对JavaScript应用越来越庞大情况下的文件结构，深得其他开发者认可。以下为CSDN编译： 地板上堆放的衣服 首先，我们来看看angular-seed，它是AngularJS应用开发的官方入门项目，其文件结构是这样的：</p>', '2013-04-29 13:27:14', '', null);
-INSERT INTO `post` VALUES ('10', '5', '0', '<p>本文作者Cliff Meyers是一个前端工程师，熟悉HTML5、JavaScript、J2EE开发，他在开发过程中总结了自己在应对JavaScript应用越来越庞大情况下的文件结构，深得其他开发者认可。以下为CSDN编译： 地板上堆放的衣服 首先，我们来看看angular-seed，它是AngularJS应用开发的官方入门项目，其文件结构是这样的：</p>', '2013-04-29 13:33:39', '', null);
-INSERT INTO `post` VALUES ('11', '6', '0', '<p>我自己定义了一个指令text-tile 可以把一个普通的html变成一个metro风格的瓷贴（主要是做一些样式的计算） angular.module(&quot;metro.directive&quot;, []) .directive(&quot;textTile&quot;, function () { return { templateUrl: &#39;tpl/tile_text.html&#39;, transclude: true, link: function (scope, element, attrs) { var css …</p>', '2013-04-29 13:36:53', '', null);
-INSERT INTO `post` VALUES ('12', '7', '0', '<p>俺注册的邮箱是 zoomquiet+js@gmail.com</p><p>点击邮件中的链接 不论 FF / Chrome 中,都无法完成验证! 报告错误如下:</p><p>{&quot;err&quot;:{ &quot;name&quot;:&quot;请求错误&quot; ,&quot;message&quot;:&quot;对不起，请求出错了！&quot; ,&quot;type&quot;:&quot;error&quot;,&quot;url&quot;:&quot;/&quot;} }</p><p>怀疑是不支持 gmail +缀形式邮箱 或是本身功能已经受损?</p>', '2013-04-29 13:42:38', '', null);
-INSERT INTO `post` VALUES ('13', '7', '0', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" /></p>', '2013-04-29 22:29:30', '', null);
+INSERT INTO `post` VALUES ('1', '1', '1', '222', '2013-04-26 20:04:11', '', null);
+INSERT INTO `post` VALUES ('2', '1', '1', '<p>最近想在产品中加入即时通讯的功能.BS架构的程序.实现方式不外乎两大标准下的各种奇淫技巧.</p><p>这两大标准就是 HTML5 HTML4</p><p>为啥这两个呢..因为HTML5里面有websocket.这个彻底颠覆http请求的东西,使得请求不再是无状态的.</p><p>当然websocket目前支持不是很好.也没办法.看着好东西没法用.这是一种何种的煎熬....搞得我总是想在产品里面内嵌chromeFrame.然后强制给客户装上.哈哈...当然客户没准会和我拼命呢...</p><p>没办法,在现有的需求中基本上,实现思路只有一个了.也就是第一个让我头疼了一阵的关键词</p><p><br /></p>', '2013-04-26 20:28:50', '', null);
+INSERT INTO `post` VALUES ('3', '2', '1', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0001.gif\" />^O^</p>', '2013-04-27 21:14:15', '', null);
+INSERT INTO `post` VALUES ('4', '1', '1', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" /></p>', '2013-04-27 22:02:32', '', null);
+INSERT INTO `post` VALUES ('5', '1', '1', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" />^O^</p>', '2013-04-27 22:03:56', '', null);
+INSERT INTO `post` VALUES ('6', '1', '1', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\" /></p>', '2013-04-27 22:04:10', '', null);
+INSERT INTO `post` VALUES ('7', '2', '1', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0017.gif\" /></p>', '2013-04-28 21:10:33', '', null);
+INSERT INTO `post` VALUES ('8', '3', '1', '<p>沧海一声笑　滔滔两岸潮<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />浮沉随浪只记今朝<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />苍天笑　纷纷世上潮<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />谁负谁胜出天知晓<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />江山笑　烟雨遥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />涛浪淘尽红尘俗世几多娇<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />清风笑　竟惹寂寥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />豪情还剩了一襟晚照<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />苍生笑　不再寂寥<br style=\"font-family:微软雅黑;color:#333333;font-size:13.63636302947998px;line-height:20px;background-color:#ffffff;\" />豪情仍在痴痴笑笑</p>', '2013-04-28 21:58:32', '', null);
+INSERT INTO `post` VALUES ('9', '4', '1', '<p>本文作者Cliff Meyers是一个前端工程师，熟悉HTML5、JavaScript、J2EE开发，他在开发过程中总结了自己在应对JavaScript应用越来越庞大情况下的文件结构，深得其他开发者认可。以下为CSDN编译： 地板上堆放的衣服 首先，我们来看看angular-seed，它是AngularJS应用开发的官方入门项目，其文件结构是这样的：</p>', '2013-04-29 13:27:14', '', null);
+INSERT INTO `post` VALUES ('10', '5', '1', '<p>本文作者Cliff Meyers是一个前端工程师，熟悉HTML5、JavaScript、J2EE开发，他在开发过程中总结了自己在应对JavaScript应用越来越庞大情况下的文件结构，深得其他开发者认可。以下为CSDN编译： 地板上堆放的衣服 首先，我们来看看angular-seed，它是AngularJS应用开发的官方入门项目，其文件结构是这样的：</p>', '2013-04-29 13:33:39', '', null);
+INSERT INTO `post` VALUES ('11', '6', '1', '<p>我自己定义了一个指令text-tile 可以把一个普通的html变成一个metro风格的瓷贴（主要是做一些样式的计算） angular.module(&quot;metro.directive&quot;, []) .directive(&quot;textTile&quot;, function () { return { templateUrl: &#39;tpl/tile_text.html&#39;, transclude: true, link: function (scope, element, attrs) { var css …</p>', '2013-04-29 13:36:53', '', null);
+INSERT INTO `post` VALUES ('12', '7', '1', '<p>俺注册的邮箱是 zoomquiet+js@gmail.com</p><p>点击邮件中的链接 不论 FF / Chrome 中,都无法完成验证! 报告错误如下:</p><p>{&quot;err&quot;:{ &quot;name&quot;:&quot;请求错误&quot; ,&quot;message&quot;:&quot;对不起，请求出错了！&quot; ,&quot;type&quot;:&quot;error&quot;,&quot;url&quot;:&quot;/&quot;} }</p><p>怀疑是不支持 gmail +缀形式邮箱 或是本身功能已经受损?</p>', '2013-04-29 13:42:38', '', null);
+INSERT INTO `post` VALUES ('13', '7', '1', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" /></p>', '2013-04-29 22:29:30', '', null);
+INSERT INTO `post` VALUES ('14', '6', '1', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" /></p>', '2013-05-06 16:28:01', '', null);
+INSERT INTO `post` VALUES ('15', '8', '1', '<p>这是一个用来在浏览器上设计流程图的UI组件，基于Jquery开发。可用来设计各种流程图、逻辑流图，数据流图，或者是设计某个系统中需要走流程的功能应用。良好的用户体验使得操作界面很容易上手，不仅二次开发人员可用，最终用户也能用。 跨浏览器，可兼容IE7--IE10， FireFox， Chrome， Opera等。 本插件只包括前台UI,用在任何一种需要流程图的B/S系统应用上，流程图的详细实现逻辑完全交于后台程序开发者自己实现;对于后台,只要能返回/接收被本插件解析的JSON格式数据即可.所以本插件可用于各种JAVA，PHP，.net服务器上.</p>', '2013-05-06 17:35:20', '', null);
+INSERT INTO `post` VALUES ('16', '9', '1', '<p>Rails4 在前天的 <a href=\"http://www.railsconf.com/\">RailsConf 2013</a> 釋出 <a href=\"http://weblog.rubyonrails.org/2013/5/1/Rails-4-0-release-candidate-1/\">Rails 4.0 RC1</a> 了，這也表示大家應該可以進場了。</p><p>上個月在 Rails 4.0 beta1 時為了練手感，把手上的一個中小 production 專案，也上了 rails4 branch。</p><p>大概有幾個感想：</p><ul style=\"font-family:微软雅黑;padding:5px 14px;margin:0px;list-style-position:inside;list-style-image:initial;color:#333333;font-size:14.399999618530273px;line-height:22.399999618530273px;background-color:#ffffff;\"><li><p><a href=\"http://www.upgradingtorails4.com/\">Upgrading to Rails4</a> 這本書強烈建議要買，才 $15 USD，可以節省你不少 debug 時間。</p></li><li><p>升 Rails4 建議不只開 branch，也用 rvm 開一個 gemset 出來作，因為 gem dependency 變更蠻多的。</p></li></ul><p><br /></p>', '2013-05-07 18:04:46', '', null);
+INSERT INTO `post` VALUES ('17', '10', '1', '<p>Rails4 在前天的 <a href=\"http://www.railsconf.com/\">RailsConf 2013</a> 釋出 <a href=\"http://weblog.rubyonrails.org/2013/5/1/Rails-4-0-release-candidate-1/\">Rails 4.0 RC1</a> 了，這也表示大家應該可以進場了。</p><p>上個月在 Rails 4.0 beta1 時為了練手感，把手上的一個中小 production 專案，也上了 rails4 branch。</p><p>大概有幾個感想：</p><ul style=\"font-family:微软雅黑;padding:5px 14px;margin:0px;list-style-position:inside;list-style-image:initial;color:#333333;font-size:14.399999618530273px;line-height:22.399999618530273px;background-color:#ffffff;\"><li><p><a href=\"http://www.upgradingtorails4.com/\">Upgrading to Rails4</a> 這本書強烈建議要買，才 $15 USD，可以節省你不少 debug 時間。</p></li><li><p>升 Rails4 建議不只開 branch，也用 rvm 開一個 gemset 出來作，因為 gem dependency 變更蠻多的。</p></li></ul><p><br /></p>', '2013-05-07 18:08:53', '', null);
+INSERT INTO `post` VALUES ('18', '11', '0', '<p>^O^</p><p>上個月在 Rails 4.0 beta1 時為了練手感，把手上的一個中小 production 專案，也上了 rails4 branch。</p><p>大概有幾個感想：</p><p><img src=\"http://img.baidu.com/hi/jx2/j_0015.gif\" /></p>', '2013-05-07 18:13:32', '', null);
 
 -- ----------------------------
 -- Table structure for `reply`
@@ -73,53 +78,27 @@ CREATE TABLE `reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `topicID` int(11) NOT NULL DEFAULT '1',
   `postID` int(11) NOT NULL,
-  `userName` varchar(15) NOT NULL DEFAULT '0',
+  `userID` int(11) NOT NULL DEFAULT '0',
   `content` varchar(300) NOT NULL,
   `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reply
 -- ----------------------------
-INSERT INTO `reply` VALUES ('48', '10', '14', '展示网页', '展示网页展示网页', '2013-04-09 10:08:15');
-INSERT INTO `reply` VALUES ('49', '10', '14', '痴笑笑', '痴笑笑痴笑笑', '2013-04-09 10:39:11');
-INSERT INTO `reply` VALUES ('50', '10', '14', '必填', '必填必填', '2013-04-10 20:28:04');
-INSERT INTO `reply` VALUES ('51', '10', '15', '长度', '长度长度', '2013-04-10 20:28:33');
-INSERT INTO `reply` VALUES ('52', '10', '14', '评', '评评', '2013-04-10 20:29:48');
-INSERT INTO `reply` VALUES ('53', '10', '14', '，长度', '，长度，长度', '2013-04-10 20:34:43');
-INSERT INTO `reply` VALUES ('54', '10', '14', '必填', '必填必填', '2013-04-10 20:46:05');
-INSERT INTO `reply` VALUES ('55', '10', '14', '必填', '必填必填', '2013-04-10 20:46:09');
-INSERT INTO `reply` VALUES ('56', '10', '14', '必填', '必填必填', '2013-04-10 20:46:14');
-INSERT INTO `reply` VALUES ('58', '10', '14', '，长度不', '，长度不，长度不', '2013-04-10 21:23:54');
-INSERT INTO `reply` VALUES ('59', '10', '15', 'ueditor', 'ueditorueditor', '2013-04-10 21:24:29');
-INSERT INTO `reply` VALUES ('60', '11', '16', '发布', '发布发布', '2013-04-13 15:50:06');
-INSERT INTO `reply` VALUES ('61', '11', '16', '发布', '沧海一沧海一', '2013-04-13 15:50:23');
-INSERT INTO `reply` VALUES ('62', '11', '16', '发布', '声笑', '2013-04-13 15:50:33');
-INSERT INTO `reply` VALUES ('63', '11', '16', '发布', '天', '2013-04-13 15:51:02');
-INSERT INTO `reply` VALUES ('64', '11', '16', '发布', '胜出', '2013-04-13 15:51:11');
-INSERT INTO `reply` VALUES ('65', '11', '16', '发布', '胜出胜出', '2013-04-13 15:51:17');
-INSERT INTO `reply` VALUES ('66', '1', '1', '22', '2222', '2013-04-26 20:30:20');
-INSERT INTO `reply` VALUES ('67', '1', '1', '昵称', '昵称昵称', '2013-04-27 22:04:25');
-
--- ----------------------------
--- Table structure for `tag`
--- ----------------------------
-DROP TABLE IF EXISTS `tag`;
-CREATE TABLE `tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tagName` varchar(20) NOT NULL,
-  `topicCount` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tag
--- ----------------------------
-INSERT INTO `tag` VALUES ('2', 'js', '2');
-INSERT INTO `tag` VALUES ('3', 'java', '1');
-INSERT INTO `tag` VALUES ('4', 'ruby', '1');
-INSERT INTO `tag` VALUES ('5', '屌丝', '1');
+INSERT INTO `reply` VALUES ('68', '6', '11', '1', '我自己定义了一个指令', '2013-05-06 10:51:40');
+INSERT INTO `reply` VALUES ('69', '6', '11', '1', '&lt;script&gt;', '2013-05-06 11:16:12');
+INSERT INTO `reply` VALUES ('70', '6', '11', '1', 'function (scope, element, attrs)', '2013-05-06 11:27:54');
+INSERT INTO `reply` VALUES ('71', '6', '11', '1', '定义了一个指令', '2013-05-06 11:29:12');
+INSERT INTO `reply` VALUES ('72', '6', '11', '1', '定义了一个指令dd', '2013-05-06 11:29:28');
+INSERT INTO `reply` VALUES ('73', '6', '11', '1', '定义了一个指令', '2013-05-06 11:29:33');
+INSERT INTO `reply` VALUES ('74', '6', '11', '1', 'function ', '2013-05-06 15:33:29');
+INSERT INTO `reply` VALUES ('75', '6', '11', '1', '回复@管理员: ^O^', '2013-05-06 15:35:40');
+INSERT INTO `reply` VALUES ('76', '6', '11', '1', '回复@管理员: 指令指令~', '2013-05-06 16:08:22');
+INSERT INTO `reply` VALUES ('77', '6', '11', '1', '回复@管理员: 5小时前', '2013-05-06 16:19:55');
+INSERT INTO `reply` VALUES ('78', '6', '11', '1', '回复@管理员: var css', '2013-05-06 16:23:26');
+INSERT INTO `reply` VALUES ('79', '6', '11', '1', '回复@管理员: 不超过200字', '2013-05-06 16:27:08');
 
 -- ----------------------------
 -- Table structure for `topic`
@@ -134,40 +113,22 @@ CREATE TABLE `topic` (
   `pv` int(11) NOT NULL DEFAULT '0',
   `content` varchar(60) NOT NULL,
   `emotion` tinyint(2) DEFAULT NULL,
-  `tag` varchar(80) DEFAULT NULL,
   `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `isPublished` bit(1) NOT NULL DEFAULT b'1',
+  `isNice` bit(1) NOT NULL DEFAULT b'0',
   `isUp` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of topic
 -- ----------------------------
-INSERT INTO `topic` VALUES ('5', '0', '4', '1', '0', '0', '如何组织大型AngularJS应用中的代码？', null, 'js', '2013-04-29 13:33:38', '', '');
-INSERT INTO `topic` VALUES ('6', '0', '4', '1', '0', '4', '哪位牛给解释下这段代码在干什么', null, 'js', '2013-04-29 13:36:53', '', '');
-INSERT INTO `topic` VALUES ('7', '0', '4', '2', '0', '9', '无法完成邮箱认证?!', null, 'js', '2013-03-29 13:42:38', '', '');
-
--- ----------------------------
--- Table structure for `topic_tag`
--- ----------------------------
-DROP TABLE IF EXISTS `topic_tag`;
-CREATE TABLE `topic_tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `topicID` int(11) NOT NULL,
-  `tagID` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of topic_tag
--- ----------------------------
-INSERT INTO `topic_tag` VALUES ('1', '5', '2');
-INSERT INTO `topic_tag` VALUES ('2', '5', '3');
-INSERT INTO `topic_tag` VALUES ('3', '6', '2');
-INSERT INTO `topic_tag` VALUES ('4', '6', '4');
-INSERT INTO `topic_tag` VALUES ('5', '7', '2');
-INSERT INTO `topic_tag` VALUES ('6', '7', '5');
+INSERT INTO `topic` VALUES ('5', '1', '4', '1', '0', '1', '如何组织大型AngularJS应用中的代码？', null, '2013-04-29 13:33:38', '', '');
+INSERT INTO `topic` VALUES ('6', '1', '4', '2', '0', '81', '哪位牛给解释下这段代码在干什么', null, '2013-04-29 13:36:53', '', '');
+INSERT INTO `topic` VALUES ('7', '1', '4', '2', '0', '9', '无法完成邮箱认证?!', null, '2013-03-29 13:42:38', '', '');
+INSERT INTO `topic` VALUES ('8', '1', '5', '1', '0', '0', '在线流程图设计器GooFlow', null, '2013-05-06 17:35:19', '', '');
+INSERT INTO `topic` VALUES ('9', '1', '4', '1', '0', '0', 'Upgrade 到 Rails4 的一些感想', null, '2013-05-07 18:04:45', '', '');
+INSERT INTO `topic` VALUES ('10', '1', '4', '1', '0', '2', 'Upgrade 到 Rails4 的一些感想', null, '2013-05-07 18:08:52', '', '');
+INSERT INTO `topic` VALUES ('11', '0', '4', '1', '0', '3', 'Upgrade 到 Rails4 ', null, '2013-05-07 18:13:32', '', '');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -181,14 +142,13 @@ CREATE TABLE `user` (
   `email` varchar(30) DEFAULT NULL,
   `headImg` varchar(80) DEFAULT NULL,
   `blogUrl` varchar(80) DEFAULT NULL,
-  `selfIntroduce` varchar(300) DEFAULT NULL,
-  `feeling` varchar(100) DEFAULT NULL,
+  `feeling` varchar(300) DEFAULT NULL,
   `registDate` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'iver', 'A040B1E5BD598DEE34F8B6D954EB657B', '', 'iver@qq.com', null, null, 'hello world.', 'happy.', '2013-04-10');
-INSERT INTO `user` VALUES ('3', '管理员', '5A035E2B5A9013E45EF9D5669F88C22E', '', 'iveryang@sina.cn', null, null, null, null, '2013-05-03');
+INSERT INTO `user` VALUES ('0', '游客啊', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'iver@qq.com', null, null, null, '2013-05-06');
+INSERT INTO `user` VALUES ('1', '管理员', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'iveryang@sina.cn', 'http://himg.bdimg.com/sys/portrait/item/5b076976657279616e67303037303038f306.jpg', 'http://iver.cloudfoundry.com', 'happy.', '2013-04-10');

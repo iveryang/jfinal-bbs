@@ -6,7 +6,7 @@
     <script type="text/javascript" src="/ext/ext.all.js"></script>
     <script type="text/javascript">
         $(function(){
-            $("#username").val($.cookie("username"));
+            $("#email").val($.cookie("email"));
             $("#password").val($.cookie("password"));
         });
     </script>
@@ -14,7 +14,7 @@
 <body>
     <div>
         <form action="/admin/welcome/login" method="post">
-            <p><input type="text" name="username" id="username"></p>
+            <p><input type="text" name="email" id="email"></p>
             <p><input type="password" name="password" id="password"></p>
             <p><input type="submit" value="Login Now"></p>
         </form>

@@ -1,0 +1,31 @@
+@ layout("/common/_layout.html"){
+    <div class="-user">
+        <div class="-user-info pull-left">
+            <p>
+                <span>本社区的第 ${user.id} 位注册员会</span>
+                @ if(user.id == session.user.id!){
+                    <a href="/user/edit/${user.id}" class="btn btn-danger">编辑资料</a>
+                @ }
+            </p>
+            <p>
+                <span class="-label">会员名称：</span><span class="">${user.username!}</span>
+            </p>
+            <p>
+                <span class="-label">博客：</span><span class=""><a href="${user.blogUrl!}">${user.blogUrl!}</a></span>
+            </p>
+            <p>
+                <span class="-label">注册时间：</span><span class="">${user.registDate!}</span>
+            </p>
+            <p>
+                <span class="-label">签名：</span><span class="">${user.feeling!}</span>
+            </p>
+        </div>
+        <div class="pull-left">
+            <p>
+                <img width="110px" height="110px" src="${user.headImg!}" alt="${user.username!}">
+            </p>
+        </div>
+        <div class="-clear"></div>
+        <hr>
+    </div>
+@ }

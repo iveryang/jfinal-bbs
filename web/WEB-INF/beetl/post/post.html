@@ -8,41 +8,38 @@
                 @ }
             </h4>
         </div>
-        @ for(v in postPage.list!){
-            <div class="-main-border">
+        @ for(post in postPage.list!){
+            <div class="-post -main-border">
                 <div class="muted -post-header">
-                    <span>${ ((postPage.pageNumber - 1) * postPage.pageSize) + v_index + 1 } 楼 </span>
-                    <p></p>
-                    <span class="-post-header-date">${v.createTime, dateFormat='yyyy-MM-dd'}</span>
+                    <span>${ ((postPage.pageNumber - 1) * postPage.pageSize) + post_index + 1 } 楼 </span>
+                    <p>&nbsp;</p>
+                    <span class="-post-header-date">${printTime(post.createTime)}</span>
                 </div>
                 <div class="-post-main">
-                    <p>${v.content}</p>
-                </div>
-                <div class="-post-reply-form">
-                    <p>
+                    <div class="-post-content">${post.content}</div>
+                    <div class="-post-content-manage">
                         <span class="-edit-post-btn">
                             @ if(session.isAdminLogin!'' == 'true'){
-                                <a href="/post/edit/${v.id!}" class="btn btn-danger">编辑</a>
+                                <a href="/post/edit/${post.id!}" class="btn btn-danger">编辑</a>
                             @ }
                         </span>
                         <span class="-reply-success-info"><span class="alert alert-success hide">评论成功：)</span></span>
                         <span class="btn btn-info -show-reply-form-btn" onclick="showReplyForm(this)" title="显示/隐藏评论框">评论</span>
-                    </p>
+                    </div>
+                </div>
+                <div class="-post-reply-form">
                     <form action="/" method="post">
-                        <input type="hidden" name="reply.postID" value="${v.id}">
-                        <input type="hidden" name="reply.topicID" value="${topic.id!}">
-                        <span>昵称：</span>
-                        <input type="text" name="reply.userName" placeholder="你的大名：)">
-                        <span class="muted">必填，长度不超过10个字</span><br>
-                        <span>评论：</span>
-                        <textarea name="reply.content" cols="30" rows="3" placeholder="你的评论：)"></textarea>
-                        <span class="muted">必填，长度不超过200字</span><br>
-                        <input type="submit" value="提交评论" class="btn btn-info -reply-submit" onclick="return saveReply(this)">
+                        <input type="hidden" name="reply.postID" value="${post.id!}">
+                        <input type="hidden" name="reply.topicID" value="${post.topicID!}">
+                        <input type="hidden" name="reply.userID" value="${session.user.id!'0'}">
+                        <textarea name="reply.content" cols="36" rows="4"></textarea>
+                        <input type="submit" value="提交评论" class="btn btn-danger -reply-submit" onclick="return saveReply(this)">
+                        <span class="muted">&nbsp;&nbsp;&nbsp;不超过200字</span>
                     </form>
                 </div>
                 <div class="-post-footer">
-                    @ if(v.replyPage != null){
-                        @ include("/reply/_ajaxReply.html", {"replyPage":v.replyPage, "postID":v.id}){}
+                    @ if(post.replyPage != null){
+                        @ include("/reply/_ajaxReply.html", {"replyPage":post.replyPage, "postID":post.id}){}
                     @ }
                 </div>
             </div>

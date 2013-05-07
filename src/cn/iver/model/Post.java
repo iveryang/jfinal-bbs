@@ -17,13 +17,12 @@ public class Post extends Model<Post> {
     private static final String CACHE_KEY_SEPARATE = "-";
 
     public Page<Post> getPostPage(int topicID, int pageNumber){
-        Topic.dao.increaseTopicPV(topicID);
+        if (pageNumber == 1){
+            Topic.dao.increaseTopicPV(topicID);
+        }
         return dao.paginateByCache(POST_PAGE_CACHE, topicID + CACHE_KEY_SEPARATE + pageNumber,
                 pageNumber, MyConstants.PAGE_SIZE,
                 "select *", "from post where topicID=?", topicID);
-    }
-    public Page<Reply> getReplyPage() {
-        return Reply.dao.getReplyPage(this.getInt("id"), 1);
     }
     public void setHasReplyTrue(int postID){
         boolean hasReply = dao.findById(postID).getBoolean("hasReply");
@@ -40,5 +39,10 @@ public class Post extends Model<Post> {
     public void myUpdate(){
         this.update();
         CacheKit.removeAll(POST_PAGE_CACHE);
+    }
+
+    /* getter */
+    public Page<Reply> getReplyPage() {
+        return Reply.dao.getReplyPage(this.getInt("id"), 1);
     }
 }

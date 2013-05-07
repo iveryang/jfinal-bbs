@@ -1,0 +1,27 @@
+@ layout("/common/_layout.html"){
+<script type="text/javascript">
+    $(function(){
+        $("#login-box :input[name='email']").val($.cookie("email"));
+        $("#login-box :input[name='password']").val($.cookie("password"));
+    });
+</script>
+    <div id="login-box" class="row">
+        <form action="/user/login" method="post">
+            <p class="warning">${msg!}</p>
+            <p>
+                <span class="-label">邮箱：</span><input type="text" name="email" placeholder="用邮箱来登录：)">
+            </p>
+            <p>
+                <span class="-label">密码：</span><input type="password" name="password">
+            </p>
+            <p>
+                <span class="-label">&nbsp;</span><span>记住密码：</span>
+                <input type="checkbox" name="rememberPassword" value="1" checked="checked">
+                &nbsp;&nbsp;&nbsp;<a href="#" target="_blank">忘记密码</a>
+            </p>
+            <p>
+                <span class="-label">&nbsp;</span><input type="submit" value="登 录" class="btn btn-success">
+            </p>
+        </form>
+    </div>
+@ }

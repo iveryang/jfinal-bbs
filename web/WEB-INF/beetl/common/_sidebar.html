@@ -2,17 +2,21 @@
     <div class="-logo -border">
         <p><img src="/img/logo.jpg"></p>
         <p class="-desc">
-            Welcome！：） JFinal-BBS是一个开源的java小型BBS系统，简洁而自然。用简单易学、高效快速的 WEB + ORM 框架
+            Welcome！：） JFinal-BBS是一个开源的java小型BBS系统。采用简单易学、高效快速的 WEB + ORM 框架
             <a href="http://www.oschina.net/p/jfinal" target="_blank">JFinal</a> 开发，视图层的模版引擎选用的是
             <a href="http://www.oschina.net/p/beetl" target="_blank">Beetl</a>。
         </p>
     </div>
     <div class="-regist-or-login -border">
-        <p><a class="btn btn-danger" href="">马上注册</a></p>
-        <p>已注册用户请 <a class="btn btn-info" href="javascript:;" onclick="login(this)">登录</a></p>
+        @ if(session.user! == null){
+            <p><a class="btn btn-danger" href="/regist">马上注册</a></p>
+            <p>已注册用户请 <a class="btn btn-info" href="/toLogin">登录</a></p>
+        @ }else{
+            <p>欢迎： <a href="/user/${session.user.id}">${session.user.username}</a></p>
+        @ }
     </div>
-    <div class=" -border">
-        <h4 class="muted">浏览最多：</h4>
+    <div class="-border">
+        <h4 class="text-center muted">浏览最多：</h4>
         @ for(v in hotTopicList!){
             <p>
                 <i class="icon-fire"></i><a href="/post/${v.id}" title="共有${v.pv}次浏览">${v.content}</a>

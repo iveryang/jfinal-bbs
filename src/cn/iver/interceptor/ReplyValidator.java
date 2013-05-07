@@ -11,8 +11,7 @@ import com.jfinal.validate.Validator;
 public class ReplyValidator extends Validator {
     @Override
     protected void validate(Controller c) {
-        validateString("reply.userName", 1, 10, "msg", "不合理的输入啊");
-        validateString("reply.content", 1, 200, "msg", "不合理的输入啊");
+        validateString("reply.content", 1, 200, "msg", "回复内容不能为空，且不超过200字");
     }
 
     @Override

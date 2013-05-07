@@ -3,23 +3,21 @@ package cn.iver.interceptor;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.StringKit;
 
 /**
  * Created with IntelliJ IDEA.
  * Author: StevenChow
- * Date: 13-4-4
+ * Date: 13-5-7
  */
-public class AdminInterceptor implements Interceptor {
+public class LoginInterceptor implements Interceptor {
     @Override
     public void intercept(ActionInvocation ai) {
         Controller controller = ai.getController();
-        String isAdminLogin = controller.getSessionAttr("isAdminLogin");
-        if (StringKit.notBlank(isAdminLogin) && isAdminLogin.equals("true")){
+        if(controller.getSessionAttr("user") != null){
             ai.invoke();
         }else{
-            controller.setAttr("msg", "需要管理员权限");
-            controller.renderError(500);
+            controller.setAttr("msg", "需要登录才可以进行改操作：）");
+            controller.forwardAction("/user/login");
         }
     }
 }

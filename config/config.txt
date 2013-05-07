@@ -2,10 +2,10 @@
 ## 常量
 ##########################################################################
 ## “topic、post--话题及回帖”分页的大小
-page_size = 12
+page_size = 3
 
 ## “reply--帖子回复”分页的大小
-page_size_of_reply = 5
+page_size_of_reply = 3
 
 ## “后台管理--topic、reply列表”分页的大小
 page_size_for_admin = 30

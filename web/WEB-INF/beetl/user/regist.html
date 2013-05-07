@@ -1,22 +1,22 @@
 @ layout("/common/_layout.html"){
 <div class="container">
-    <div class="row -regist">
-        <form action="/newUser" method="post">
+    <div class="-regist row">
+        <form action="/user/save" method="post">
             <p>
                 <span class="-label">邮箱：</span><input type="text" name="user.email" value="${user.email!}" placeholder="用该邮箱来登录：)">
                 <span>以后您可以用该邮箱来登录，也可以通过它找回密码：)</span><span>${emailMsg!}</span>
             </p>
             <p>
                 <span class="-label">昵称：</span><input type="text" name="user.username" value="${user.username!}" placeholder="昵称：)">
-                <span>${usernameMsg!}</span>
+                <span class="-error-msg">${usernameMsg!}</span>
             </p>
             <p>
                 <span class="-label">密码：</span><input type="password" name="user.password" value="${user.password!}" placeholder="密码：)">
-                <span>${passwordMsg!}</span>
+                <span class="-error-msg">${passwordMsg!}</span>
             </p>
             <p>
                 <span class="-label">确认密码：</span><input type="password" name="repassword" placeholder="确认密码：)">
-                <span>${repasswordMsg!}</span>
+                <span class="-error-msg">${repasswordMsg!}</span>
             </p>
             <p>
                 <span class="-label">&nbsp;</span><input type="submit" value="注 册" class="btn btn-success">

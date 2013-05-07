@@ -1,8 +1,8 @@
 package cn.iver.common;
 
 import cn.iver.controller.*;
+import cn.iver.controller.admin.AdminController;
 import cn.iver.controller.admin.ModuleController;
-import cn.iver.controller.admin.WelcomeController;
 import cn.iver.ext.beetlfunction.IsSame;
 import cn.iver.ext.beetlfunction.PrintTime;
 import cn.iver.interceptor.GlobalInterceptor;
@@ -21,7 +21,6 @@ import org.bee.tl.ext.jfinal.BeetlRenderFactory;
 import java.util.TimeZone;
 
 /**
- * 感谢对开源热心的少年们提供的各种代码，这个DD是站在巨人的肩膀上的
  * 感谢 @波总 的JFinal，@闲.大赋 的beetl，向你们致敬！ ：）
  */
 public class Myconfig extends JFinalConfig {
@@ -51,15 +50,14 @@ public class Myconfig extends JFinalConfig {
 	public void configRoute(Routes me) {
         me.add("/", IndexController.class).add("/topic", TopicController.class);
         me.add("/post", PostController.class).add("/reply", ReplyController.class);
-        me.add("/tag", TagController.class);
-        me.add("/admin/welcome", WelcomeController.class).add("/admin/module", ModuleController.class);
+        me.add("/user", UserController.class);
+        me.add("/admin/welcome", AdminController.class).add("/admin/module", ModuleController.class);
 	}
 	
 	/**
 	 * 配置插件
 	 */
 	public void configPlugin(Plugins me) {
-		// [ copy from @ mike 的适配器 ：） ]
         String jdbcUrl, username, password, driver;
         driver = getProperty("driverClass");
         if (isLocal) {
@@ -78,10 +76,7 @@ public class Myconfig extends JFinalConfig {
             arp.setShowSql(true);
         }
         arp.addMapping("module", Module.class).addMapping("topic", Topic.class).addMapping("post", Post.class);
-        arp.addMapping("reply", Reply.class).addMapping("user", User.class).addMapping("tag", Tag.class);
-        arp.addMapping("topic_tag", TopicTag.class);
-//        让字段大小写不敏感（注：驼峰式的字段命名方式下，如果设置了大小写敏感，会导致getModel()无法获取同时含有大小写的字段，所以如果用MYSQL开发，此时不用对大小写问题进行人工干预）
-//        arp.setContainerFactory(new CaseInsensitiveContainerFactory(true));
+        arp.addMapping("reply", Reply.class).addMapping("user", User.class);
 		me.add(arp);
         // 缓存插件
         me.add(new EhCachePlugin());
@@ -91,7 +86,6 @@ public class Myconfig extends JFinalConfig {
 	 * 配置全局拦截器
 	 */
 	public void configInterceptor(Interceptors me) {
-        //支持在jfinal中用sesion
         me.add(new SessionInViewInterceptor());
         me.add(new GlobalInterceptor());
     }
@@ -117,12 +111,12 @@ public class Myconfig extends JFinalConfig {
 	/**
 	 * 建议使用 JFinal 手册推荐的方式启动项目
 	 * 运行此 main 方法可以启动项目，此main方法可以放置在任意的Class类定义中，不一定要放于此
+     * 第一个参数填写的是“WEB-INF”文件夹的父文件夹名称
+     * 第二个参数是设置访问的端口号
+     * 第三个参数是设置该项目的访问根目录
+     * 第四个参数是设置jetty每隔几秒钟扫描文件变化并重启应用
 	 */
 	public static void main(String[] args) throws Exception{
-        // 第一个参数填写的是“WEB-INF”文件夹的父文件夹名称
-        // 第二个参数是设置访问的端口号
-        // 第三个参数是设置该项目的访问根目录
-        // 第四个参数是设置jetty每隔几秒钟扫描文件变化并重启应用
-		JFinal.start("Web", 80, "/", 5);
+		JFinal.start("web", 80, "/", 365);
 	}
 }

@@ -18,20 +18,16 @@ public class Reply extends Model<Reply> {
 
     public Page<Reply> getReplyPage(int postID, int pageNumber){
         return Reply.dao.paginateByCache(REPLY_PAGE_CACHE, postID + CACHE_KEY_SEPARATE + pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE_OF_REPLY, "select *", "from reply where postID=?", postID);
+                pageNumber, MyConstants.PAGE_SIZE_OF_REPLY, "select reply.*, user.username", "from reply, user where reply.postID=? and reply.userID=user.id", postID);
     }
-    public void saveReply(int postID){
+    public void mySave(int postID){
         Post.dao.setHasReplyTrue(postID);
         CacheKit.removeAll(REPLY_PAGE_CACHE);
         this.set("content", HtmlTagKit.processHtmlSpecialTag(this.getStr("content")));
-        this.set("userName", HtmlTagKit.processHtmlSpecialTag(this.getStr("userName")));
         this.save();
     }
     public void deleteByID(int id){
         CacheKit.removeAll(REPLY_PAGE_CACHE);
         dao.deleteById(id);
-    }
-    public Page<Reply> getReplyPageForAdmin(int pageNumber){
-        return dao.paginate(pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select *", "from reply order by createTime desc");
     }
 }

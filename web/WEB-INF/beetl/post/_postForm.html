@@ -1,6 +1,6 @@
 <div>
     <input type="hidden" name="post.id" value="${post.id!}">
-    <input type="hidden" name="post.userID" value="${post.userID!'0'}">
+    <input type="hidden" name="post.userID" value="${session.user.id!'0'}">
     <input type="hidden" name="post.topicID" value="${post.topicID!}">
     <div class="row">
         <span class="span1 -label -inline-block">内容：</span>

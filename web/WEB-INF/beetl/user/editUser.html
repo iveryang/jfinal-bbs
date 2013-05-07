@@ -1,0 +1,26 @@
+@ layout("/common/_layout.html"){
+<div id="login-box" class="row">
+    <form action="/user/update" method="post">
+        <p class="hide">邮箱或者密码错误 ：（</p>
+        <input type="hidden" name="user.id" value="${user.id!}">
+        <p>
+            <span class="-label">邮箱：</span><input type="text" name="user.email" value="${user.email!}">
+        </p>
+        <p>
+            <span class="-label">昵称：</span><input type="text" name="user.username" value="${user.username!}">
+        </p>
+        <p>
+            <span class="-label">博客：</span><input type="text" name="user.blogUrl" value="${user.blogUrl!}" class="input-xlarge">
+        </p>
+        <p>
+            <span class="-label">头像：</span><textarea type="text" name="user.headImg" rows="2" class="input-xxlarge">${user.headImg!}</textarea>
+        </p>
+        <p>
+            <span class="-label">签名：</span><textarea type="text" name="user.feeling" rows="3" class="input-xxlarge">${user.feeling!}</textarea>
+        </p>
+        <p>
+            <span class="-label">&nbsp;</span><input type="submit" value="更新资料" class="btn btn-success">
+        </p>
+    </form>
+</div>
+@ }
