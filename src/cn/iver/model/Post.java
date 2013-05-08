@@ -1,7 +1,6 @@
 package cn.iver.model;
 
 import cn.iver.common.MyConstants;
-import cn.iver.kit.HtmlTagKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
@@ -21,7 +20,7 @@ public class Post extends Model<Post> {
             Topic.dao.increaseTopicPV(topicID);
         }
         return dao.paginateByCache(POST_PAGE_CACHE, topicID + CACHE_KEY_SEPARATE + pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE,
+                pageNumber, MyConstants.POST_PAGE_SIZE,
                 "select *", "from post where topicID=?", topicID);
     }
     public void setHasReplyTrue(int postID){
@@ -42,6 +41,9 @@ public class Post extends Model<Post> {
     }
 
     /* getter */
+    public User getUser(){
+        return User.dao.getUser(this.getInt("userID"));
+    }
     public Page<Reply> getReplyPage() {
         return Reply.dao.getReplyPage(this.getInt("id"), 1);
     }

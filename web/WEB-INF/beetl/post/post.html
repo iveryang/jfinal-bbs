@@ -11,11 +11,17 @@
         @ for(post in postPage.list!){
             <div class="-post -main-border">
                 <div class="muted -post-header">
-                    <span>${ ((postPage.pageNumber - 1) * postPage.pageSize) + post_index + 1 } 楼 </span>
-                    <p>&nbsp;</p>
-                    <span class="-post-header-date">${printTime(post.createTime)}</span>
+                    <div class="-post-header-top">
+                        <span>${ ((postPage.pageNumber - 1) * postPage.pageSize) + post_index + 1 } 楼 </span><br>
+                        <span class="-post-header-date">${printTime(post.createTime)}</span>
+                    </div>
+                    <div class="-post-header-bottom">
+                        <a href="/user/${post.userID!}" title="${post.user.username!}">
+                            <img width="50px" height="50px" src="${post.user.headImg!}">
+                        </a>
+                    </div>
                 </div>
-                <div class="-post-main">
+                <div class="-post-relative -post-main">
                     <div class="-post-content">${post.content}</div>
                     <div class="-post-content-manage">
                         <span class="-edit-post-btn">
@@ -27,7 +33,7 @@
                         <span class="btn btn-info -show-reply-form-btn" onclick="showReplyForm(this)" title="显示/隐藏评论框">评论</span>
                     </div>
                 </div>
-                <div class="-post-reply-form">
+                <div class="-post-relative -post-reply-form">
                     <form action="/" method="post">
                         <input type="hidden" name="reply.postID" value="${post.id!}">
                         <input type="hidden" name="reply.topicID" value="${post.topicID!}">
@@ -51,8 +57,12 @@
                     <p>回复内容：</p>
                     @ include("/common/_editer.html", {"textarea_name" : "post.content"}){}
                     <input type="hidden" name="post.topicID" value="${topic.id!}">
+                    <input type="hidden" name="post.userID" value="${session.user.id!}">
                     <br>
-                    <input type="submit" class="btn btn-info" value="回复">
+                    <input type="submit" class="btn btn-info" value="回复" title="一起摇滚吧！">
+                    @ if(session.user == null){
+                        <span><a href="/user/login">登录</a>之后才可以回复哦：）</span>
+                    @}
                 </form>
             </div>
         </div>

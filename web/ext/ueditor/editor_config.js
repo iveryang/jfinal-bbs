@@ -26,7 +26,7 @@
      */
     var tmp = location.protocol.indexOf("file")==-1 ? location.pathname : location.href;
     URL = window.UEDITOR_HOME_URL||tmp.substr(0,tmp.lastIndexOf("\/")+1).replace("_examples/","").replace("website/","");//这里你可以配置成ueditor目录在您网站的相对路径或者绝对路径（指以http开头的绝对路径）
-    // alert("window.UEDITOR_HOME_URL="+window.UEDITOR_HOME_URL+"; URL="+URL);
+
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
@@ -77,7 +77,7 @@
         ,getMovieUrl:URL+"jsp/getMovie.jsp"                   //视频数据获取地址
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
-        ,toolbars:[["undo","redo","bold","unlink","link","searchreplace","removeformat","music","attachment","highlightcode","insertvideo","insertimage","emotion","source","fullscreen","preview","help","separate"],[]]
+        ,toolbars:[["bold","fontfamily","fontsize","forecolor","backcolor","removeformat","separate","link","unlink","music","insertvideo","emotion","insertimage","preview","fullscreen"]]
         //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
         ,labelMap:{
             'anchor':'', 'undo':''
@@ -110,7 +110,7 @@
         //,initialContent:'欢迎使用ueditor!'    //初始化编辑器的内容,也可以通过textarea/script给值，看官网例子
 
         ,initialFrameWidth:645  //初始化编辑器宽度,默认1000
-        ,initialFrameHeight:290  //初始化编辑器高度,默认320
+        ,initialFrameHeight:200  //初始化编辑器高度,默认320
 
         //,autoClearinitialContent:true //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
 
@@ -130,9 +130,9 @@
 
         //,initialStyle:'body{font-size:18px}'   //编辑器内部样式,可以用来改变字体等
 
-        // ,emotionLocalization:true //是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
+        //,emotionLocalization:false //是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
 
-        //,pasteplain:false  //是否纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
+        ,pasteplain:true  //是否纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
 
         //,allHtmlEnabled:false //提交到后台的数据是否包含整个html字符串
         //iframeUrlMap
@@ -140,6 +140,24 @@
         //,iframeUrlMap:{
         // 'anchor':'~/dialogs/anchor/anchor.html',
         // }
+        //fontfamily
+        //字体设置 label留空支持多语言自动切换，若配置，则以配置值为准
+//        ,'fontfamily':[
+//            { label:'',name:'songti',val:'宋体,SimSun'},
+//            { label:'',name:'kaiti',val:'楷体,楷体_GB2312, SimKai'},
+//            { label:'',name:'yahei',val:'微软雅黑,Microsoft YaHei'},
+//            { label:'',name:'heiti',val:'黑体, SimHei'},
+//            { label:'',name:'lishu',val:'隶书, SimLi'},
+//            { label:'',name:'andaleMono',val:'andale mono'},
+//            { label:'',name:'arial',val:'arial, helvetica,sans-serif'},
+//            { label:'',name:'arialBlack',val:'arial black,avant garde'},
+//            { label:'',name:'comicSansMs',val:'comic sans ms'},
+//            { label:'',name:'impact',val:'impact,chicago'},
+//            { label:'',name:'timesNewRoman',val:'times new roman'}
+//          ]
+        //fontsize
+        //字号
+        //,'fontsize':[10, 11, 12, 14, 16, 18, 20, 24, 36]
         //右键菜单的内容，可以参考plugins/contextmenu.js里边的默认菜单的例子，label留空支持国际化，否则以此配置为准
 //        ,contextMenu:[
 //            {
@@ -153,17 +171,13 @@
 //            }
 //           ]
         //wordCount
-        //,wordCount:1          //是否开启字数统计
-        //,maximumWords:10000       //允许的最大字符数
+        ,wordCount:1          //是否开启字数统计
+        ,maximumWords:8000       //允许的最大字符数
     //字数统计提示，{#count}代表当前字数，{#leave}代表还可以输入多少字符数,留空支持多语言自动切换，否则按此配置显示
         //,wordCountMsg:''   //当前已输入 {#count} 个字符，您还可以输入{#leave} 个字符
         //超出字数限制提示  留空支持多语言自动切换，否则按此配置显示
         //,wordOverFlowMsg:''    //<span style="color:red;">你输入的字符个数已经超出最大允许值，服务器可能会拒绝保存！</span>
 
-        //highlightcode
-        // 代码高亮时需要加载的第三方插件的路径
-        // ,highlightJsUrl:URL + "third-party/SyntaxHighlighter/shCore.js"
-        // ,highlightCssUrl:URL + "third-party/SyntaxHighlighter/shCoreDefault.css"
         //elementPathEnabled
         //是否启用元素路径，默认是显示
         //,elementPathEnabled : true
@@ -173,11 +187,6 @@
         //,removeFormatTags:'b,big,code,del,dfn,em,font,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var'
         //removeFormatAttributes属性
         //,removeFormatAttributes:'class,style,lang,width,height,align,hspace,valign'
-        //undo
-        //可以最多回退的次数,默认20
-        //,maxUndoCount:20
-        //当输入的字符数超过该值时，保存一次现场
-        //,maxInputCount:1
         //autoHeightEnabled
         // 是否自动长高,默认true
         //,autoHeightEnabled:true

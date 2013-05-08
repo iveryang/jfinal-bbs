@@ -12,9 +12,9 @@
         <div id="imageTab">
             <div id="tabHeads" class="tabhead">
                 <span tabSrc="remote"  class="focus"><var id="lang_tab_remote"></var></span>
-                <span tabSrc="local"><var id="lang_tab_local"></var></span>
-                <span tabSrc="imgManager"><var id="lang_tab_imgManager"></var></span>
-                <span tabSrc="imgSearch"><var id="lang_tab_imgSearch"></var></span>
+                <!--<span tabSrc="local"><var id="lang_tab_local"></var></span>-->
+                <!--<span tabSrc="imgManager"><var id="lang_tab_imgManager"></var></span>-->
+                <!--<span tabSrc="imgSearch"><var id="lang_tab_imgSearch"></var></span>-->
             </div>
             <div id="tabBodys" class="tabbody">
                 <div id="remote" class="panel">
@@ -119,7 +119,7 @@
                 picDescFieldName:'pictitle',      // POST请求中图片描述的key
                 maxSize:4,                         // 文件的最大体积,单位M
                 compressSize:2,                   // 上传前如果图片体积超过该值，会先压缩,单位M
-                maxNum:1,                         // 单次最大可上传多少个文件
+                maxNum:32,                         // 单次最大可上传多少个文件
                 compressSide:editor.options.compressSide,                 //等比压缩的基准，0为按照最长边，1为按照宽度，2为按照高度
                 compressLength:editor.options.maxImageSideLength        //能接受的最大边长，超过该值Flash会自动等比压缩
             };

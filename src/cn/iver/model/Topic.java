@@ -31,22 +31,22 @@ public class Topic extends Model<Topic>{
     }
     public Page<Topic> getTopicPage(int pageNumber){
         return dao.paginateByCache(TOPIC_PAGE_FOR_INDEX_CACHE, pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE,
+                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select *", "from topic order by createTime desc");
     }
     public Page<Topic> getTopicPageForModule(int moduleID, int pageNumber){
         return dao.paginateByCache(TOPIC_PAGE_FOR_MODULE_CACHE, moduleID + CACHE_KEY_SEPARATE + pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE,
+                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select *", "from topic where moduleID=? order by createTime desc", moduleID);
     }
     public Page<Topic> getHotTopicPage(int pageNumber){
         return dao.paginateByCache(HOT_TOPIC_PAGE_CACHE, pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE,
+                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select *", "from topic order by pv desc");
     }
     public Page<Topic> getNiceTopicPage(int pageNumber){
         return dao.paginateByCache(NICE_TOPIC_PAGE_CACHE, pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE,
+                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select *", "from topic where isNice=true order by createTime desc");
     }
     public void increaseTopicPV(int topicID){

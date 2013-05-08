@@ -1,10 +1,17 @@
 @ for(reply in replyPage.list!){
     <div class="-reply">
         <p class="-reply-info">
-            <i class="icon-user"></i><span><a href="/user/${reply.userID!'0'}">${reply.username}</a></span>
+            <i class="icon-user"></i>
+            <span>
+                @ if(reply.userID!'0' != 0){
+                    <a href="/user/${reply.userID!'0'}">${reply.user.username!}</a>
+                @}else{
+                    ${reply.user.username!}
+                @}
+            </span>
             <i class="icon-time"></i><span>${printTime(reply.createTime)}</span>
             <i class="icon-hand-left"></i>
-            <span><a href="javascript:;" data="${reply.username}" onclick="replyThisUser(this)">回复</a></span>
+            <span><a href="javascript:;" data="${reply.user.username!}" onclick="replyThisUser(this)">回复</a></span>
             @ if(session.isAdminLogin!'' == 'true'){
                 <i class="icon-trash"></i>
                 <span><a href="javascript:;" data="/reply/delete/${postID}-${reply.id}" onclick="deleteReply(this)">删除</a></span>
@@ -12,9 +19,7 @@
         </p>
         <p class="-reply-content">${reply.content}</p>
     </div>
-    <div class="-reply-user-form" data="0">
-        <span class="-reply-success-info"><span class="alert alert-success hide">评论成功：)</span></span>
-    </div>
+    <div class="-reply-user-form" data="0"></div>
 @ }
 <p class="-reply-paginate">
     @ if(replyPage.pageNumber > 1){

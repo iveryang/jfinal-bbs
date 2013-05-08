@@ -19,7 +19,7 @@ public class TopicController extends Controller {
     }
     public void module(){
         setAttr("topicPage", Topic.dao.getTopicPageForModule(getParaToInt(0), getParaToInt(1, 1)));
-        setAttr("actionUrl", "/topic/module/");
+        setAttr("actionUrl", "/topic/module/" + getParaToInt(0) + "-");
         render("/common/index.html");
     }
     public void hotTopic(){
@@ -35,7 +35,6 @@ public class TopicController extends Controller {
 
     @Before(LoginInterceptor.class)
     public void add(){
-        setAttr("moduleList", Module.dao.getModuleList());
         render("/topic/addTopic.html");
     }
 

@@ -12,7 +12,8 @@
             <p><a class="btn btn-danger" href="/regist">马上注册</a></p>
             <p>已注册用户请 <a class="btn btn-info" href="/toLogin">登录</a></p>
         @ }else{
-            <p>欢迎： <a href="/user/${session.user.id}">${session.user.username}</a></p>
+            <p>欢迎： <a href="/user/${session.user.id}" target="_blank">${session.user.username}</a></p>
+            <p><a href="/user/logout">退出</a></p>
         @ }
     </div>
     <div class="-border">

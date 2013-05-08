@@ -11,12 +11,13 @@
 .-module{ font-size: 16px; font-weight: bold; }
 /* 自定义的css属性 */
 /* ====================== navBar ====================== */
-.-navbar{ position: fixed; z-index: 1; margin: 0 auto; background-color: #50b7dc; color: #ffffff; top: 0; height: 45px; left: 0; right: 0; }
+.-navbar{ position: fixed; z-index: 1; margin: 0 auto; background-color: #50b7dc; color: #ffffff; top: 0;
+    height: 45px; left: 0; right: 0; }
 .-navbar-inner{ width: 940px; margin: 0 auto; }
 .-nav{ margin: 0; }
 .-nav a{ color: #ffffff; }
 .-nav a:hover{ text-decoration: none; }
-.-nav>li{ display: inline-block; list-style: none; font-size: 18px; }
+.-nav>li{ list-style: none; font-size: 18px; min-width: 30px; }
 .-nav a:hover{ font-weight: bold; background-color: #2aa4cf; }
 .-nav a{ font-weight: bold; padding: 0 20px; line-height: 45px; display: block;}
 /* ====================== main ====================== */
@@ -33,16 +34,21 @@
 .-topic-info a{ font-size: 12px; line-height: 13px; margin: 0 10px 0 10px; }
 .-topic-right{ margin: 5px 10px 0 0; }
 /* post */
-.-post-header{ background: url(/img/bg_postdate.png) no-repeat; height: 48px; position: relative; top: 20px; left: -80px; width: 80px; color: #fff; text-align: right; margin-bottom: 0; }
-.-post-header-date{ font-size: 11px; }
-.-post-main{ position: relative; top: -30px; padding: 15px 36px 0 36px; }
+.-post-header{ position: relative; top: 20px; left: -80px;
+    width: 80px; color: #fff; text-align: right; margin-bottom: 0; overflow: hidden; }
+.-post-header-top{ background: url(/img/bg_postdate.png) no-repeat; height: 48px; margin-bottom: 10px; }
+.-post-header-bottom{ width:50px; height: 50px; overflow: hidden; margin-left: 30px;}
+.-post-header-date{ font-size: 12px; margin-top: 10px; display: block; }
+.-post-relative{ position: relative; top: -100px; }
+.-post-main{ padding: 15px 36px 0 36px; }
 .-post-content p{ text-indent: 2em; line-height: 1.8em; font-size: 16px; }
 .-edit-post-btn{ margin-left: 20px; display: inline-block; width: 55px; }
 .-reply-success-info{ margin-left: 120px; display: inline-block; width: 130px; }
 .-show-reply-form-btn{ margin-left: 100px; }
 .-post-reply-form{ margin-left: 100px; display: none; }
 .-reply-submit{ margin-left: 15px; }
-.-post-footer{ background: #f7f7f7; border-top: 1px solid #eee; padding: 10px 40px 10px 40px; border-radius: 0 0 15px 15px; font-size: 12px; }
+.-post-footer{ background: #f7f7f7; border-top: 1px solid #eee; padding: 10px 40px 10px 40px; border-radius: 0 0 15px 15px;
+    font-size: 12px; margin-top: -80px; }
 .-reply-info i{ margin-right: 10px; }
 .-reply-info span{ margin-right: 30px; }
 .-reply-content{ text-indent: 2em; border-bottom: 1px solid rgb(133, 197, 230); }

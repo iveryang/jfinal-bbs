@@ -17,7 +17,7 @@ public class LoginInterceptor implements Interceptor {
             ai.invoke();
         }else{
             controller.setAttr("msg", "需要登录才可以进行改操作：）");
-            controller.forwardAction("/user/login");
+            controller.render("/user/login.html");
         }
     }
 }

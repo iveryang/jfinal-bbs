@@ -7,8 +7,8 @@ package cn.iver.common;
  */
 public class MyConstants {
     // page size
-    public static int PAGE_SIZE;
-    public static int PAGE_SIZE_OF_REPLY;
-    public static int PAGE_SIZE_FOR_ADMIN;
+    public static int TOPIC_PAGE_SIZE;
+    public static int POST_PAGE_SIZE;
+    public static int REPLY_PAGE_SIZE;
     public static int SIDEBAR_TOPIC_SIZE;
 }

@@ -5,24 +5,24 @@
         <div class="clearfix -topic" href="/topic/${topic.id}">
             <div class="pull-left -topic-left">
                 <div class="-user-img">
-                    <a href="/user/${topic.userID!}" title="${topic.user.username!}">
+                    <a href="/user/${topic.userID!}" title="${topic.user.username!}" target="_blank">
                         <img width="110px" height="110px" src="${topic.user.headImg!}">
                     </a>
                 </div>
             </div>
             <div class="pull-left -topic-main">
                 <div class="-topic-content">
-                    <a href="/topic/${topic.id}" title="${topic.content}">${topic.content}</a>
+                    <a href="/topic/${topic.id}" title="${topic.content}" target="_blank">${topic.content}</a>
                 </div>
                 <div class="-topic-info">
-                    <span>${topic.module.name}</span>
-                    <span><a href="/user/${topic.userID!}">${topic.user.username!}</a></span>
+                    <span><a href="/topic/module/${topic.module.id}" class="btn btn-success" target="_blank" title="话题分类">${topic.module.name}</a></span>
+                    <span><a href="/user/${topic.userID!}" target="_blank" title="作者">${topic.user.username!}</a></span>
                     <span>${printTime(topic.createTime)}</span>
                 </div>
             </div>
             <div class="pull-right -topic-right">
                 <p title="浏览次数"><span class="badge badge-important">${topic.pv}</span></p>
-                <p title="回帖次数"><span class="badge badge-warning">${topic.postCount}</span></p>
+                <p title="帖子个数"><span class="badge badge-warning">${topic.postCount}</span></p>
             </div>
         </div>
     @ }

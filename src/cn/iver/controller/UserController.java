@@ -1,6 +1,9 @@
 package cn.iver.controller;
 
-import cn.iver.interceptor.UserValidator;
+import cn.iver.interceptor.LoginValidator;
+import cn.iver.interceptor.RegistValidator;
+import cn.iver.interceptor.UpdateUserValidator;
+import cn.iver.interceptor.UserCheckInterceptor;
 import cn.iver.model.User;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -16,42 +19,52 @@ public class UserController extends Controller {
         setAttr("user", User.dao.getUser(getParaToInt(0, 0)));
         render("/user/user.html");
     }
+
+    @Before(LoginValidator.class)
     public void login(){
         String email = getPara("email");
-        setCookie("email", email, 3600*24*30);
         String password = getPara("password");
         if (StringKit.notBlank(email) && StringKit.notBlank(password)){
             User user = User.dao.getUserByEmailAndPassword(email, password);
             if (user != null){
+                setCookie("email", email, 3600*24*30);
                 if (getParaToBoolean("rememberPassword")){
-                    setCookie("password", password, 3600*24*10);
+                    setCookie("password", password, 3600*24*30);
                 }
-                getSession().setMaxInactiveInterval(3600);
                 setSessionAttr("user", user);
                 redirect("/");
             }
         }else{
-            redirect("/login");
+            setAttr("msg", "用户名或密码错误");
+            render("/user/login.html");
         }
+    }
+    public void logout(){
+        removeSessionAttr("user");
+        removeCookie("email");
+        removeCookie("password");
+        redirect("/");
     }
 
-    @Before(UserValidator.class)
+    @Before(RegistValidator.class)
     public void save(){
-        if (User.dao.containEmail(getPara("user.email"))){
-            setAttr("emailMsg", "该email已经被注册过了：（");
-        }else{
-            User user = getModel(User.class);
-            user.mySave();
-            setSessionAttr("user", user);
-            redirect("/");
-        }
+        User user = getModel(User.class);
+        user.mySave();
+        setAttr("msg", "恭喜你，注册成功，请登录：");
+        render("/user/login.html");
     }
+
+    @Before(UserCheckInterceptor.class)
     public void edit(){
         setAttr("user", User.dao.getUser(getParaToInt(0, 0)));
         render("/user/editUser.html");
     }
+
+    @Before(UpdateUserValidator.class)
     public void update(){
-        getModel(User.class).myUpdate();
+        User user = getModel(User.class);
+        user.myUpdate();
+        setAttr("user", user);
         render("/user/user.html");
     }
 }

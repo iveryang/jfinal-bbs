@@ -18,7 +18,7 @@ public class Reply extends Model<Reply> {
 
     public Page<Reply> getReplyPage(int postID, int pageNumber){
         return Reply.dao.paginateByCache(REPLY_PAGE_CACHE, postID + CACHE_KEY_SEPARATE + pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE_OF_REPLY, "select reply.*, user.username", "from reply, user where reply.postID=? and reply.userID=user.id", postID);
+                pageNumber, MyConstants.REPLY_PAGE_SIZE, "select *", "from reply where postID=?", postID);
     }
     public void mySave(int postID){
         Post.dao.setHasReplyTrue(postID);
@@ -29,5 +29,10 @@ public class Reply extends Model<Reply> {
     public void deleteByID(int id){
         CacheKit.removeAll(REPLY_PAGE_CACHE);
         dao.deleteById(id);
+    }
+
+    /* getter */
+    public User getUser(){
+        return User.dao.getUser(this.getInt("userID"));
     }
 }

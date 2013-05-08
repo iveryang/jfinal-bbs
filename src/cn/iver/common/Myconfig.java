@@ -102,10 +102,10 @@ public class Myconfig extends JFinalConfig {
      */
     public void afterJFinalStart(){
         TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai"));
-        MyConstants.PAGE_SIZE = getPropertyToInt("page_size", 10);
-        MyConstants.PAGE_SIZE_OF_REPLY = getPropertyToInt("page_size_of_reply", 3);
-        MyConstants.SIDEBAR_TOPIC_SIZE = getPropertyToInt("sidebar_topic_size", 6);
-        MyConstants.PAGE_SIZE_FOR_ADMIN = getPropertyToInt("page_size_for_admin", 30);
+        MyConstants.TOPIC_PAGE_SIZE = getPropertyToInt("topic_page_size", 12);
+        MyConstants.POST_PAGE_SIZE = getPropertyToInt("post_page_size", 8);
+        MyConstants.REPLY_PAGE_SIZE = getPropertyToInt("reply_page_size", 5);
+        MyConstants.SIDEBAR_TOPIC_SIZE = getPropertyToInt("sidebar_topic_size", 10);
     }
 	
 	/**
@@ -117,6 +117,6 @@ public class Myconfig extends JFinalConfig {
      * 第四个参数是设置jetty每隔几秒钟扫描文件变化并重启应用
 	 */
 	public static void main(String[] args) throws Exception{
-		JFinal.start("web", 80, "/", 365);
+		JFinal.start("web", 80, "/", 5);
 	}
 }
