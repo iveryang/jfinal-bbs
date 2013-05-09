@@ -28,16 +28,6 @@
     @ }
     </div>
     @ include("/common/_paginate.html", {"currentPage":topicPage.pageNumber,"totalPage":topicPage.totalPage,"actionUrl":actionUrl!}) {}
-    <div>
-        <ul class="nav nav-pills">
-            <li class="active"><a href="javascript:;" class="-module">话题分类</a></li>
-            @ for(module in moduleList!){
-            <li>
-                <a href="/topic/module/${module.id}" class="-module">${module.name}</a>
-            </li>
-            @ }
-        </ul>
-    </div>
 </div>
 @ include("/common/_sidebar.html"){}
 @ }

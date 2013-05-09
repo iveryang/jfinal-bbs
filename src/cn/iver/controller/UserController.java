@@ -24,7 +24,7 @@ public class UserController extends Controller {
     public void login(){
         String email = getPara("email");
         String password = getPara("password");
-        if (StringKit.notBlank(email) && StringKit.notBlank(password)){
+        if (StringKit.notBlank(email, password)){
             User user = User.dao.getUserByEmailAndPassword(email, password);
             if (user != null){
                 setCookie("email", email, 3600*24*30);

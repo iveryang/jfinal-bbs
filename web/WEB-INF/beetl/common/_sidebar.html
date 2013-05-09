@@ -2,7 +2,7 @@
     <div class="-logo -border">
         <p><img src="/img/logo.jpg"></p>
         <p class="-desc">
-            Welcome！：） JFinal-BBS是一个开源的java小型BBS系统。采用简单易学、高效快速的 WEB + ORM 框架
+            Welcome！：） JFinal-BBS（Beta1.0）是一个开源的java小型BBS系统。采用简单易学、高效快速的 WEB + ORM 框架
             <a href="http://www.oschina.net/p/jfinal" target="_blank">JFinal</a> 开发，视图层的模版引擎选用的是
             <a href="http://www.oschina.net/p/beetl" target="_blank">Beetl</a>。
         </p>
@@ -17,11 +17,11 @@
         @ }
     </div>
     <div class="-border">
-        <h4 class="text-center muted">浏览最多：</h4>
-        @ for(v in hotTopicList!){
-            <p>
-                <i class="icon-fire"></i><a href="/post/${v.id}" title="共有${v.pv}次浏览">${v.content}</a>
-            </p>
+        <h4 class="text-center muted">话题分类：</h4>
+        @ for(module in moduleList!){
+            <span class="-module">
+                <a href="/topic/module/${module.id}" class="btn btn-info">${module.name}</a>
+            </span>
         @ }
     </div>
 </div>

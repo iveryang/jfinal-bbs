@@ -2,16 +2,19 @@
 ## 常量
 ##########################################################################
 ## “topic--话题”分页的大小
-topic_page_size = 4
+topic_page_size = 12
 
 ## “post--话题跟帖”分页的大小
-post_page_size = 2
+post_page_size = 8
 
 ## “reply--帖子回复”分页的大小
-reply_page_size = 3
+reply_page_size = 5
 
 ## “置顶、热门”侧边栏的显示数目
 sidebar_topic_size = 10
+
+## 管理员的email
+admin_email = iveryang@sina.cn
 
 ##########################################################################
 ## 本地开发环境上 data source 的配置

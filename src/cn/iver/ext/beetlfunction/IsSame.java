@@ -1,5 +1,6 @@
 package cn.iver.ext.beetlfunction;
 
+import com.jfinal.kit.StringKit;
 import org.bee.tl.core.Context;
 import org.bee.tl.core.Function;
 
@@ -14,15 +15,12 @@ public class IsSame implements Function {
         if (params.length != 3){
             throw new RuntimeException("length of params must be 3 !");
         }
-        if (params[0] == null || params[1] == null){
-            return null;
-        }
-        String one = (String) ctx.getVar(params[0].toString());
-        String two = (String) ctx.getVar(params[1].toString());
-        if (one == null || two == null){
-            return null;
-        }else if(one.equals(two)){
-            return params[2].toString();
+        if (params[0] != null && params[1] != null){
+            String one = params[0].toString();
+            String two = params[1].toString();
+            if (StringKit.notBlank(one, two) && one.equals(two)){
+                return params[2].toString();
+            }
         }
         return null;
     }

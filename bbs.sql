@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2013-05-08 23:17:12
+Date: 2013-05-09 17:25:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,13 +25,14 @@ CREATE TABLE `module` (
   `detail` varchar(100) DEFAULT NULL,
   `turn` tinyint(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of module
 -- ----------------------------
 INSERT INTO `module` VALUES ('4', '屌丝一起来 ⊙ω⊙', null, '1');
 INSERT INTO `module` VALUES ('5', '技术专区 (ΘｏΘ)', null, '2');
+INSERT INTO `module` VALUES ('6', 'github ：）', null, '3');
 
 -- ----------------------------
 -- Table structure for `post`
@@ -46,7 +47,7 @@ CREATE TABLE `post` (
   `hasReply` bit(1) NOT NULL DEFAULT b'0',
   `updateTime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
@@ -74,6 +75,9 @@ INSERT INTO `post` VALUES ('20', '5', '0', '<P>^O^<IMG src=\"http://img.baidu.co
 INSERT INTO `post` VALUES ('21', '12', '9', '<P>^O^<IMG src=\"http://img.baidu.com/hi/jx2/j_0027.gif\" data_ue_src=\"http://img.baidu.com/hi/jx2/j_0027.gif\"></P>', '2013-05-08 22:00:54', '', null);
 INSERT INTO `post` VALUES ('22', '12', '0', '<P>^O^<IMG src=\"http://img.baidu.com/hi/jx2/j_0003.gif\" data_ue_src=\"http://img.baidu.com/hi/jx2/j_0003.gif\"></P>', '2013-05-08 22:01:33', '', null);
 INSERT INTO `post` VALUES ('23', '12', '9', '<P>^O^<IMG src=\"http://img.baidu.com/hi/jx2/j_0001.gif\" data_ue_src=\"http://img.baidu.com/hi/jx2/j_0001.gif\"></P>', '2013-05-08 22:04:17', '', null);
+INSERT INTO `post` VALUES ('24', '13', '1', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\" data_ue_src=\"http://img.baidu.com/hi/jx2/j_0002.gif\">^O^</p>', '2013-05-09 15:01:15', '', null);
+INSERT INTO `post` VALUES ('25', '14', '1', '<p>^O^<img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\" data_ue_src=\"http://img.baidu.com/hi/jx2/j_0003.gif\"></p>', '2013-05-09 17:01:00', '', null);
+INSERT INTO `post` VALUES ('26', '15', '9', '<p>^O^我爱你<img src=\"http://img.baidu.com/hi/jx2/j_0019.gif\" data_ue_src=\"http://img.baidu.com/hi/jx2/j_0019.gif\"></p>', '2013-05-09 17:02:29', '', null);
 
 -- ----------------------------
 -- Table structure for `reply`
@@ -87,7 +91,7 @@ CREATE TABLE `reply` (
   `content` varchar(300) NOT NULL,
   `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reply
@@ -113,6 +117,9 @@ INSERT INTO `reply` VALUES ('85', '6', '19', '0', '看看的', '2013-05-08 21:50
 INSERT INTO `reply` VALUES ('86', '6', '19', '0', '回复@游客啊: 刚刚的', '2013-05-08 21:52:06');
 INSERT INTO `reply` VALUES ('87', '5', '10', '9', '它是AngularJS', '2013-05-08 21:56:33');
 INSERT INTO `reply` VALUES ('88', '5', '10', '9', '回复@xxoo哦: rJS', '2013-05-08 21:56:44');
+INSERT INTO `reply` VALUES ('89', '15', '26', '1', 'Welcome！：）', '2013-05-09 17:03:11');
+INSERT INTO `reply` VALUES ('91', '15', '26', '9', '回复@管理员: Welcome！：）Welcome！：）', '2013-05-09 17:05:25');
+INSERT INTO `reply` VALUES ('93', '15', '26', '0', '回复@xxoo哦: Welcome！：）', '2013-05-09 17:11:54');
 
 -- ----------------------------
 -- Table structure for `topic`
@@ -131,19 +138,22 @@ CREATE TABLE `topic` (
   `isNice` bit(1) NOT NULL DEFAULT b'0',
   `isUp` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of topic
 -- ----------------------------
 INSERT INTO `topic` VALUES ('5', '1', '4', '2', '0', '5', '如何组织大型AngularJS应用中的代码？', null, '2013-04-29 13:33:38', '', '');
-INSERT INTO `topic` VALUES ('6', '1', '4', '3', '0', '148', '哪位牛给解释下这段代码在干什么', null, '2013-04-29 13:36:53', '', '');
+INSERT INTO `topic` VALUES ('6', '1', '4', '3', '0', '158', '哪位牛给解释下这段代码在干什么', null, '2013-04-29 13:36:53', '', '');
 INSERT INTO `topic` VALUES ('7', '1', '4', '2', '0', '10', '无法完成邮箱认证?!', null, '2013-03-29 13:42:38', '', '');
 INSERT INTO `topic` VALUES ('8', '1', '5', '1', '0', '0', '在线流程图设计器GooFlow', null, '2013-05-06 17:35:19', '', '');
 INSERT INTO `topic` VALUES ('9', '1', '4', '1', '0', '1', 'Upgrade 到 Rails4 的一些感想', null, '2013-05-07 18:04:45', '', '');
 INSERT INTO `topic` VALUES ('10', '1', '4', '1', '0', '20', 'Upgrade 到 Rails4 的一些感想', null, '2013-05-07 18:08:52', '', '');
 INSERT INTO `topic` VALUES ('11', '0', '4', '1', '0', '3', 'Upgrade 到 Rails4 ', null, '2013-05-07 18:13:32', '', '');
 INSERT INTO `topic` VALUES ('12', '9', '4', '3', '0', '8', '我去去就来', null, '2013-05-08 22:00:54', '', '');
+INSERT INTO `topic` VALUES ('13', '1', '4', '1', '0', '6', '题不能为空且长度不超过5000', null, '2013-05-09 15:01:15', '', '');
+INSERT INTO `topic` VALUES ('14', '1', '5', '1', '0', '3', 'CSS选择器笔记', null, '2013-05-09 17:01:00', '', '');
+INSERT INTO `topic` VALUES ('15', '9', '4', '1', '0', '8', 'love you', null, '2013-05-09 17:02:29', '', '');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -165,10 +175,10 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('0', '游客啊', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'iver@qq.com', null, null, null, '2013-05-06');
-INSERT INTO `user` VALUES ('1', '管理员', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'iveryang@sina.cn', 'http://tb.himg.baidu.com/sys/portrait/item/5b076976657279616e67303037303038f306', 'http://iver.cloudfoundry.com', null, '2013-04-10');
-INSERT INTO `user` VALUES ('5', '呵呵', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'iveryang@sina.c', null, null, null, '2013-05-08');
-INSERT INTO `user` VALUES ('6', '呵呵呵', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'iveryxx@sina.cn', null, null, null, '2013-05-08');
-INSERT INTO `user` VALUES ('7', '称称称', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'iveryag@sina.cn', null, null, null, '2013-05-08');
-INSERT INTO `user` VALUES ('8', 'xx', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'xx@qq.com', 'http://static.tieba.baidu.com/tb/editor/images/ali/ali_008.gif', null, null, '2013-05-08');
-INSERT INTO `user` VALUES ('9', 'xxoo哦', 'bfd59291e825b5f2bbf1eb76569f8fe7', '', 'xxoo@qq.com', 'http://static.tieba.baidu.com/tb/editor/images/ali/ali_008.gif', null, '基情提', '2013-05-08');
+INSERT INTO `user` VALUES ('0', '游客啊', 'bfd59291e825b5f2bbf1eb76555f8fe7', '', 'iver@qq.com', null, null, null, '2013-05-06');
+INSERT INTO `user` VALUES ('1', '管理员', 'bfd59291e825b5f2bbf1eb76555f8fe7', '', 'iveryang@sina.cn', 'http://tb.himg.baidu.com/sys/portrait/item/5b076976657279616e67303037303038f306', 'http://iver.cloudfoundry.com', null, '2013-04-10');
+INSERT INTO `user` VALUES ('5', '呵呵', 'bfd59291e825b5f2bbf1eb76555f8fe7', '', 'iveryang@sina.c', null, null, null, '2013-05-08');
+INSERT INTO `user` VALUES ('6', '呵呵呵', 'bfd59291e825b5f2bbf1eb76555f8fe7', '', 'iveryxx@sina.cn', null, null, null, '2013-05-08');
+INSERT INTO `user` VALUES ('7', '称称称', 'bfd59291e825b5f2bbf1eb76555f8fe7', '', 'iveryag@sina.cn', null, null, null, '2013-05-08');
+INSERT INTO `user` VALUES ('8', 'xx', 'bfd59291e825b5f2bbf1eb76555f8fe7', '', 'xx@qq.com', 'http://static.tieba.baidu.com/tb/editor/images/ali/ali_008.gif', null, null, '2013-05-08');
+INSERT INTO `user` VALUES ('9', 'xxoo哦', 'bfd59291e825b5f2bbf1eb76555f8fe7', '', 'xxoo@qq.com', 'http://static.tieba.baidu.com/tb/editor/images/ali/ali_008.gif', null, '基情提', '2013-05-08');

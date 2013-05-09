@@ -106,6 +106,7 @@ public class Myconfig extends JFinalConfig {
         MyConstants.POST_PAGE_SIZE = getPropertyToInt("post_page_size", 8);
         MyConstants.REPLY_PAGE_SIZE = getPropertyToInt("reply_page_size", 5);
         MyConstants.SIDEBAR_TOPIC_SIZE = getPropertyToInt("sidebar_topic_size", 10);
+        MyConstants.ADMIN_EMAIL = getProperty("admin_email");
     }
 	
 	/**

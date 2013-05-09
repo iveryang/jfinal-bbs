@@ -1,5 +1,7 @@
 package cn.iver.interceptor;
 
+import cn.iver.common.MyConstants;
+import cn.iver.common.Myconfig;
 import cn.iver.model.Module;
 import cn.iver.model.Topic;
 import cn.iver.model.User;
@@ -20,10 +22,15 @@ public class GlobalInterceptor implements Interceptor {
         controller.setAttr("moduleList", Module.dao.getModuleList());
         String email = controller.getCookie("email");
         String password = controller.getCookie("password");
-        if(controller.getSessionAttr("user") == null && StringKit.notBlank(email) && StringKit.notBlank(password)){
+        if(controller.getSessionAttr("user") == null && StringKit.notBlank(email, password)){
             User user = User.dao.getUserByEmailAndPassword(email, password);
-            controller.getSession().setMaxInactiveInterval(3600);
-            controller.setSessionAttr("user", user);
+            if(user != null){
+                controller.getSession().setMaxInactiveInterval(3600);
+                controller.setSessionAttr("user", user);
+                if(email.equals(MyConstants.ADMIN_EMAIL)){
+                    controller.setSessionAttr("isAdminLogin", "true");
+                }
+            }
         }
         ai.invoke();
     }

@@ -4,7 +4,7 @@
             <i class="icon-user"></i>
             <span>
                 @ if(reply.userID!'0' != 0){
-                    <a href="/user/${reply.userID!'0'}">${reply.user.username!}</a>
+                    <a href="/user/${reply.userID!'0'}" target="_blank">${reply.user.username!}</a>
                 @}else{
                     ${reply.user.username!}
                 @}

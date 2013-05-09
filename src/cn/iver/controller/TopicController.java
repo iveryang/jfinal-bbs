@@ -2,6 +2,8 @@ package cn.iver.controller;
 
 import cn.iver.interceptor.AdminInterceptor;
 import cn.iver.interceptor.LoginInterceptor;
+import cn.iver.interceptor.PostValidator;
+import cn.iver.interceptor.TopicValidator;
 import cn.iver.model.Module;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
@@ -38,7 +40,7 @@ public class TopicController extends Controller {
         render("/topic/addTopic.html");
     }
 
-    @Before(LoginInterceptor.class)
+    @Before({LoginInterceptor.class, TopicValidator.class, PostValidator.class})
     public void save(){
         Topic topic = getModel(Topic.class);
         topic.mySave(getModel(Post.class));
@@ -47,12 +49,12 @@ public class TopicController extends Controller {
 
     @Before(AdminInterceptor.class)
     public void edit(){
-        Topic topic = Topic.dao.findById(getParaToInt(0));
+        Topic topic = Topic.dao.getTopic(getParaToInt(0));
         setAttr("topic", topic);
-        render("/admin/editTopic.html");
+        render("/topic/editTopic.html");
     }
 
-    @Before(AdminInterceptor.class)
+    @Before({AdminInterceptor.class, TopicValidator.class})
     public void update(){
         Topic topic = getModel(Topic.class);
         topic.myUpdate();

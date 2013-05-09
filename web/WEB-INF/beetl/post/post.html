@@ -16,7 +16,7 @@
                         <span class="-post-header-date">${printTime(post.createTime)}</span>
                     </div>
                     <div class="-post-header-bottom">
-                        <a href="/user/${post.userID!}" title="${post.user.username!}">
+                        <a href="/user/${post.userID!}" title="${post.user.username!}" target="_blank">
                             <img width="50px" height="50px" src="${post.user.headImg!}">
                         </a>
                     </div>
@@ -67,4 +67,5 @@
             </div>
         </div>
     </div>
+@ include("/common/_sidebar.html"){}
 @ }

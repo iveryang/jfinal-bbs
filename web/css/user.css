@@ -4,11 +4,10 @@
 /* 通用的css属性 */
 .-main-border{ border: 1px solid #ddd; border-radius: 15px; margin-bottom: 15px; }
 .-clear{ clear: both; }
+.-inline-block{ display: inline-block; }
 .-error-msg{ color: red; }
 .-label{ height: 30px; line-height: 30px; margin-left: 0; }
-.-inline-block{ display: inline-block }
 .-border{ border: 1px solid #eee; }
-.-module{ font-size: 16px; font-weight: bold; }
 /* 自定义的css属性 */
 /* ====================== navBar ====================== */
 .-navbar{ position: fixed; z-index: 1; margin: 0 auto; background-color: #50b7dc; color: #ffffff; top: 0;
@@ -60,6 +59,8 @@
 .-logo img{ display: block; width: 192; height: 90px; margin: 10px auto; }
 .-desc{ text-indent: 2em; }
 .-regist-or-login p{ margin: 10px 0; text-align: center; }
+.-module{ display: block; font-size: 16px; font-weight: bold; margin: 5px 10px; }
+.-module a{ display: block; }
 /* ====================== regist ====================== */
 .-label{ width: 80px; display: inline-block; font-size: 16px; text-align: right; }
 /* ====================== user-info ====================== */

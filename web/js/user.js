@@ -47,7 +47,7 @@ function replyPaginate(v){
     $.post(
         $(v).attr("data"),
         function(data){
-            $(v).closest(".-post-footer").html(data).hide().fadeIn("normal");
+            $(v).closest(".-post-footer").html(data).hide().fadeIn(2000);
         },
         "html"
     );
@@ -67,7 +67,7 @@ function deleteReply(v){
     $.post(
         $(v).attr("data"),
         function(data){
-            $(v).closest("._topic_post_info").html(data).hide().fadeIn("normal");
+            $(v).closest(".-post-footer").html(data).hide().fadeIn(2000);
         },
         "html"
     );

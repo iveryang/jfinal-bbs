@@ -1,4 +1,4 @@
-@ layout("/admin/_layout.html"){
+@ layout("/common/_layout.html"){
     <div>
         <table class="table table-hover _module_list">
             <tr><th>主模块</th></tr>
@@ -6,7 +6,6 @@
             @ for(v in moduleList!){
                 <tr><td>${v.name}</td><td>${v.detail}</td>
                     <td class="span2">
-                        <a href="/admin/module/indexSub/${v.id}?flag=true" class="icon-list" title="查看子模块"></a>
                         <a href="/admin/module/edit/${v.id}" class="icon-edit" title="编辑"></a>
                         <a href="/admin/module/delete/${v.id}" class="icon-trash" title="删除" onclick="return confirm('确定删除？')"></a>
                     </td>
