@@ -1,5 +1,7 @@
 package cn.iver.kit;
 
+import com.jfinal.kit.StringKit;
+
 /**
  * Created with IntelliJ IDEA.
  * Author: StevenChow
@@ -21,6 +23,9 @@ public class HtmlTagKit {
 //    }
 
     public static String processHtmlSpecialTag(String content){
-        return content.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+        if(StringKit.notBlank(content)){
+            return content.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+        }
+        return null;
     }
 }

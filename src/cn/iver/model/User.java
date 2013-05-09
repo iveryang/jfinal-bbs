@@ -1,6 +1,7 @@
 package cn.iver.model;
 
 import cn.iver.kit.HtmlTagKit;
+import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
@@ -69,8 +70,6 @@ public class User extends Model<User> {
         CacheKit.remove(USER_CACHE, id);
     }
     private void processHtmlSpecilTag(){
-        this.set("headImg", HtmlTagKit.processHtmlSpecialTag(this.getStr("headImg")));
-        this.set("blogUrl", HtmlTagKit.processHtmlSpecialTag(this.getStr("blogUrl")));
         this.set("feeling", HtmlTagKit.processHtmlSpecialTag(this.getStr("feeling")));
     }
 }

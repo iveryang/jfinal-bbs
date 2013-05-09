@@ -4,7 +4,7 @@
 
 最后，向开源前辈们致敬。
 
-### 部署完毕的效果地址是：http://iver.cloudfoundry.com（一个屌丝论坛）
+### 部署完毕的效果地址是：http://iver.cloudfoundry.com （一个屌丝论坛）
 
 ### 运行方法：
 1.导入bbs.sql到mysql中；
