@@ -6,6 +6,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -77,9 +78,9 @@ public class Topic extends Model<Topic>{
         this.removeThisTopicCache();
     }
     public void mySave(Post post){
+        this.set("createTime", new Date());
         this.save();
-        int topicID = this.getInt("id");
-        post.set("topicID", topicID);
+        post.set("topicID", this.getInt("id")).set("createTime", new Date());
         post.save();
         removeAllTopicPageCache();
     }

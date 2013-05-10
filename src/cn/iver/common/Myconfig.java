@@ -93,15 +93,12 @@ public class Myconfig extends JFinalConfig {
 	/**
 	 * 配置处理器
 	 */
-	public void configHandler(Handlers me) {
-		
-	}
+	public void configHandler(Handlers me) {}
 
     /**
      * 初始化常量
      */
     public void afterJFinalStart(){
-        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai"));
         MyConstants.TOPIC_PAGE_SIZE = getPropertyToInt("topic_page_size", 12);
         MyConstants.POST_PAGE_SIZE = getPropertyToInt("post_page_size", 8);
         MyConstants.REPLY_PAGE_SIZE = getPropertyToInt("reply_page_size", 5);

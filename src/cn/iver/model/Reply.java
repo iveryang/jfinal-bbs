@@ -7,6 +7,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class Reply extends Model<Reply> {
     }
     public void mySave(int postID){
         Post.dao.setHasReplyTrue(postID);
-        this.set("content", HtmlTagKit.processHtmlSpecialTag(this.getStr("content")));
+        this.set("content", HtmlTagKit.processHtmlSpecialTag(this.getStr("content"))).set("createTime", new Date());;
         this.save();
         removeAllReplyPageCache();
     }
