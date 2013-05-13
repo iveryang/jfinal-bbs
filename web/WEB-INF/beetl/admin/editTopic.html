@@ -1,0 +1,34 @@
+@ layout("/admin/_layout.html"){
+<div class="span9 _topic_save_edit">
+    <form action="/topic/update" method="post">
+        <div>
+            <input type="hidden" name="topic.id" value="${topic.id!}">
+            <div class="row">
+                <span class="span1 -label">标题：</span>
+                <input type="text" name="topic.content" value="${topic.content!}" class="span7">
+                <span class="-error-msg">${contentMsg!}</span>
+            </div>
+            <div class="row">
+                <span class="span1 -label">是否置顶：</span>
+                <input class="span1" type="checkbox" name="topic.isUp" value="true" ${isSame(topic.isUp!, 'true', "checked='checked'")}><br>
+            </div>
+            <div class="row">
+                <span class="span1 -label">是否精品：</span>
+                <input class="span1" type="checkbox" name="topic.isNice" value="true" ${isSame(topic.isNice!, 'true', "checked='checked'")}>
+            </div>
+            <div class="row">
+                <span class="span1 -label">类别：</span><select name="topic.moduleID">
+                @ for(v in moduleList!){
+                    <option value="${v.id}" moduleID="${v.id}" ${isSame(v.id!, topic.moduleID!, "selected='selected'")}>
+                ${v.name}
+                </option>
+                @ }
+            </select>
+            </div>
+        </div>
+        <hr>
+        <p><span>&nbsp;</span><input type="submit" class="btn btn-info" value="保存修改"></p>
+    </form>
+</div>
+@ }
+

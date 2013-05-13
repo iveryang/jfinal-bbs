@@ -1,6 +1,7 @@
 package cn.iver.kit;
 
 import com.jfinal.kit.StringKit;
+import com.jfinal.plugin.activerecord.Model;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,10 +23,13 @@ public class HtmlTagKit {
 //        return content;
 //    }
 
-    public static String processHtmlSpecialTag(String content){
-        if(StringKit.notBlank(content)){
-            return content.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+    public static void processHtmlSpecialTag(Model model, String... attrNames){
+        for (String attrName : attrNames) {
+            String content = model.getStr(attrName);
+            if(StringKit.notBlank(content)){
+                String temp = content.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+                model.set(attrName, temp);
+            }
         }
-        return null;
     }
 }

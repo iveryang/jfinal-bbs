@@ -1,0 +1,14 @@
+@ layout("/admin/_layout.html"){
+<div class="span9 _topic_save_edit">
+    <h4>最新评论列表：</h4>
+    @ for(reply in replyPage.list!){
+    <p>
+        <span>【用户名】：${reply.user.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【话题】：${reply.topic.content}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【时间】：${printTime(reply.createTime)}</span><br>
+        <span>【评论内容】：${reply.content}</span>&nbsp;&nbsp;&nbsp;<a href="/post/${reply.topicID}">查看</a>
+    </p>
+    <hr>
+    @ }
+    @ include("/common/_paginate.html", {"currentPage":replyPage.pageNumber,"totalPage":replyPage.totalPage,"actionUrl":"/admin/showReplyList/"}) {}
+</div>
+@ }

@@ -1,0 +1,14 @@
+@ layout("/admin/_layout.html"){
+<div class="span9 _topic_save_edit">
+    <h4>最新评论列表：</h4>
+    @ for(post in postPage.list!){
+    <p>
+        <span>【用户名】：${post.user.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【话题】：${post.topic.content}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【时间】：${printTime(post.createTime)}</span><br>
+        <span>【评论内容】：${post.content}</span>&nbsp;&nbsp;&nbsp;<a href="/post/${post.topicID}">查看</a>
+    </p>
+    <hr>
+    @ }
+    @ include("/common/_paginate.html", {"currentPage":postPage.pageNumber,"totalPage":postPage.totalPage,"actionUrl":"/admin/showPostList/"}) {}
+</div>
+@ }

@@ -1,0 +1,15 @@
+@ layout("/admin/_layout.html"){
+<div class="span9">
+    <form action="/post/update" method="post">
+        <input type="hidden" name="post.id" value="${post.id!}">
+        <div class="row">
+            <span class="span1 -label -inline-block">内容：</span>
+            <div class="-inline-block">
+                @ include("/common/_editer.html", {"textarea_name" : "post.content", "textarea_content" : post.content!}){}
+            </div>
+        </div>
+        <hr>
+        <p><span>&nbsp;</span><input type="submit" class="btn btn-info" value="保存修改"></p>
+    </form>
+</div>
+@ }

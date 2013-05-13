@@ -19,6 +19,7 @@ public class Reply extends Model<Reply> {
     public static final Reply dao = new Reply();
     private static final String REPLY_CACHE = "reply";
     private static final String REPLY_PAGE_CACHE = "replyPage";
+    private static final String REPLY_PAGE_FOR_ADMIN_CACHE = "replyPageForAdmin";
     private static final String CACHE_KEY_SEPARATE = "-";
 
     public Reply getReply(int replyID){
@@ -36,9 +37,16 @@ public class Reply extends Model<Reply> {
         loadReplyPage(replyPage);
         return replyPage;
     }
+    public Page<Reply> getReplyPageForAdmin(int pageNumber){
+        Page<Reply> replyPage = Reply.dao.paginateByCache(REPLY_PAGE_FOR_ADMIN_CACHE, pageNumber,
+                pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select id", "from reply order by createTime desc");
+        loadReplyPage(replyPage);
+        return replyPage;
+    }
     public void mySave(int postID){
         Post.dao.setHasReplyTrue(postID);
-        this.set("content", HtmlTagKit.processHtmlSpecialTag(this.getStr("content"))).set("createTime", new Date());;
+        HtmlTagKit.processHtmlSpecialTag(this, "content");
+        this.set("createTime", new Date());
         this.save();
         removeAllReplyPageCache();
     }
@@ -50,6 +58,9 @@ public class Reply extends Model<Reply> {
     /* getter */
     public User getUser(){
         return User.dao.getUser(this.getInt("userID"));
+    }
+    public Topic getTopic(){
+        return Topic.dao.getTopic(this.getInt("topicID"));
     }
 
     /* private */

@@ -22,9 +22,8 @@
 /* ====================== main ====================== */
 .-main{ margin: 0; width: 650px; min-height: 300px; }
 /* topic */
-.-topic{ width: 100%; height: 60px; margin-top: 10px; border-bottom: 2px solid #eee; }
-.-topic-left{ height: 60px; width: 60px; }
-.-user-img{ background-size: 100%; }
+.-topic{ width: 100%; height: 60px; margin-top: 10px; border-bottom: 5px solid #eee; }
+.-topic-left{ height: 60px; width: 60px; overflow: hidden; }
 .-topic-main{ height: 60px; width: 500px; }
 .-topic-main a{ margin: 8px 18px; line-height: 30px; font-size: 18px; }
 .-topic-content{ height: 30px; overflow: hidden; }

@@ -4,7 +4,7 @@
             <h4>
                 <span class="muted">话题：</span><a href="/topic/${topic.id!}">${topic.content!}</a>
                 @ if(session.isAdminLogin!'' == 'true'){
-                    <a href="/topic/edit/${topic.id}" class="btn btn-danger">编辑</a>
+                    <a href="/admin/editTopic/${topic.id}" class="btn btn-danger">编辑</a>
                 @ }
             </h4>
         </div>

@@ -13,8 +13,11 @@ reply_page_size = 5
 ## “置顶、热门”侧边栏的显示数目
 sidebar_topic_size = 10
 
+## 管理员后台查看数据的分页大小
+page_size_for_admin = 30
+
 ## 管理员的email
-admin_email = xxoo@sina.cn
+admin_email = iveryang@sina.cn
 
 ##########################################################################
 ## 本地开发环境上 data source 的配置

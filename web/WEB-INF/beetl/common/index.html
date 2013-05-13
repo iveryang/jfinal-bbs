@@ -4,11 +4,9 @@
     @ for(topic in topicPage.list!){
         <div class="clearfix -topic" href="/topic/${topic.id}">
             <div class="pull-left -topic-left">
-                <div class="-user-img">
-                    <a href="/user/${topic.userID!}" title="${topic.user.username!}" target="_blank">
-                        <img width="110px" height="110px" src="${topic.user.headImg!}">
-                    </a>
-                </div>
+                <a href="/user/${topic.userID!}" title="${topic.user.username!}" target="_blank">
+                    <img width="110px" height="110px" src="${topic.user.headImg!}">
+                </a>
             </div>
             <div class="pull-left -topic-main">
                 <div class="-topic-content">

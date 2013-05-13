@@ -1,6 +1,7 @@
 package cn.iver.model;
 
 import cn.iver.common.MyConstants;
+import cn.iver.kit.HtmlTagKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
@@ -73,17 +74,25 @@ public class Topic extends Model<Topic>{
         new Topic().set("id", topicID).set("postCount", postCount + 1).update();
         increaseTopicAttrInCache(topicID, "postCount");
     }
-    public void myUpdate() {
+    public void myUpdate(){
+        HtmlTagKit.processHtmlSpecialTag(this, "content");
         this.update();
         this.removeThisTopicCache();
+        removeAllTopicPageCache();
     }
     public void mySave(Post post){
+        HtmlTagKit.processHtmlSpecialTag(this, "content");
         this.set("createTime", new Date());
         this.save();
         post.set("topicID", this.getInt("id")).set("createTime", new Date());
         post.save();
         removeAllTopicPageCache();
     }
+//    public void deleteByID(int topicID){
+//        this.deleteById(topicID);
+//        new Topic().set("id", topicID).removeThisTopicCache();
+//        removeAllTopicPageCache();
+//    }
 
     /* getter */
     public User getUser(){

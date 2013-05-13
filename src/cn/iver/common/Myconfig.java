@@ -51,7 +51,7 @@ public class Myconfig extends JFinalConfig {
         me.add("/", IndexController.class).add("/topic", TopicController.class);
         me.add("/post", PostController.class).add("/reply", ReplyController.class);
         me.add("/user", UserController.class);
-        me.add("/admin/welcome", AdminController.class).add("/admin/module", ModuleController.class);
+        me.add("/admin", AdminController.class).add("/admin/module", ModuleController.class);
 	}
 	
 	/**
@@ -103,6 +103,7 @@ public class Myconfig extends JFinalConfig {
         MyConstants.POST_PAGE_SIZE = getPropertyToInt("post_page_size", 8);
         MyConstants.REPLY_PAGE_SIZE = getPropertyToInt("reply_page_size", 5);
         MyConstants.SIDEBAR_TOPIC_SIZE = getPropertyToInt("sidebar_topic_size", 10);
+        MyConstants.PAGE_SIZE_FOR_ADMIN = getPropertyToInt("page_size_for_admin", 30);
         MyConstants.ADMIN_EMAIL = getProperty("admin_email");
     }
 	

@@ -3,6 +3,7 @@ package cn.iver.model;
 import cn.iver.kit.HtmlTagKit;
 import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.Model;
+import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
 
@@ -28,14 +29,13 @@ public class User extends Model<User> {
         });
     }
     public void mySave(){
+        HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");
         String password = getMD5(this.getStr("password").getBytes());
         this.set("password", password).set("registDate", new Date());
-        this.processHtmlSpecilTag();
         this.save();
-        removeCache(this.getInt("id"));
     }
     public void myUpdate() {
-        this.processHtmlSpecilTag();
+        HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");
         this.update();
         removeCache(this.getInt("id"));
     }
@@ -68,8 +68,5 @@ public class User extends Model<User> {
     }
     private void removeCache(int id){
         CacheKit.remove(USER_CACHE, id);
-    }
-    private void processHtmlSpecilTag(){
-        this.set("feeling", HtmlTagKit.processHtmlSpecialTag(this.getStr("feeling")));
     }
 }

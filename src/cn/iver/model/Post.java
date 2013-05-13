@@ -1,6 +1,7 @@
 package cn.iver.model;
 
 import cn.iver.common.MyConstants;
+import cn.iver.kit.HtmlTagKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
@@ -17,6 +18,7 @@ public class Post extends Model<Post> {
     public static final Post dao = new Post();
     private static final String POST_CACHE = "post";
     private static final String POST_PAGE_CACHE = "postPage";
+    private static final String POST_PAGE_FOR_ADMIN_CACHE = "postPageForAdmin";
     private static final String CACHE_KEY_SEPARATE = "-";
 
     public Post getPost(int postID){
@@ -35,6 +37,13 @@ public class Post extends Model<Post> {
         Page<Post> postPage = dao.paginateByCache(POST_PAGE_CACHE, topicID + CACHE_KEY_SEPARATE + pageNumber,
                 pageNumber, MyConstants.POST_PAGE_SIZE,
                 "select id", "from post where topicID=?", topicID);
+        loadPostPage(postPage);
+        return postPage;
+    }
+    public Page<Post> getPostPageForAdmin(int pageNumber){
+        Page<Post> postPage = dao.paginateByCache(POST_PAGE_FOR_ADMIN_CACHE, pageNumber,
+                pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN,
+                "select id", "from post order by createTime desc");
         loadPostPage(postPage);
         return postPage;
     }
@@ -61,6 +70,9 @@ public class Post extends Model<Post> {
     }
     public Page<Reply> getReplyPage() {
         return Reply.dao.getReplyPage(this.getInt("id"), 1);
+    }
+    public Topic getTopic(){
+        return Topic.dao.getTopic(this.getInt("topicID"));
     }
 
     /* private */

@@ -6,16 +6,6 @@
         <input type="text" name="topic.content" value="${topic.content!}" class="span7">
         <span class="-error-msg">${contentMsg!}</span>
     </div>
-    @ if(session.isAdminLogin!'' == 'true'){
-        <div class="row">
-            <span class="span1 -label">是否置顶：</span>
-            <input class="span1" type="checkbox" name="topic.isUp" value="true" ${isSame(topic.isUp!, 'true', "checked='checked'")}><br>
-        </div>
-        <div class="row">
-            <span class="span1 -label">是否精品：</span>
-            <input class="span1" type="checkbox" name="topic.isNice" value="true" ${isSame(topic.isNice!, 'true', "checked='checked'")}>
-        </div>
-    @ }
     <div class="row">
         <span class="span1 -label">类别：</span><select name="topic.moduleID">
         @ for(v in moduleList!){

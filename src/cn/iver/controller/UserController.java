@@ -1,5 +1,6 @@
 package cn.iver.controller;
 
+import cn.iver.common.MyConstants;
 import cn.iver.interceptor.LoginValidator;
 import cn.iver.interceptor.RegistValidator;
 import cn.iver.interceptor.UpdateUserValidator;
@@ -24,16 +25,17 @@ public class UserController extends Controller {
     public void login(){
         String email = getPara("email");
         String password = getPara("password");
-        if (StringKit.notBlank(email, password)){
-            User user = User.dao.getUserByEmailAndPassword(email, password);
-            if (user != null){
-                setCookie("email", email, 3600*24*30);
-                if (getParaToBoolean("rememberPassword")){
-                    setCookie("password", password, 3600*24*30);
-                }
-                setSessionAttr("user", user);
-                redirect("/");
+        User user = User.dao.getUserByEmailAndPassword(email, password);
+        if (user != null){
+            setCookie("email", email, 3600*24*30);
+            if (getParaToBoolean("rememberPassword")){
+                setCookie("password", password, 3600*24*30);
             }
+            setSessionAttr("user", user);
+            if(email.equals(MyConstants.ADMIN_EMAIL)){
+                setSessionAttr("isAdminLogin", "true");
+            }
+            redirect("/");
         }else{
             setAttr("msg", "用户名或密码错误");
             render("/user/login.html");

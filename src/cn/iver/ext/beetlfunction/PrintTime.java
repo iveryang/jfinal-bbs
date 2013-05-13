@@ -35,7 +35,7 @@ public class PrintTime implements Function {
             Date date = TIME_STAMP_FORMAT.parse(dateString);
             long currentTime = new Date().getTime() - date.getTime();
             int time = (int)(currentTime / 1000);
-            if(time > 0 && time < 60) {
+            if(time < 60) {
                 result = "刚刚";
             } else if(time >= 60 && time < 3600) {
                 result = time/60 + "分钟前";

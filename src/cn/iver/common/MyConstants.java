@@ -11,6 +11,7 @@ public class MyConstants {
     public static int POST_PAGE_SIZE;
     public static int REPLY_PAGE_SIZE;
     public static int SIDEBAR_TOPIC_SIZE;
+    public static int PAGE_SIZE_FOR_ADMIN;
     // others
     public static String ADMIN_EMAIL;
 }
