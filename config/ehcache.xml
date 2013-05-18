@@ -13,7 +13,7 @@
 
     <!-- module -->
     <cache name="module"
-           maxElementsInMemory="1"
+           maxElementsInMemory="30"
            eternal="true" />
 
     <cache name="moduleList"

@@ -19,38 +19,40 @@ import java.util.List;
 public class Topic extends Model<Topic>{
     public static final Topic dao = new Topic();
     private static final String TOPIC_CACHE = "topic";
+    private static final ModelKit mk = new ModelKit(dao, TOPIC_CACHE);
     private static final String TOPIC_PAGE_FOR_INDEX_CACHE = "topicPageForIndex";
     private static final String TOPIC_PAGE_FOR_MODULE_CACHE = "topicPageForModule";
     private static final String HOT_TOPIC_PAGE_CACHE = "hotTopicPage";
     private static final String NICE_TOPIC_PAGE_CACHE = "niceTopicPage";
 
     public Topic getTopic(int id){
-        return ModelKit.getModel(id, TOPIC_CACHE, dao);
+        return mk.getModel(id);
     }
     public Page<Topic> getTopicPage(int pageNumber){
-        String cacheName = TOPIC_PAGE_FOR_INDEX_CACHE;
-        Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+        Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_INDEX_CACHE, pageNumber,
+                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic order by createTime desc");
-        return ModelKit.loadModelPage(topicPage, cacheName, dao);
+        return mk.loadModelPage(topicPage);
     }
     public Page<Topic> getTopicPageForModule(int moduleID, int pageNumber){
-        String cacheName = TOPIC_PAGE_FOR_MODULE_CACHE;
-        Page<Topic> topicPage = dao.paginateByCache(cacheName, moduleID + "-" + pageNumber, pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+        Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_MODULE_CACHE, moduleID + "-" + pageNumber,
+                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic where moduleID=? order by createTime desc", moduleID);
-        return ModelKit.loadModelPage(topicPage, cacheName, dao);
+        return mk.loadModelPage(topicPage);
     }
     public Page<Topic> getHotTopicPage(int pageNumber){
         String cacheName = HOT_TOPIC_PAGE_CACHE;
-        Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+        Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber,
+                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic order by pv desc");
-        return ModelKit.loadModelPage(topicPage, cacheName, dao);
+        return mk.loadModelPage(topicPage);
     }
     public Page<Topic> getNiceTopicPage(int pageNumber){
         String cacheName = NICE_TOPIC_PAGE_CACHE;
         Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber,
                 pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic where isNice=true order by createTime desc");
-        return ModelKit.loadModelPage(topicPage, cacheName, dao);
+        return mk.loadModelPage(topicPage);
     }
     public void increaseTopicPV(int topicID){
         Topic topic = dao.findFirst("select pv from topic where id=?", topicID);

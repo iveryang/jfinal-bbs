@@ -18,24 +18,25 @@ import java.util.List;
 public class Post extends Model<Post> {
     public static final Post dao = new Post();
     private static final String POST_CACHE = "post";
+    private static final ModelKit mk = new ModelKit(dao, POST_CACHE);
     private static final String POST_PAGE_CACHE = "postPage";
     private static final String POST_PAGE_FOR_ADMIN_CACHE = "postPageForAdmin";
 
     public Post getPost(int id){
-        return ModelKit.getModel(id, POST_CACHE, dao);
+        return mk.getModel(id);
     }
     public Page<Post> getPostPage(int topicID, int pageNumber){
         Topic.dao.increaseTopicPV(topicID);
         String cacheName = POST_PAGE_CACHE;
         Page<Post> postPage = dao.paginateByCache(cacheName, topicID + "-" + pageNumber, pageNumber, MyConstants.POST_PAGE_SIZE,
                 "select id", "from post where topicID=?", topicID);
-        return ModelKit.loadModelPage(postPage, cacheName, dao);
+        return mk.loadModelPage(postPage);
     }
     public Page<Post> getPostPageForAdmin(int pageNumber){
         String cacheName = POST_PAGE_FOR_ADMIN_CACHE;
         Page<Post> postPage = dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN,
                 "select id", "from post order by createTime desc");
-        return ModelKit.loadModelPage(postPage, cacheName, dao);
+        return mk.loadModelPage(postPage);
     }
     public void setHasReplyTrue(int postID){
         boolean hasReply = dao.findById(postID).getBoolean("hasReply");

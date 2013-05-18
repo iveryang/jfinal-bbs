@@ -19,23 +19,24 @@ import java.util.List;
 public class Reply extends Model<Reply> {
     public static final Reply dao = new Reply();
     private static final String REPLY_CACHE = "reply";
+    private static final ModelKit mk = new ModelKit(dao, REPLY_CACHE);
     private static final String REPLY_PAGE_CACHE = "replyPage";
     private static final String REPLY_PAGE_FOR_ADMIN_CACHE = "replyPageForAdmin";
 
     public Reply getReply(int id){
-        return ModelKit.getModel(id, REPLY_CACHE, dao);
+        return mk.getModel(id);
     }
     public Page<Reply> getReplyPage(int postID, int pageNumber){
         String cacheName = REPLY_PAGE_CACHE;
         Page<Reply> replyPage = Reply.dao.paginateByCache(cacheName, postID + "-" + pageNumber, pageNumber, MyConstants.REPLY_PAGE_SIZE,
                 "select id", "from reply where postID=?", postID);
-        return ModelKit.loadModelPage(replyPage, cacheName, dao);
+        return mk.loadModelPage(replyPage);
     }
     public Page<Reply> getReplyPageForAdmin(int pageNumber){
         String cacheName = REPLY_PAGE_FOR_ADMIN_CACHE;
         Page<Reply> replyPage = Reply.dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN,
                 "select id", "from reply order by createTime desc");
-        return ModelKit.loadModelPage(replyPage, cacheName, dao);
+        return mk.loadModelPage(replyPage);
     }
     public void mySave(int postID){
         Post.dao.setHasReplyTrue(postID);

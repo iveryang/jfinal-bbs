@@ -19,9 +19,10 @@ import java.util.Date;
 public class User extends Model<User> {
     public static final User dao = new User();
     private static final String USER_CACHE = "user";
+    private static final ModelKit mk = new ModelKit(dao, USER_CACHE);
 
     public User getUser(int id) {
-        return ModelKit.getModel(id, USER_CACHE, dao);
+        return mk.getModel(id);
     }
     public void mySave(){
         HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");

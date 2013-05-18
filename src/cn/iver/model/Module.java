@@ -14,11 +14,12 @@ import java.util.List;
  */
 public class Module extends Model<Module> {
     public static final Module dao = new Module();
-    private final String MODULE_CACHE = "module";
-    private final String MODULE_LIST_CACHE = "moduleList";
+    private static final String MODULE_CACHE = "module";
+    private static final ModelKit mk = new ModelKit(dao, MODULE_CACHE);
+    private static final String MODULE_LIST_CACHE = "moduleList";
 
     public Module getModule(int id){
-        return ModelKit.getModel(id, MODULE_CACHE, dao);
+        return mk.getModel(id);
     }
     public List<Module> getModuleList(){
         return dao.findByCache(MODULE_LIST_CACHE, 1, "select * from module order by turn");
