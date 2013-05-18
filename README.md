@@ -1,4 +1,4 @@
-###采用JFinal和Beetl开发的一个简单的BBS，她的名字叫“JFinal-BBS(beta1.0)” ^O^
+###采用JFinal和Beetl开发的一个简单的BBS，她的名字叫“JFinal-BBS” ^O^
 
 希望她作为一个JFinal、Beetl入门的DEMO，可以帮到新人。
 
