@@ -2,6 +2,7 @@ package cn.iver.model;
 
 import cn.iver.common.MyConstants;
 import cn.iver.kit.HtmlTagKit;
+import cn.iver.kit.ModelKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
@@ -19,33 +20,22 @@ public class Post extends Model<Post> {
     private static final String POST_CACHE = "post";
     private static final String POST_PAGE_CACHE = "postPage";
     private static final String POST_PAGE_FOR_ADMIN_CACHE = "postPageForAdmin";
-    private static final String CACHE_KEY_SEPARATE = "-";
 
-    public Post getPost(int postID){
-        final int POST_ID = postID;
-        return CacheKit.get(POST_CACHE, POST_ID, new IDataLoader() {
-            @Override
-            public Object load() {
-                return dao.findById(POST_ID);
-            }
-        });
+    public Post getPost(int id){
+        return ModelKit.getModel(id, POST_CACHE, dao);
     }
     public Page<Post> getPostPage(int topicID, int pageNumber){
-        if (pageNumber == 1){
-            Topic.dao.increaseTopicPV(topicID);
-        }
-        Page<Post> postPage = dao.paginateByCache(POST_PAGE_CACHE, topicID + CACHE_KEY_SEPARATE + pageNumber,
-                pageNumber, MyConstants.POST_PAGE_SIZE,
+        Topic.dao.increaseTopicPV(topicID);
+        String cacheName = POST_PAGE_CACHE;
+        Page<Post> postPage = dao.paginateByCache(cacheName, topicID + "-" + pageNumber, pageNumber, MyConstants.POST_PAGE_SIZE,
                 "select id", "from post where topicID=?", topicID);
-        loadPostPage(postPage);
-        return postPage;
+        return ModelKit.loadModelPage(postPage, cacheName, dao);
     }
     public Page<Post> getPostPageForAdmin(int pageNumber){
-        Page<Post> postPage = dao.paginateByCache(POST_PAGE_FOR_ADMIN_CACHE, pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN,
+        String cacheName = POST_PAGE_FOR_ADMIN_CACHE;
+        Page<Post> postPage = dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN,
                 "select id", "from post order by createTime desc");
-        loadPostPage(postPage);
-        return postPage;
+        return ModelKit.loadModelPage(postPage, cacheName, dao);
     }
     public void setHasReplyTrue(int postID){
         boolean hasReply = dao.findById(postID).getBoolean("hasReply");
@@ -81,12 +71,5 @@ public class Post extends Model<Post> {
     }
     private void removeAllPostPageCache() {
         CacheKit.removeAll(POST_PAGE_CACHE);
-    }
-    private void loadPostPage(Page<Post> postPage) {
-        List<Post> postList = postPage.getList();
-        for(int i = 0; i < postList.size(); i++){
-            Post post = getPost(postList.get(i).getInt("id"));
-            postList.set(i, post);
-        }
     }
 }

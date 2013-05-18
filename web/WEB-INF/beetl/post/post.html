@@ -29,8 +29,12 @@
                                 <a href="/post/edit/${post.id!}" class="btn btn-danger">编辑</a>
                             @ }
                         </span>
-                        <span class="-reply-success-info"><span class="alert alert-success hide">评论成功：)</span></span>
-                        <span class="btn btn-info -show-reply-form-btn" onclick="showReplyForm(this)" title="显示/隐藏评论框">评论</span>
+                        <span class="-reply-success-info">
+                            <span class="alert alert-success hide">评论成功：)</span>
+                        </span>
+                        @ if(session.user != null){
+                            <span class="btn btn-info -show-reply-form-btn" onclick="showReplyForm(this)" title="显示/隐藏评论框">评论</span>
+                        @ }
                     </div>
                 </div>
                 <div class="-post-relative -post-reply-form">

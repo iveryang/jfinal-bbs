@@ -3,15 +3,13 @@
         <p class="-reply-info">
             <i class="icon-user"></i>
             <span>
-                @ if(reply.userID!'0' != 0){
-                    <a href="/user/${reply.userID!'0'}" target="_blank">${reply.user.username!}</a>
-                @}else{
-                    ${reply.user.username!}
-                @}
+                <a href="/user/${reply.userID!'0'}" target="_blank">${reply.user.username!}</a>
             </span>
             <i class="icon-time"></i><span>${printTime(reply.createTime)}</span>
             <i class="icon-hand-left"></i>
-            <span><a href="javascript:;" data="${reply.user.username!}" onclick="replyThisUser(this)">回复</a></span>
+            @ if(session.user != null){
+                <span><a href="javascript:;" data="${reply.user.username!}" onclick="replyThisUser(this)">回复</a></span>
+            @ }
             @ if(session.isAdminLogin!'' == 'true'){
                 <i class="icon-trash"></i>
                 <span><a href="javascript:;" data="/reply/delete/${postID}-${reply.id}" onclick="deleteReply(this)">删除</a></span>

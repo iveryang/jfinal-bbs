@@ -1,6 +1,7 @@
 package cn.iver.controller;
 
 import cn.iver.interceptor.AdminInterceptor;
+import cn.iver.interceptor.LoginInterceptor;
 import cn.iver.interceptor.ReplyValidator;
 import cn.iver.model.Reply;
 import com.jfinal.aop.Before;
@@ -18,7 +19,7 @@ public class ReplyController extends Controller {
         render("/reply/_ajaxReply.html");
     }
 
-    @Before(ReplyValidator.class)
+    @Before({LoginInterceptor.class, ReplyValidator.class})
     public void save(){
         Reply reply = getModel(Reply.class);
         int postID = reply.getInt("postID");

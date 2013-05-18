@@ -1,4 +1,4 @@
-package cn.iver.ext.beetlfunction;
+package cn.iver.ext.beetl;
 
 import com.jfinal.kit.StringKit;
 import org.bee.tl.core.Context;

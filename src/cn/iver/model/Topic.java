@@ -2,6 +2,7 @@ package cn.iver.model;
 
 import cn.iver.common.MyConstants;
 import cn.iver.kit.HtmlTagKit;
+import cn.iver.kit.ModelKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
@@ -22,44 +23,34 @@ public class Topic extends Model<Topic>{
     private static final String TOPIC_PAGE_FOR_MODULE_CACHE = "topicPageForModule";
     private static final String HOT_TOPIC_PAGE_CACHE = "hotTopicPage";
     private static final String NICE_TOPIC_PAGE_CACHE = "niceTopicPage";
-    private static final String CACHE_KEY_SEPARATE = "-";
 
     public Topic getTopic(int id){
-        final int ID = id;
-        return CacheKit.get(TOPIC_CACHE, ID, new IDataLoader() {
-            @Override
-            public Object load() {
-                return dao.findById(ID);
-            }
-        });
+        return ModelKit.getModel(id, TOPIC_CACHE, dao);
     }
     public Page<Topic> getTopicPage(int pageNumber){
-        Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_INDEX_CACHE, pageNumber,
-                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+        String cacheName = TOPIC_PAGE_FOR_INDEX_CACHE;
+        Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic order by createTime desc");
-        loadTopicPage(topicPage);
-        return topicPage;
+        return ModelKit.loadModelPage(topicPage, cacheName, dao);
     }
     public Page<Topic> getTopicPageForModule(int moduleID, int pageNumber){
-        Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_MODULE_CACHE, moduleID + CACHE_KEY_SEPARATE + pageNumber,
-                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+        String cacheName = TOPIC_PAGE_FOR_MODULE_CACHE;
+        Page<Topic> topicPage = dao.paginateByCache(cacheName, moduleID + "-" + pageNumber, pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic where moduleID=? order by createTime desc", moduleID);
-        loadTopicPage(topicPage);
-        return topicPage;
+        return ModelKit.loadModelPage(topicPage, cacheName, dao);
     }
     public Page<Topic> getHotTopicPage(int pageNumber){
-        Page<Topic> topicPage = dao.paginateByCache(HOT_TOPIC_PAGE_CACHE, pageNumber,
-                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+        String cacheName = HOT_TOPIC_PAGE_CACHE;
+        Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic order by pv desc");
-        loadTopicPage(topicPage);
-        return topicPage;
+        return ModelKit.loadModelPage(topicPage, cacheName, dao);
     }
     public Page<Topic> getNiceTopicPage(int pageNumber){
-        Page<Topic> topicPage = dao.paginateByCache(NICE_TOPIC_PAGE_CACHE, pageNumber,
+        String cacheName = NICE_TOPIC_PAGE_CACHE;
+        Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber,
                 pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic where isNice=true order by createTime desc");
-        loadTopicPage(topicPage);
-        return topicPage;
+        return ModelKit.loadModelPage(topicPage, cacheName, dao);
     }
     public void increaseTopicPV(int topicID){
         Topic topic = dao.findFirst("select pv from topic where id=?", topicID);
@@ -88,11 +79,6 @@ public class Topic extends Model<Topic>{
         post.save();
         removeAllTopicPageCache();
     }
-//    public void deleteByID(int topicID){
-//        this.deleteById(topicID);
-//        new Topic().set("id", topicID).removeThisTopicCache();
-//        removeAllTopicPageCache();
-//    }
 
     /* getter */
     public User getUser(){
@@ -111,13 +97,6 @@ public class Topic extends Model<Topic>{
         CacheKit.removeAll(TOPIC_PAGE_FOR_MODULE_CACHE);
         CacheKit.removeAll(HOT_TOPIC_PAGE_CACHE);
         CacheKit.removeAll(NICE_TOPIC_PAGE_CACHE);
-    }
-    private void loadTopicPage(Page<Topic> topicPage) {
-        List<Topic> topicList = topicPage.getList();
-        for(int i = 0; i < topicList.size(); i++){
-            Topic topic = getTopic(topicList.get(i).getInt("id"));
-            topicList.set(i, topic);
-        }
     }
     private void increaseTopicAttrInCache(int topicID, String attr) {
         CacheKit.put(TOPIC_CACHE, topicID, getTopic(topicID).set(attr, getTopic(topicID).getInt(attr) + 1));

@@ -3,8 +3,8 @@ package cn.iver.common;
 import cn.iver.controller.*;
 import cn.iver.controller.admin.AdminController;
 import cn.iver.controller.admin.ModuleController;
-import cn.iver.ext.beetlfunction.IsSame;
-import cn.iver.ext.beetlfunction.PrintTime;
+import cn.iver.ext.beetl.IsSame;
+import cn.iver.ext.beetl.PrintTime;
 import cn.iver.interceptor.GlobalInterceptor;
 import cn.iver.model.*;
 import com.alibaba.fastjson.JSONObject;
@@ -18,10 +18,9 @@ import com.jfinal.plugin.ehcache.EhCachePlugin;
 import org.bee.tl.core.GroupTemplate;
 import org.bee.tl.ext.jfinal.BeetlRenderFactory;
 
-import java.util.TimeZone;
-
 /**
  * 感谢 @波总 的JFinal，@闲.大赋 的beetl，向你们致敬！ ：）
+ * 如有问题，可以加 JFinal-BBS QQ群：206034609 讨论
  */
 public class Myconfig extends JFinalConfig {
     private String json = java.lang.System.getenv("VCAP_SERVICES");

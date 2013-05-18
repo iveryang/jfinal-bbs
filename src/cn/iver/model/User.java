@@ -1,6 +1,7 @@
 package cn.iver.model;
 
 import cn.iver.kit.HtmlTagKit;
+import cn.iver.kit.ModelKit;
 import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
@@ -19,14 +20,8 @@ public class User extends Model<User> {
     public static final User dao = new User();
     private static final String USER_CACHE = "user";
 
-    public User getUser(Integer id) {
-        final int ID = id;
-        return CacheKit.get(USER_CACHE, ID, new IDataLoader() {
-            @Override
-            public Object load() {
-                return dao.findById(ID);
-            }
-        });
+    public User getUser(int id) {
+        return ModelKit.getModel(id, USER_CACHE, dao);
     }
     public void mySave(){
         HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");

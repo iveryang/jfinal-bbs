@@ -15,3 +15,6 @@
 3.运行MyConfig.java里的main方法即可；
 
 #### 现在JFinal-BBS还有很多地方有待完善，我会不断的完善她。如果有建议：可以到 http://iver.cloudfoundry.com/leaveMsg 给我留言：）
+
+### beta1.1
+修复了几处bug；重构了部分model代码，配合ehcache更省代码，更加方便读取数据；取消了游客的留言权限；增强了后台管理；

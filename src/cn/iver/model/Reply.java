@@ -2,6 +2,7 @@ package cn.iver.model;
 
 import cn.iver.common.MyConstants;
 import cn.iver.kit.HtmlTagKit;
+import cn.iver.kit.ModelKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
@@ -20,28 +21,21 @@ public class Reply extends Model<Reply> {
     private static final String REPLY_CACHE = "reply";
     private static final String REPLY_PAGE_CACHE = "replyPage";
     private static final String REPLY_PAGE_FOR_ADMIN_CACHE = "replyPageForAdmin";
-    private static final String CACHE_KEY_SEPARATE = "-";
 
-    public Reply getReply(int replyID){
-        final int REPLY_ID = replyID;
-        return CacheKit.get(REPLY_CACHE, REPLY_ID, new IDataLoader() {
-            @Override
-            public Object load() {
-                return dao.findById(REPLY_ID);
-            }
-        });
+    public Reply getReply(int id){
+        return ModelKit.getModel(id, REPLY_CACHE, dao);
     }
     public Page<Reply> getReplyPage(int postID, int pageNumber){
-        Page<Reply> replyPage = Reply.dao.paginateByCache(REPLY_PAGE_CACHE, postID + CACHE_KEY_SEPARATE + pageNumber,
-                pageNumber, MyConstants.REPLY_PAGE_SIZE, "select id", "from reply where postID=?", postID);
-        loadReplyPage(replyPage);
-        return replyPage;
+        String cacheName = REPLY_PAGE_CACHE;
+        Page<Reply> replyPage = Reply.dao.paginateByCache(cacheName, postID + "-" + pageNumber, pageNumber, MyConstants.REPLY_PAGE_SIZE,
+                "select id", "from reply where postID=?", postID);
+        return ModelKit.loadModelPage(replyPage, cacheName, dao);
     }
     public Page<Reply> getReplyPageForAdmin(int pageNumber){
-        Page<Reply> replyPage = Reply.dao.paginateByCache(REPLY_PAGE_FOR_ADMIN_CACHE, pageNumber,
-                pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN, "select id", "from reply order by createTime desc");
-        loadReplyPage(replyPage);
-        return replyPage;
+        String cacheName = REPLY_PAGE_FOR_ADMIN_CACHE;
+        Page<Reply> replyPage = Reply.dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN,
+                "select id", "from reply order by createTime desc");
+        return ModelKit.loadModelPage(replyPage, cacheName, dao);
     }
     public void mySave(int postID){
         Post.dao.setHasReplyTrue(postID);
@@ -66,12 +60,5 @@ public class Reply extends Model<Reply> {
     /* private */
     private void removeAllReplyPageCache() {
         CacheKit.removeAll(REPLY_PAGE_CACHE);
-    }
-    private void loadReplyPage(Page<Reply> replyPage) {
-        List<Reply> replyList = replyPage.getList();
-        for(int i = 0; i < replyList.size(); i++){
-            Reply reply = getReply(replyList.get(i).getInt("id"));
-            replyList.set(i, reply);
-        }
     }
 }
