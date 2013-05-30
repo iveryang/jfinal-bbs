@@ -17,7 +17,7 @@ sidebar_topic_size = 10
 page_size_for_admin = 30
 
 ## 管理员的email
-admin_email = iveryang@sina.cn
+admin_email = greenlaw110@gmail.com
 
 ##########################################################################
 ## 本地开发环境上 data source 的配置
@@ -25,4 +25,6 @@ driverClass = com.mysql.jdbc.Driver
 jdbcUrl = jdbc:mysql://localhost:3306/bbs
 devMode = true
 username = root
-password = go
+password = aaaaaa
+
+view.engine=rythm

@@ -17,6 +17,10 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import org.bee.tl.core.GroupTemplate;
 import org.bee.tl.ext.jfinal.BeetlRenderFactory;
+import org.rythmengine.jfinal.RythmRenderFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 感谢 @波总 的JFinal，@闲.大赋 的beetl，向你们致敬！ ：）
@@ -35,12 +39,20 @@ public class Myconfig extends JFinalConfig {
         }
         me.setError404View("/common/404.html");
         me.setError500View("/common/500.html");
-		me.setMainRenderFactory(new BeetlRenderFactory());
-		GroupTemplate gt = BeetlRenderFactory.groupTemplate;
-        gt.registerFunction("isSame", new IsSame());
-        gt.registerFunction("printTime", new PrintTime());
-		gt.setStatementStart("@");
-        gt.setStatementEnd(null);
+        String s = getProperty("view.engine", "beetl");
+        if ("rythm".equals(s)) {
+            me.setMainRenderFactory(new RythmRenderFactory());
+        } else {
+            me.setMainRenderFactory(new BeetlRenderFactory());
+    		GroupTemplate gt = BeetlRenderFactory.groupTemplate;
+            gt.registerFunction("isSame", new IsSame());
+            gt.registerFunction("printTime", new PrintTime());
+    		gt.setStatementStart("@");
+            gt.setStatementEnd(null);
+            Map config  = new HashMap();
+            config.put(GroupTemplate.OPTIMIZE_KEEP_SOURCE, true);
+            gt.enableOptimize(config);
+        }
 	}
 	
 	/**
@@ -115,6 +127,6 @@ public class Myconfig extends JFinalConfig {
      * 第四个参数是设置jetty每隔几秒钟扫描文件变化并重启应用
 	 */
 	public static void main(String[] args) throws Exception{
-		JFinal.start("web", 80, "/", 5);
+		JFinal.start("P:\\jfinal-bbs\\web", 80, "/", 5);
 	}
 }

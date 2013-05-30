@@ -6,10 +6,8 @@ import cn.iver.kit.ModelKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
-import com.jfinal.plugin.ehcache.IDataLoader;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,6 +26,7 @@ public class Topic extends Model<Topic>{
     public Topic getTopic(int id){
         return mk.getModel(id);
     }
+    
     public Page<Topic> getTopicPage(int pageNumber){
         Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_INDEX_CACHE, pageNumber,
                 pageNumber, MyConstants.TOPIC_PAGE_SIZE,

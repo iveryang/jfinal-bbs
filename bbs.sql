@@ -14,6 +14,7 @@ Date: 2013-05-18 11:22:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+USE BBS;
 
 -- ----------------------------
 -- Table structure for `module`
