@@ -1,0 +1,80 @@
+@extends(common._layout, sidebar: true)
+<div class="pull-left -main">
+    <div>
+        <h4>
+            <span class="muted">话题</span><a href="/topic/@topic.id@">@topic.content@</a>
+            @if(session.isAdminLogin@){
+                <a href="/admin/editTopic/@topic.id@" class="btn btn-danger">编辑</a>
+            }
+        </h4>
+    </div>
+    @for(post in postPage.list@){
+        <div class="-post -main-border">
+            <div class="muted -post-header">
+                <div class="-post-header-top">
+                    <span>@(((postPage.pageNumber - 1) * postPage.pageSize) + post_index + 1 @) 楼 </span><br>
+                    <span class="-post-header-date">@post.createTime.printTime()@</span>
+                </div>
+                <div class="-post-header-bottom">
+                    <a href="/user/@post.userID@" title="@post.user.username@" target="_blank">
+                        <img width="50px" height="50px" src="@post.user.headImg@">
+                    </a>
+                </div>
+            </div>
+            <div class="-post-relative -post-main">
+                <div class="-post-content">@post.content@</div>
+                <div class="-post-content-manage">
+                    <span class="-edit-post-btn">
+                        @if(session.isAdminLogin@){
+                            <a href="/post/edit/@post.id@" class="btn btn-danger">编辑</a>
+                        }
+                    </span>
+                    <span class="-reply-success-info">
+                        <span class="alert alert-success hide">评论成功：)</span>
+                    </span>
+                    @if(session.user@) {
+                        <span class="btn btn-info -show-reply-form-btn" onclick="showReplyForm(this)" title="显示/隐藏评论">??</span>
+                    }
+                </div>
+            </div>
+            <div class="-post-relative -post-reply-form">
+                <form action="/" method="post">
+                    <input type="hidden" name="reply.postID" value="@post.id@">
+                    <input type="hidden" name="reply.topicID" value="@post.topicID@">
+                    <input type="hidden" name="reply.userID" value='@userId()'>
+                    <textarea name="reply.content" cols="36" rows="4"></textarea>
+                    <input type="submit" value="提交评论" class="btn btn-danger -reply-submit" onclick="return saveReply(this)">
+                    <span class="muted">&nbsp;&nbsp;&nbsp;不超过200字</span>
+                </form>
+            </div>
+            <div class="-post-footer">
+                @if(post.replyPage@) {
+                    @reply._ajaxReply({
+                        replayPage: post.replyPost@,
+                        postID: post.id@
+                    })
+                }
+            </div>
+        </div>
+    }
+    <div>
+        @common._paginate({
+            currentPage: postPage.pageNumber@,
+            totalPage: postPage.totalPage@,
+            actionUrl: ("/post/" + topic.id + "-"@)
+        })
+        <div>
+            <form action="/post/save" method="post">
+                <p>回复内容</p>
+                @common._editer(textarea_name: "post.content")
+                <input type="hidden" name="post.topicID" value="@topic.id@">
+                <input type="hidden" name="post.userID" value="@session.user.id@">
+                <br>
+                <input type="submit" class="btn btn-info" value="回复" title="一起摇滚吧！">
+                @if(session.user@) {
+                    <span><a href="/user/login">登录</a>之后才可以回复哦：）</span>
+                }
+            </form>
+        </div>
+    </div>
+</div>

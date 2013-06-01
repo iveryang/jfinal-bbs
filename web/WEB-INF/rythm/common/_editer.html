@@ -1,0 +1,12 @@
+<script type="text/javascript" src="/ext/ueditor/editor_config.js"></script>
+<script type="text/javascript" src="/ext/ueditor/editor_all_min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var editor = new UE.ui.Editor({
+            UEDITOR_HOME_URL:'/ext/ueditor/',
+            textarea: 'description'
+        });
+        editor.render("txtEditor");
+    });
+</script>
+<script type="text/plain" id="txtEditor" name="@textarea_name">@(textarea_content?:"^O^"@)</script>
