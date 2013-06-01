@@ -22,15 +22,15 @@ public class AdminController extends Controller {
 //        forwardAction("/");
 //    }
     public void editTopic(){
-        setAttr("topic", Topic.dao.getTopic(getParaToInt()));
+        setAttr("topic", Topic.dao.get(getParaToInt()));
         render("/admin/editTopic.html");
     }
     public void showPostList(){
-        setAttr("postPage", Post.dao.getPostPageForAdmin(getParaToInt(0, 1)));
+        setAttr("postPage", Post.dao.getPageForAdmin(getParaToInt(0, 1)));
         render("/admin/postList.html");
     }
     public void showReplyList(){
-        setAttr("replyPage", Reply.dao.getReplyPageForAdmin(getParaToInt(0, 1)));
+        setAttr("replyPage", Reply.dao.getPageForAdmin(getParaToInt(0, 1)));
         render("/admin/replyList.html");
     }
 }

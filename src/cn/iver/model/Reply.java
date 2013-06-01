@@ -6,10 +6,8 @@ import cn.iver.kit.ModelKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
-import com.jfinal.plugin.ehcache.IDataLoader;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,21 +21,24 @@ public class Reply extends Model<Reply> {
     private static final String REPLY_PAGE_CACHE = "replyPage";
     private static final String REPLY_PAGE_FOR_ADMIN_CACHE = "replyPageForAdmin";
 
-    public Reply getReply(int id){
+    /* get */
+    public Reply get(int id){
         return mk.getModel(id);
     }
-    public Page<Reply> getReplyPage(int postID, int pageNumber){
+    public Page<Reply> getPage(int postID, int pageNumber){
         String cacheName = REPLY_PAGE_CACHE;
         Page<Reply> replyPage = Reply.dao.paginateByCache(cacheName, postID + "-" + pageNumber, pageNumber, MyConstants.REPLY_PAGE_SIZE,
                 "select id", "from reply where postID=?", postID);
         return mk.loadModelPage(replyPage);
     }
-    public Page<Reply> getReplyPageForAdmin(int pageNumber){
+    public Page<Reply> getPageForAdmin(int pageNumber){
         String cacheName = REPLY_PAGE_FOR_ADMIN_CACHE;
         Page<Reply> replyPage = Reply.dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN,
                 "select id", "from reply order by createTime desc");
         return mk.loadModelPage(replyPage);
     }
+
+    /* other */
     public void mySave(int postID){
         Post.dao.setHasReplyTrue(postID);
         HtmlTagKit.processHtmlSpecialTag(this, "content");
@@ -52,10 +53,10 @@ public class Reply extends Model<Reply> {
 
     /* getter */
     public User getUser(){
-        return User.dao.getUser(this.getInt("userID"));
+        return User.dao.get(this.getInt("userID"));
     }
     public Topic getTopic(){
-        return Topic.dao.getTopic(this.getInt("topicID"));
+        return Topic.dao.get(this.getInt("topicID"));
     }
 
     /* private */

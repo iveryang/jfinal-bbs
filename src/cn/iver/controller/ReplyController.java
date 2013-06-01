@@ -14,7 +14,7 @@ import com.jfinal.core.Controller;
  */
 public class ReplyController extends Controller {
     public void index(){
-        setAttr("replyPage", Reply.dao.getReplyPage(getParaToInt(0), getParaToInt(1, 1)));
+        setAttr("replyPage", Reply.dao.getPage(getParaToInt(0), getParaToInt(1, 1)));
         setAttr("postID", getParaToInt(0));
         render("/reply/_ajaxReply.html");
     }

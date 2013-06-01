@@ -18,9 +18,9 @@ public class PostController extends Controller {
     public void index(){
         int topicID = getParaToInt(0);
         int pageNumber = getParaToInt(1, 1);
-        Page<Post> postPage = Post.dao.getPostPage(topicID, pageNumber);
+        Page<Post> postPage = Post.dao.getPage(topicID, pageNumber);
         setAttr("postPage", postPage);
-        setAttr("topic", Topic.dao.getTopic(topicID));
+        setAttr("topic", Topic.dao.get(topicID));
         render("/post/post.html");
     }
 
@@ -33,7 +33,7 @@ public class PostController extends Controller {
 
     @Before(AdminInterceptor.class)
     public void edit(){
-        setAttr("post", Post.dao.getPost(getParaToInt(0)));
+        setAttr("post", Post.dao.get(getParaToInt(0)));
         render("/post/editPost.html");
     }
 

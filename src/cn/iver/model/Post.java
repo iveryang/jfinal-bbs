@@ -1,14 +1,10 @@
 package cn.iver.model;
 
 import cn.iver.common.MyConstants;
-import cn.iver.kit.HtmlTagKit;
 import cn.iver.kit.ModelKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
-import com.jfinal.plugin.ehcache.IDataLoader;
-
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,22 +18,25 @@ public class Post extends Model<Post> {
     private static final String POST_PAGE_CACHE = "postPage";
     private static final String POST_PAGE_FOR_ADMIN_CACHE = "postPageForAdmin";
 
-    public Post getPost(int id){
+    /* get */
+    public Post get(int id){
         return mk.getModel(id);
     }
-    public Page<Post> getPostPage(int topicID, int pageNumber){
+    public Page<Post> getPage(int topicID, int pageNumber){
         Topic.dao.increaseTopicPV(topicID);
         String cacheName = POST_PAGE_CACHE;
         Page<Post> postPage = dao.paginateByCache(cacheName, topicID + "-" + pageNumber, pageNumber, MyConstants.POST_PAGE_SIZE,
                 "select id", "from post where topicID=?", topicID);
         return mk.loadModelPage(postPage);
     }
-    public Page<Post> getPostPageForAdmin(int pageNumber){
+    public Page<Post> getPageForAdmin(int pageNumber){
         String cacheName = POST_PAGE_FOR_ADMIN_CACHE;
         Page<Post> postPage = dao.paginateByCache(cacheName, pageNumber, pageNumber, MyConstants.PAGE_SIZE_FOR_ADMIN,
                 "select id", "from post order by createTime desc");
         return mk.loadModelPage(postPage);
     }
+
+    /* save and update */
     public void setHasReplyTrue(int postID){
         boolean hasReply = dao.findById(postID).getBoolean("hasReply");
         if ( ! hasReply){
@@ -57,13 +56,13 @@ public class Post extends Model<Post> {
 
     /* getter */
     public User getUser(){
-        return User.dao.getUser(this.getInt("userID"));
+        return User.dao.get(this.getInt("userID"));
     }
     public Page<Reply> getReplyPage() {
-        return Reply.dao.getReplyPage(this.getInt("id"), 1);
+        return Reply.dao.getPage(this.getInt("id"), 1);
     }
     public Topic getTopic(){
-        return Topic.dao.getTopic(this.getInt("topicID"));
+        return Topic.dao.get(this.getInt("topicID"));
     }
 
     /* private */

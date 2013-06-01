@@ -8,7 +8,6 @@ import cn.iver.interceptor.UserCheckInterceptor;
 import cn.iver.model.User;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.StringKit;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +16,7 @@ import com.jfinal.kit.StringKit;
  */
 public class UserController extends Controller {
     public void index(){
-        setAttr("user", User.dao.getUser(getParaToInt(0, 0)));
+        setAttr("user", User.dao.get(getParaToInt(0, 0)));
         render("/user/user.html");
     }
 
@@ -25,7 +24,7 @@ public class UserController extends Controller {
     public void login(){
         String email = getPara("email");
         String password = getPara("password");
-        User user = User.dao.getUserByEmailAndPassword(email, password);
+        User user = User.dao.getByEmailAndPassword(email, password);
         if (user != null){
             setCookie("email", email, 3600*24*30);
             if (getParaToBoolean("rememberPassword")){
@@ -58,7 +57,7 @@ public class UserController extends Controller {
 
     @Before(UserCheckInterceptor.class)
     public void edit(){
-        setAttr("user", User.dao.getUser(getParaToInt(0, 0)));
+        setAttr("user", User.dao.get(getParaToInt(0, 0)));
         render("/user/editUser.html");
     }
 

@@ -1,7 +1,7 @@
 ﻿My_Convention_For_JAVA_WEB_Programming：
 
 ################# DB 表名 #################
-    1 一律小写（Mysql在linux下的表名称默认是有区分大小写的），多个独立的单词之间以下划线“_”隔开；
+    1 一律小写（Mysql在linux下的表名称默认是有区分大小写的，驼峰式多有不便），多个独立的单词之间以下划线“_”隔开；
     2 当和sql保留字相同时，在结尾加“s”或者“es”;
 
 ################# DB 字段名 ###############
@@ -27,7 +27,7 @@
     1 class，ID：由于用到了bootstrap，有些时候样式会有冲突，所以，自定义的class一律在前面加一个“-”；
 
 ################# 构架、编码上的一些约定 ###############
-    0 Model里的方法，除了getXxx这样命名的方法，其他方法【尽量】返回void；
-    1 当和Model里的自建方法重名的情况下，加一个“my”作为前缀；
+    0 Model里的方法命名极致简洁：get()根据ID返回该model实例，getPage()返回page<model>，getList()返回list<model>
+    1 除了getXxx这样命名的方法，其他方法【尽量】返回void；
     2 Controller里不要出现任何SQL语句，一律放到Model或者Service里；
-    3 Cache里出现类似于“导航栏，侧边文章列表”这样的只有一个Object在Cache里的情况，让CacheKey = 1；
+    3 Cache里出现类似于“导航栏，侧边文章列表”这样的只有一个Object在Cache里的情况，约定让CacheKey = 1；
