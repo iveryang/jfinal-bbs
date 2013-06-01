@@ -46,6 +46,10 @@
     </div>
     <div class="container clearfix">
         @render()
+        @args boolean sidebar
+        @if(sidebar){
+            @common._sidebar()
+        }
     </div>
     <div class="footer" style="margin: 13px auto; width: 940px;">
         @render(footer){

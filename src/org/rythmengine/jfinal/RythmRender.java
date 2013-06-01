@@ -37,7 +37,7 @@ public class RythmRender extends Render {
             conf.put(HOME_TMP.getKey(), "c:/tmp");
             conf.put(ENGINE_MODE.getKey(), Rythm.Mode.dev);
             engine = new RythmEngine(conf);
-            engine.registerPropertyAccessor(RythmHelper.modulePropAccessor, RythmHelper.postPropAccessor, RythmHelper.topicAccessor, RythmHelper.replyPropAccessor, new ActiveRecordPropAccessor());
+            engine.registerPropertyAccessor(RythmHelper.postPropAccessor, RythmHelper.topicAccessor, RythmHelper.replyPropAccessor, new ActiveRecordPropAccessor());
             engine.registerTransformer(PrintTime.class);
         } catch (Exception e) {
             throw new RuntimeException(e);

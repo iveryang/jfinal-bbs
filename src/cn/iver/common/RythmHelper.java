@@ -12,21 +12,6 @@ import org.rythmengine.jfinal.ActiveRecordPropAccessor;
  * To change this template use File | Settings | File Templates.
  */
 public class RythmHelper {
-    public final static IPropertyAccessor modulePropAccessor = new ActiveRecordPropAccessor() {
-        @Override
-        public Class getTargetType() {
-            return Module.class;
-        }
-
-        @Override
-        public Object getProperty(String name, Object contextObj) {
-            Module m = (Module)contextObj;
-            if ("ModuleList".equalsIgnoreCase(name)) {
-                return m.getModuleList();
-            }
-            return super.getProperty(name, contextObj);
-        }
-    };
     
     public static final IPropertyAccessor postPropAccessor = new ActiveRecordPropAccessor() {
         @Override

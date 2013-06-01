@@ -1,0 +1,18 @@
+@extends(_layout)
+@args Reply replayPage
+<div class="span9 _topic_save_edit">
+    <h4>最新评论列表：</h4>
+    @for(Reply reply in replyPage.list@) {
+    <p>
+        <span>【用户名】：@reply.user.username@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【话题】：@reply.topic.content@
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【时间】：@reply.createTime.printTime()@</span><br>
+        <span>【评论内容】：@reply.content@</span>&nbsp;&nbsp;&nbsp;<a href="/post/@reply.topicID@">查看</a>
+    </p>
+    <hr>
+    }
+    @common._paginate({
+        currentPage: replayPage.pageNumber@,
+        totalPage: replayPage.totalPage@,
+        actionUrl: "/admin/showReplyList/"
+    })
+</div>
