@@ -6,3 +6,4 @@
 *.yml
 *.log
 .idea/
+web/WEB-INF/classes/
