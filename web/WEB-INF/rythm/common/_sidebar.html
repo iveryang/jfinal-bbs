@@ -1,3 +1,4 @@
+
 <div class="pull-left -sidebar">
     <div class="-logo -border">
         <p><img src="/img/logo.jpg"></p>
@@ -9,13 +10,13 @@
         </p>
     </div>
     <div class="-regist-or-login -border">
-        @if(session.user) {
+        @if(session.user@) {
             <p><a class="btn btn-danger" href="/regist">马上注册</a></p>
             <p>已注册用户请 <a class="btn btn-info" href="/toLogin">登录</a></p>
         } else {
-            <p>欢迎： <a href="/user/@session.user.id" target="_blank">@session.user.username</a></p>
+            <p>欢迎： <a href="/user/@session.user.id@" target="_blank">@session.user.username@</a></p>
             <p><a href="/user/logout">退出</a></p>
-        @}
+        }
     </div>
     <div class="-border">
         <h4 class="text-center muted">话题分类：</h4>
@@ -23,7 +24,7 @@
         @args List<Module> moduleList
         @for(module in moduleList){
             <span class="-module">
-                <a href="/topic/module/@module.id" class="btn btn-info">@module.name</a>
+                <a href="/topic/module/@module.id@" class="btn btn-info">@module.name@</a>
             </span>
         }
     </div>

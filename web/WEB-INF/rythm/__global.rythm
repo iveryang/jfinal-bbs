@@ -1,0 +1,1 @@
+@import cn.iver.model.*, com.jfinal.plugin.activerecord.*

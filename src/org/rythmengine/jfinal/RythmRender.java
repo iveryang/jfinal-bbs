@@ -34,8 +34,8 @@ public class RythmRender extends Render {
             File f = new File(new File(s).getParentFile().getCanonicalFile(), "rythm");
             Map<String, Object> conf = new HashMap<String, Object>();
             conf.put(HOME_TEMPLATE.getKey(), f);
+            conf.put(HOME_TMP.getKey(), "c:/tmp");
             conf.put(ENGINE_MODE.getKey(), Rythm.Mode.dev);
-            conf.put(FEATURE_DYNAMIC_EXP.getKey(), true);
             engine = new RythmEngine(conf);
             engine.registerPropertyAccessor(RythmHelper.modulePropAccessor, RythmHelper.postPropAccessor, RythmHelper.topicAccessor, RythmHelper.replyPropAccessor, new ActiveRecordPropAccessor());
             engine.registerTransformer(PrintTime.class);
@@ -68,6 +68,7 @@ public class RythmRender extends Render {
         template.__setRenderArg("response", response);
         PrintWriter w = null;
         try {
+            response.setContentType("text/html; charset=utf-8"); 
             w = response.getWriter();
             w.write(template.render());
         } catch (Exception e) {

@@ -31,7 +31,9 @@ public class PrintTime implements Function {
     }
 
     @Transformer
-    public static String getNiceDate(String dateString) {
+    public static String getNiceDate(Object o) {
+        if (null == o) return "";
+        String dateString = o.toString();
         String result = null;
         try {
             Date date = TIME_STAMP_FORMAT.parse(dateString);
