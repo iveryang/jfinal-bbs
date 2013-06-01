@@ -10,6 +10,7 @@ import cn.iver.model.*;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
+import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -104,7 +105,7 @@ public class Myconfig extends JFinalConfig {
 	/**
 	 * 配置处理器
 	 */
-	public void configHandler(Handlers me) {}
+	public void configHandler(Handlers me) { }
 
     /**
      * 初始化常量

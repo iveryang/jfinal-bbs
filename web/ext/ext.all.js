@@ -1,4 +1,4 @@
-//////////////////////////////////////////// 以下是jquery插件:jquery.cookie.js ////////////////////////////////////////////////
+//////////////////////////////////////////// jquery.cookie.js ////////////////////////////////////////////////
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
@@ -65,40 +65,8 @@
         return false;
     };
 }));
-//////////////////////////////////////////// 以下是统计用的js ////////////////////////////////////////////////
-//GA
-(function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-ga('create', 'UA-39800051-1', 'cloudfoundry.com');
-ga('send', 'pageview');
-//Bai Du Tong Ji
-var _hmt = _hmt || [];
-(function () {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?e72171b21ce3178036d1361f5812d3c5";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
 
-/*!
- * Joseph Myer's md5() algorithm wrapped in a self-invoked function to prevent
- * global namespace polution, modified to hash unicode characters as UTF-8.
- *
- * Copyright 1999-2010, Joseph Myers, Paul Johnston, Greg Holt, Will Bond <will@wbond.net>
- * http://www.myersdaily.org/joseph/javascript/md5-text.html
- * http://pajhome.org.uk/crypt/md5
- *
- * Released under the BSD license
- * http://www.opensource.org/licenses/bsd-license
- */
+//////////////////////////////////////////// md5.js ////////////////////////////////////////////////
 (function() {
     function md5cycle(x, k) {
         var a = x[0], b = x[1], c = x[2], d = x[3];

@@ -18,9 +18,15 @@ public class User extends Model<User> {
     private static final String USER_CACHE = "user";
     private static final ModelKit mk = new ModelKit(dao, USER_CACHE);
 
-    public User getUser(int id) {
+    /* get */
+    public User get(int id) {
         return mk.getModel(id);
     }
+    public User getByEmailAndPassword(String email, String password){
+        return dao.findFirst("select id, username, email, password from user where email=? and password=?", email, getMD5(password.getBytes()));
+    }
+
+    /* other */
     public void mySave(){
         HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");
         String password = getMD5(this.getStr("password").getBytes());
@@ -31,9 +37,6 @@ public class User extends Model<User> {
         HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");
         this.update();
         removeCache(this.getInt("id"));
-    }
-    public User getUserByEmailAndPassword (String email, String password){
-        return dao.findFirst("select id, username, email, password from user where email=? and password=?", email, getMD5(password.getBytes()));
     }
     public boolean containEmail(String email) {
         return dao.findFirst("select email from user where email=? limit 1", email) != null;

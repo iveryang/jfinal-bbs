@@ -4,7 +4,6 @@ import cn.iver.interceptor.AdminInterceptor;
 import cn.iver.interceptor.LoginInterceptor;
 import cn.iver.interceptor.PostValidator;
 import cn.iver.interceptor.TopicValidator;
-import cn.iver.model.Module;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
@@ -20,18 +19,18 @@ public class TopicController extends Controller {
         forwardAction("/post/" + getParaToInt(0));
     }
     public void module(){
-        setAttr("topicPage", Topic.dao.getTopicPageForModule(getParaToInt(0), getParaToInt(1, 1)));
+        setAttr("topicPage", Topic.dao.getPageForModule(getParaToInt(0), getParaToInt(1, 1)));
         setAttr("actionUrl", "/topic/module/" + getParaToInt(0) + "-");
         render("/common/index.html");
     }
-    public void hotTopic(){
-        setAttr("topicPage", Topic.dao.getHotTopicPage(getParaToInt(0, 1)));
-        setAttr("actionUrl", "/topic/hotTopic/");
+    public void hot(){
+        setAttr("topicPage", Topic.dao.getHotPage(getParaToInt(0, 1)));
+        setAttr("actionUrl", "/topic/hot/");
         render("/common/index.html");
     }
-    public void niceTopic(){
-        setAttr("topicPage", Topic.dao.getNiceTopicPage(getParaToInt(0, 1)));
-        setAttr("actionUrl", "/topic/niceTopic/");
+    public void nice(){
+        setAttr("topicPage", Topic.dao.getNicePage(getParaToInt(0, 1)));
+        setAttr("actionUrl", "/topic/nice/");
         render("/common/index.html");
     }
 
@@ -49,7 +48,7 @@ public class TopicController extends Controller {
 
     @Before(AdminInterceptor.class)
     public void edit(){
-        Topic topic = Topic.dao.getTopic(getParaToInt(0));
+        Topic topic = Topic.dao.get(getParaToInt(0));
         setAttr("topic", topic);
         render("/topic/editTopic.html");
     }

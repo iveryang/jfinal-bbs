@@ -15,7 +15,7 @@ public class ModuleController extends Controller {
 
     public void index(){
         Module.dao.removeCache();
-        setAttr("moduleList", Module.dao.getModuleList());
+        setAttr("moduleList", Module.dao.getList());
         render("/admin/module.html");
     }
 

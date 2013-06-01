@@ -23,36 +23,38 @@ public class Topic extends Model<Topic>{
     private static final String HOT_TOPIC_PAGE_CACHE = "hotTopicPage";
     private static final String NICE_TOPIC_PAGE_CACHE = "niceTopicPage";
 
-    public Topic getTopic(int id){
+    /* get */
+    public Topic get(int id){
         return mk.getModel(id);
     }
-    
-    public Page<Topic> getTopicPage(int pageNumber){
+    public Page<Topic> getPage(int pageNumber){
         Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_INDEX_CACHE, pageNumber,
                 pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic order by createTime desc");
         return mk.loadModelPage(topicPage);
     }
-    public Page<Topic> getTopicPageForModule(int moduleID, int pageNumber){
+    public Page<Topic> getPageForModule(int moduleID, int pageNumber){
         Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_MODULE_CACHE, moduleID + "-" + pageNumber,
                 pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic where moduleID=? order by createTime desc", moduleID);
         return mk.loadModelPage(topicPage);
     }
-    public Page<Topic> getHotTopicPage(int pageNumber){
+    public Page<Topic> getHotPage(int pageNumber){
         String cacheName = HOT_TOPIC_PAGE_CACHE;
         Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber,
                 pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic order by pv desc");
         return mk.loadModelPage(topicPage);
     }
-    public Page<Topic> getNiceTopicPage(int pageNumber){
+    public Page<Topic> getNicePage(int pageNumber){
         String cacheName = NICE_TOPIC_PAGE_CACHE;
         Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber,
                 pageNumber, MyConstants.TOPIC_PAGE_SIZE,
                 "select id", "from topic where isNice=true order by createTime desc");
         return mk.loadModelPage(topicPage);
     }
+
+    /* other */
     public void increaseTopicPV(int topicID){
         Topic topic = dao.findFirst("select pv from topic where id=?", topicID);
         if (topic != null){
@@ -83,10 +85,10 @@ public class Topic extends Model<Topic>{
 
     /* getter */
     public User getUser(){
-        return User.dao.getUser(this.getInt("userID"));
+        return User.dao.get(this.getInt("userID"));
     }
     public Module getModule(){
-        return Module.dao.getModule(this.getInt("moduleID"));
+        return Module.dao.get(this.getInt("moduleID"));
     }
 
     /* private */
@@ -100,6 +102,6 @@ public class Topic extends Model<Topic>{
         CacheKit.removeAll(NICE_TOPIC_PAGE_CACHE);
     }
     private void increaseTopicAttrInCache(int topicID, String attr) {
-        CacheKit.put(TOPIC_CACHE, topicID, getTopic(topicID).set(attr, getTopic(topicID).getInt(attr) + 1));
+        CacheKit.put(TOPIC_CACHE, topicID, get(topicID).set(attr, get(topicID).getInt(attr) + 1));
     }
 }

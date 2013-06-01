@@ -1,9 +1,7 @@
 package cn.iver.controller;
 
 import cn.iver.model.Topic;
-import cn.iver.model.User;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.StringKit;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +10,7 @@ import com.jfinal.kit.StringKit;
  */
 public class IndexController extends Controller {
     public void index(){
-        setAttr("topicPage", Topic.dao.getTopicPage(getParaToInt(0, 1)));
+        setAttr("topicPage", Topic.dao.getPage(getParaToInt(0, 1)));
         setAttr("actionUrl", "/");
         render("/common/index.html");
     }

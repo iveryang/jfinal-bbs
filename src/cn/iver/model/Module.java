@@ -16,13 +16,16 @@ public class Module extends Model<Module> {
     private static final String MODULE_CACHE = "module";
     private static final ModelKit mk = new ModelKit(dao, MODULE_CACHE);
     private static final String MODULE_LIST_CACHE = "moduleList";
-    
-    public Module getModule(int id) {
+
+    /* get */
+    public Module get(int id){
         return mk.getModel(id);
     }
-    public List<Module> getModuleList(){
+    public List<Module> getList(){
         return dao.findByCache(MODULE_LIST_CACHE, 1, "select * from module order by turn");
     }
+
+    /* TO DO */
     public void removeCache(){
         CacheKit.removeAll(MODULE_CACHE);
         CacheKit.removeAll(MODULE_LIST_CACHE);
