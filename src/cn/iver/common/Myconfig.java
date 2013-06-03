@@ -10,7 +10,7 @@ import cn.iver.model.*;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
-import com.jfinal.ext.handler.ContextPathHandler;
+import com.jfinal.core.RythmPlugin;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -18,10 +18,10 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import org.bee.tl.core.GroupTemplate;
 import org.bee.tl.ext.jfinal.BeetlRenderFactory;
-import org.rythmengine.jfinal.RythmRenderFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * 感谢 @波总 的JFinal，@闲.大赋 的beetl，向你们致敬！ ：）
@@ -30,20 +30,22 @@ import java.util.Map;
 public class Myconfig extends JFinalConfig {
     private String json = java.lang.System.getenv("VCAP_SERVICES");
     private boolean isLocal = StringKit.isBlank(json);
+    private Properties conf = null;
+    private boolean useRythm = false;
+    
+    
 	/**
 	 * 配置常量
 	 */
 	public void configConstant(Constants me) {
-		loadPropertyFile("classes/config.txt");
+		conf = loadPropertyFile("classes/config.txt");
         if (isLocal) {
             me.setDevMode(true);
         }
         me.setError404View("/common/404.html");
         me.setError500View("/common/500.html");
         String s = getProperty("view.engine", "beetl");
-        if ("rythm".equals(s)) {
-            me.setMainRenderFactory(new RythmRenderFactory());
-        } else {
+        if (!"rythm".equals(s)) {
             me.setMainRenderFactory(new BeetlRenderFactory());
     		GroupTemplate gt = BeetlRenderFactory.groupTemplate;
             gt.registerFunction("isSame", new IsSame());
@@ -53,6 +55,8 @@ public class Myconfig extends JFinalConfig {
             Map config  = new HashMap();
             config.put(GroupTemplate.OPTIMIZE_KEEP_SOURCE, true);
             gt.enableOptimize(config);
+        } else {
+            useRythm = true;
         }
 	}
 	
@@ -92,6 +96,9 @@ public class Myconfig extends JFinalConfig {
 		me.add(arp);
         // 缓存插件
         me.add(new EhCachePlugin());
+        if (useRythm) {
+            me.add(new RythmPlugin(conf));
+        }
 	}
 	
 	/**
