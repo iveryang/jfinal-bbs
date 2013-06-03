@@ -1,0 +1,10 @@
+@extends(common._layout)
+@args Post post
+<div class="span9">
+    @if(post) {
+    <form action="/post/update" method="post">
+        @_postForm()
+        <input type="submit" class="btn btn-info" value="保存修改">
+    </form>
+    }
+</div>

@@ -3,7 +3,6 @@ package cn.iver.model;
 import cn.iver.kit.ModelKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.ehcache.CacheKit;
-import com.jfinal.plugin.ehcache.IDataLoader;
 
 import java.util.List;
 

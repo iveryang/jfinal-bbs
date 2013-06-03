@@ -1,0 +1,27 @@
+@extends(common._layout)
+@args User user, String emailMsg, String usernameMsg, String passwordMsg, String repasswordMsg
+<div class="container">
+    <div class="-regist row">
+        <form action="/user/save" method="post">
+            <p>
+                <span class="-label">邮箱：</span><input type="text" name="user.email" value="@user.email@" placeholder="用该邮箱来登录：)">
+                <span>您可以通过它登录和找回密码：)</span><span class="-error-msg">@emailMsg</span>
+            </p>
+            <p>
+                <span class="-label">昵称：</span><input type="text" name="user.username" value="@user.username@" placeholder="昵称：)">
+                <span class="-error-msg">@usernameMsg</span>
+            </p>
+            <p>
+                <span class="-label">密码：</span><input type="password" name="user.password" value="@user.password@" placeholder="密码：)">
+                <span class="-error-msg">@passwordMsg</span>
+            </p>
+            <p>
+                <span class="-label">确认密码：</span><input type="password" name="repassword" placeholder="确认密码：)">
+                <span class="-error-msg">@repasswordMsg</span>
+            </p>
+            <p>
+                <span class="-label">&nbsp;</span><input type="submit" value="注 册" class="btn btn-success">
+            </p>
+        </form>
+    </div>
+</div>

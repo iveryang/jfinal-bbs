@@ -2,11 +2,8 @@ package cn.iver.model;
 
 import cn.iver.kit.HtmlTagKit;
 import cn.iver.kit.ModelKit;
-import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.Model;
-import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
-import com.jfinal.plugin.ehcache.IDataLoader;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
