@@ -38,7 +38,7 @@ rythm.i18n.enabled=true #允许国际化。参见http://www.screenr.com/T7NH
 
 * 项目站点：http://ibeetl.com/
 * 交互式体验：http://www.ibeetl.com/beetlonline
-源代码：https://github.com/javamonkey/beetl1.2
+* 源代码：https://github.com/javamonkey/beetl1.2
 
 ### 关于Rythm
 
