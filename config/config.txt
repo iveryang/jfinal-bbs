@@ -17,7 +17,7 @@ sidebar_topic_size = 10
 page_size_for_admin = 30
 
 ## 管理员的email
-admin_email = greenlaw110@gmail.com
+admin_email = you@where.com
 
 ##########################################################################
 ## 本地开发环境上 data source 的配置
@@ -27,4 +27,7 @@ devMode = true
 username = root
 password = aaaaaa
 
-view.engine=rythm
+#view.engine=beetl #使用beetl模版引擎
+view.engine=rythm #使用rythm模版引擎
+rythm.home.template=../rythm #设置rythm引擎的模版根目录
+rythm.i18n.enabled=true #允许国际化。参见http://www.screenr.com/T7NH
