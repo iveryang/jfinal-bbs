@@ -27,6 +27,8 @@ rythm.home.template=../rythm #设置rythm引擎的模版根目录
 rythm.i18n.enabled=true #允许国际化。参见http://www.screenr.com/T7NH
 ```
 
+2.3 如果使用Rythm模版运行时需要将`config/`下面的`messages.*.properties`文件拷贝的哦WEB-INF下面的classes里面
+
 3.运行MyConfig.java里的main方法即可；
 
 #### 现在JFinal-BBS还有很多地方有待完善，我会不断的完善她。如果有建议：可以到 http://iver.cloudfoundry.com/leaveMsg 给我留言：）
@@ -38,7 +40,7 @@ rythm.i18n.enabled=true #允许国际化。参见http://www.screenr.com/T7NH
 
 * 项目站点：http://ibeetl.com/
 * 交互式体验：http://www.ibeetl.com/beetlonline
-源代码：https://github.com/javamonkey/beetl1.2
+* 源代码：https://github.com/javamonkey/beetl1.2
 
 ### 关于Rythm
 
