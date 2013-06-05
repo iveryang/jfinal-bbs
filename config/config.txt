@@ -27,7 +27,14 @@ devMode = true
 username = root
 password = aaaaaa
 
-#view.engine=beetl #使用beetl模版引擎
-view.engine=rythm #使用rythm模版引擎
-rythm.home.template=../rythm #设置rythm引擎的模版根目录
-rythm.i18n.enabled=true #允许国际化。参见http://www.screenr.com/T7NH
+#使用beetl模版引擎
+#view.engine=beetl
+
+#使用rythm模版引擎 
+view.engine=rythm
+
+#设置rythm引擎的模版根目录
+rythm.home.template=../rythm
+
+#允许国际化。参见http://www.screenr.com/T7NH 
+rythm.i18n.enabled=true
