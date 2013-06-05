@@ -135,6 +135,6 @@ public class Myconfig extends JFinalConfig {
      * 第四个参数是设置jetty每隔几秒钟扫描文件变化并重启应用
 	 */
 	public static void main(String[] args) throws Exception{
-		JFinal.start("P:\\jfinal-bbs\\web", 80, "/", 5);
+		JFinal.start("web", 80, "/", 5);
 	}
 }
