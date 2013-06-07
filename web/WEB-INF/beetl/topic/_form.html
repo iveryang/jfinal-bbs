@@ -1,0 +1,18 @@
+<div>
+    <input type="hidden" name="topic.id" value="${topic.id!}">
+    <input type="hidden" name="topic.userID" value="${session.user.id!'0'}">
+    <div class="row">
+        <span class="span1 -label">标题：</span>
+        <input type="text" name="topic.content" value="${topic.content!}" class="span7">
+        <span class="-error-msg">${contentMsg!}</span>
+    </div>
+    <div class="row">
+        <span class="span1 -label">类别：</span><select name="topic.moduleID">
+        @ for(v in moduleList!){
+            <option value="${v.id}" moduleID="${v.id}" ${isSame(v.id!, topic.moduleID!, "selected='selected'")}>
+                ${v.name}
+            </option>
+        @ }
+        </select>
+    </div>
+</div>

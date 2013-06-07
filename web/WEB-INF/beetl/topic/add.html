@@ -1,0 +1,14 @@
+@ layout("/common/_layout.html"){
+<div class="">
+    <!-- save包含：topic + post -->
+    <form action="/topic/save" method="post">
+        @ include("/topic/_form.html"){}
+        @ include("/post/_form.html"){}
+        <hr>
+        <p class="row">
+            <span class="span1 -label">&nbsp;</span>
+            <input type="submit" class="btn btn-info span2" value="发  表" onclick="saveTopic(this)">
+        </p>
+    </form>
+</div>
+@ }

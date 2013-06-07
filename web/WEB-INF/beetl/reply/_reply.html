@@ -1,0 +1,34 @@
+@ for(reply in replyPage.list!){
+    <div class="-reply">
+        <p class="-reply-info">
+            <i class="icon-user"></i>
+            <span>
+                <a href="/user/${reply.userID!'0'}" target="_blank">${reply.user.username!}</a>
+            </span>
+            <i class="icon-time"></i><span>${printTime(reply.createTime)}</span>
+            <i class="icon-hand-left"></i>
+            @ if(session.user != null){
+                <span><a href="javascript:;" data="${reply.user.username!}" onclick="replyThisUser(this)">回复</a></span>
+            @ }
+            @ if(session.isAdminLogin!'' == 'true'){
+                <i class="icon-trash"></i>
+                <span><a href="javascript:;" data="/reply/delete/${postID}-${reply.id}" onclick="deleteReply(this)">删除</a></span>
+            @ }
+        </p>
+        <p class="-reply-content">${reply.content}</p>
+    </div>
+    <div class="-reply-user-form" data="0"></div>
+@ }
+<p class="-reply-paginate">
+    @ if(replyPage.pageNumber > 1){
+    <a data="/reply/${postID}-${ replyPage.pageNumber! - 1 }" href="javascript:;" class="btn btn-mini btn-success" onclick="replyPaginate(this)">上一页</a>
+    @ }
+    @ if(replyPage.pageNumber < replyPage.totalPage){
+    <a data="/reply/${postID}-${ replyPage.pageNumber! + 1 }" href="javascript:;" class="btn btn-mini btn-success" onclick="replyPaginate(this)">下一页</a>
+    @ }
+    @ if(replyPage.totalPage!'0' > 0){
+        <span>&nbsp;&nbsp;共${replyPage.totalPage!}页</span>
+    @ }else{
+        <span>还没有评论，快来抢沙发吧：)</span>
+    @ }
+</p>

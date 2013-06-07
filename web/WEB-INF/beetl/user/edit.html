@@ -1,0 +1,35 @@
+@ layout("/common/_layout.html"){
+<div id="login-box" class="row">
+    <form action="/user/update" method="post">
+        <p class="hide">邮箱或者密码错误 ：（</p>
+        <input type="hidden" name="user.id" value="${user.id!}">
+        <p>
+            <span class="-label">邮箱：</span><input type="text" name="user.email" value="${user.email!}">
+            <span class="-error-msg">${emailMsg!}</span>
+        </p>
+        <p>
+            <span class="-label">昵称：</span><input type="text" name="user.username" value="${user.username!}">
+            <span class="-error-msg">${usernameMsg!}</span>
+        </p>
+        <p>
+            <span class="-label">博客：</span><input type="text" name="user.blogUrl" value="${user.blogUrl!}" class="input-xlarge">
+            <span class="-error-msg">${blogUrlMsg!}</span>
+        </p>
+        <p>
+            <span class="-label">头像：</span><textarea type="text" name="user.headImg" rows="2" class="input-xxlarge">${user.headImg!}</textarea>
+            <span class="-error-msg">${headImgMsg!}</span>
+        </p>
+        <p>
+            <span class="-label">签名：</span><textarea type="text" name="user.feeling" rows="3" class="input-xxlarge">${user.feeling!}</textarea>
+            <span class="-error-msg">${feelingMsg!}</span>
+        </p>
+        <p>
+            <span class="-label">&nbsp;</span><input type="submit" value="更新资料" class="btn btn-success">
+        </p>
+        <p>
+            <span class="-label">&nbsp;</span>
+            <span>基情提示：头像暂时不支持本地图片上传，可以选用的图片源如下：任何人的sina或者qq微博个人中心的头像，百度贴吧发帖用的表情，百度个人中心任何人的头像，等等 ^O^ 。</span>
+        </p>
+    </form>
+</div>
+@ }
