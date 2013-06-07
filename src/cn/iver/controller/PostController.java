@@ -2,7 +2,7 @@ package cn.iver.controller;
 
 import cn.iver.interceptor.AdminInterceptor;
 import cn.iver.interceptor.LoginInterceptor;
-import cn.iver.interceptor.PostValidator;
+import cn.iver.validator.PostValidator;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
@@ -17,8 +17,7 @@ import com.jfinal.plugin.activerecord.Page;
 public class PostController extends Controller {
     public void index(){
         int topicID = getParaToInt(0);
-        int pageNumber = getParaToInt(1, 1);
-        Page<Post> postPage = Post.dao.getPage(topicID, pageNumber);
+        Page<Post> postPage = Post.dao.getPage(topicID, getParaToInt(1, 1));
         setAttr("postPage", postPage);
         setAttr("topic", Topic.dao.get(topicID));
         render("/post/post.html");
@@ -34,7 +33,7 @@ public class PostController extends Controller {
     @Before(AdminInterceptor.class)
     public void edit(){
         setAttr("post", Post.dao.get(getParaToInt(0)));
-        render("/post/editPost.html");
+        render("/post/edit.html");
     }
 
     @Before({AdminInterceptor.class, PostValidator.class})

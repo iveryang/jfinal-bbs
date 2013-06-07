@@ -1,9 +1,9 @@
 package cn.iver.controller;
 
 import cn.iver.common.MyConstants;
-import cn.iver.interceptor.LoginValidator;
-import cn.iver.interceptor.RegistValidator;
-import cn.iver.interceptor.UpdateUserValidator;
+import cn.iver.validator.LoginValidator;
+import cn.iver.validator.RegistValidator;
+import cn.iver.validator.UpdateUserValidator;
 import cn.iver.interceptor.UserCheckInterceptor;
 import cn.iver.model.User;
 import com.jfinal.aop.Before;
@@ -40,6 +40,7 @@ public class UserController extends Controller {
             render("/user/login.html");
         }
     }
+
     public void logout(){
         removeSessionAttr("user");
         removeCookie("email");
@@ -58,7 +59,7 @@ public class UserController extends Controller {
     @Before(UserCheckInterceptor.class)
     public void edit(){
         setAttr("user", User.dao.get(getParaToInt(0, 0)));
-        render("/user/editUser.html");
+        render("/user/edit.html");
     }
 
     @Before(UpdateUserValidator.class)

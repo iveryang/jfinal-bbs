@@ -26,8 +26,3 @@ jdbcUrl = jdbc:mysql://localhost:3306/bbs
 devMode = true
 username = root
 password = go
-
-#view.engine=beetl #使用beetl模版引擎
-view.engine=rythm #使用rythm模版引擎
-rythm.home.template=../rythm #设置rythm引擎的模版根目录
-rythm.i18n.enabled=true #允许国际化。参见http://www.screenr.com/T7NH

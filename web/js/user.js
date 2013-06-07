@@ -26,23 +26,6 @@ function saveReply(v){
     );
     return false;
 }
-function saveReplyForThisUser(v){
-    $.post(
-        "/reply/save",
-        $(v).parent().serialize(),
-        function(data){
-            if(data == "error"){
-                alert("评论不能为空，且不超过200字:(");
-            }else{
-                var form = $(v).closest(".-reply-user-form");
-                form.hide();
-                form.closest(".-post-footer").html(data).hide().fadeIn(2000);
-            }
-        },
-        "html"
-    );
-    return false;
-}
 function replyPaginate(v){
     $.post(
         $(v).attr("data"),

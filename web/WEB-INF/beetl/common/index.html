@@ -25,7 +25,8 @@
         </div>
     @ }
     </div>
-    @ include("/common/_paginate.html", {"currentPage":topicPage.pageNumber,"totalPage":topicPage.totalPage,"actionUrl":actionUrl!}) {}
+    @ include("/common/_paginate.html",
+    @ {"currentPage":topicPage.pageNumber,"totalPage":topicPage.totalPage,"actionUrl":actionUrl!}) {}
 </div>
 @ include("/common/_sidebar.html"){}
 @ }

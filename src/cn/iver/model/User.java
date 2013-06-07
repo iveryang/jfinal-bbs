@@ -20,7 +20,7 @@ public class User extends Model<User> {
 
     /* get */
     public User get(int id) {
-        return mk.getModel(id);
+        return mk.loadModel(id);
     }
     public User getByEmailAndPassword(String email, String password){
         return dao.findFirst("select id, username, email, password from user where email=? and password=?", email, getMD5(password.getBytes()));

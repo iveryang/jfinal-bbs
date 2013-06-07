@@ -20,7 +20,7 @@ public class Post extends Model<Post> {
 
     /* get */
     public Post get(int id){
-        return mk.getModel(id);
+        return mk.loadModel(id);
     }
     public Page<Post> getPage(int topicID, int pageNumber){
         Topic.dao.increaseTopicPV(topicID);

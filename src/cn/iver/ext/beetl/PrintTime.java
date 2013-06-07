@@ -3,7 +3,6 @@ package cn.iver.ext.beetl;
 import com.jfinal.kit.StringKit;
 import org.bee.tl.core.Context;
 import org.bee.tl.core.Function;
-import org.rythmengine.extension.Transformer;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,7 +29,6 @@ public class PrintTime implements Function {
         return getNiceDate(dateString);
     }
 
-    @Transformer
     public static String getNiceDate(Object o) {
         if (null == o) return "";
         String dateString = o.toString();

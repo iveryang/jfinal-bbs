@@ -19,7 +19,7 @@ public class Module extends Model<Module> {
 
     /* get */
     public Module get(int id){
-        return mk.getModel(id);
+        return mk.loadModel(id);
     }
     public List<Module> getList(){
         return dao.findByCache(MODULE_LIST_CACHE, 1, "select * from module order by turn");

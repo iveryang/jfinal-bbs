@@ -2,8 +2,8 @@ package cn.iver.controller;
 
 import cn.iver.interceptor.AdminInterceptor;
 import cn.iver.interceptor.LoginInterceptor;
-import cn.iver.interceptor.PostValidator;
-import cn.iver.interceptor.TopicValidator;
+import cn.iver.validator.PostValidator;
+import cn.iver.validator.TopicValidator;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
@@ -36,7 +36,7 @@ public class TopicController extends Controller {
 
     @Before(LoginInterceptor.class)
     public void add(){
-        render("/topic/addTopic.html");
+        render("/topic/add.html");
     }
 
     @Before({LoginInterceptor.class, TopicValidator.class, PostValidator.class})
@@ -50,7 +50,7 @@ public class TopicController extends Controller {
     public void edit(){
         Topic topic = Topic.dao.get(getParaToInt(0));
         setAttr("topic", topic);
-        render("/topic/editTopic.html");
+        render("/topic/edit.html");
     }
 
     @Before({AdminInterceptor.class, TopicValidator.class})

@@ -25,7 +25,7 @@ public class Topic extends Model<Topic>{
 
     /* get */
     public Topic get(int id){
-        return mk.getModel(id);
+        return mk.loadModel(id);
     }
     public Page<Topic> getPage(int pageNumber){
         Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_INDEX_CACHE, pageNumber,

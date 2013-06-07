@@ -23,7 +23,7 @@ public class Reply extends Model<Reply> {
 
     /* get */
     public Reply get(int id){
-        return mk.getModel(id);
+        return mk.loadModel(id);
     }
     public Page<Reply> getPage(int postID, int pageNumber){
         String cacheName = REPLY_PAGE_CACHE;
