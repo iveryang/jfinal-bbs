@@ -25,4 +25,20 @@ driverClass = com.mysql.jdbc.Driver
 jdbcUrl = jdbc:mysql://localhost:3306/bbs
 devMode = true
 username = root
+<<<<<<< HEAD
 password = go
+=======
+password = aaaaaa
+
+#使用beetl模版引擎
+#view.engine=beetl
+
+#使用rythm模版引擎 
+view.engine=rythm
+
+#设置rythm引擎的模版根目录
+rythm.home.template=../rythm
+
+#允许国际化。参见http://www.screenr.com/T7NH 
+rythm.i18n.enabled=true
+>>>>>>> 3d9376c40e527ba4429a0ad3c798ca41fdfe5908
