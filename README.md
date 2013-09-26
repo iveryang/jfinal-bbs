@@ -1,6 +1,6 @@
-### 采用[JFinal](https://github.com/jfinal/jfinal), [Beetl](http://ibeetl.com)/[Rythm](http://rythmengine.org)开发的一个简单的BBS，她的名字叫“JFinal-BBS” ^O^
+﻿### 采用[JFinal](https://github.com/jfinal/jfinal), [Beetl](http://ibeetl.com)/[Rythm](http://rythmengine.org)开发的一个简单的BBS， ^O^
 
-希望她作为一个JFinal, Beetl和Rythm入门的DEMO，可以帮到新人。
+希望它作为一个JFinal, Beetl和Rythm入门的DEMO，可以帮到新人。
 
 最后，向开源前辈们致敬。
 
@@ -31,7 +31,7 @@ rythm.i18n.enabled=true #允许国际化。参见http://www.screenr.com/T7NH
 
 3.运行MyConfig.java里的main方法即可；
 
-#### 现在JFinal-BBS还有很多地方有待完善，我会不断的完善她。如果有建议：可以到 http://iver.cloudfoundry.com/leaveMsg 给我留言：）
+#### 现在JFinal-BBS还有很多地方有待完善。
 
 ### beta1.1
 修复了几处bug；重构了部分model代码，配合ehcache更省代码，更加方便读取数据；取消了游客的留言权限；增强了后台管理；
