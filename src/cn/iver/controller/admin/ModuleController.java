@@ -14,7 +14,7 @@ import com.jfinal.core.Controller;
 public class ModuleController extends Controller {
 
     public void index(){
-        Module.dao.removeCache();
+        Module.dao.removeAllCache();
         setAttr("moduleList", Module.dao.getList());
         render("/admin/module.html");
     }

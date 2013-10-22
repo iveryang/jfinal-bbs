@@ -11,7 +11,7 @@ public class LoginValidator extends Validator{
     @Override
     protected void validate(Controller c) {
         validateEmail("email", "msg", "错误的邮箱地址");
-        validateString("password", 6, 12, "msg", "密码不能为空(6-12)");
+        validateRequired("password", "msg", "密码不能为空");
     }
 
     @Override

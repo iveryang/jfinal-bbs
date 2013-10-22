@@ -1,5 +1,7 @@
 package cn.iver.interceptor;
 
+import cn.iver.common.Const;
+import cn.iver.model.User;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
@@ -14,8 +16,8 @@ public class AdminInterceptor implements Interceptor {
     @Override
     public void intercept(ActionInvocation ai) {
         Controller controller = ai.getController();
-        String isAdminLogin = controller.getSessionAttr("isAdminLogin");
-        if (StringKit.notBlank(isAdminLogin) && isAdminLogin.equals("true")){
+        User user = controller.getSessionAttr("user");
+        if (Const.ADMIN_EMAIL.equals(user.getStr("email"))){
             ai.invoke();
         }else{
             controller.setAttr("msg", "需要管理员权限");

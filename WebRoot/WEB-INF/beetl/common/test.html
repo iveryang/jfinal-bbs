@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="/ext/kindeditor/themes/default/default.css" />
+    <script src="/ext/kindeditor/kindeditor-min.js"></script>
+    <script src="/ext/kindeditor/lang/zh_CN.js"></script>
+    <script>
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('textarea[name="content"]', {
+                resizeType : 1,
+                allowPreviewEmoticons : false,
+                allowImageUpload : false,
+                items : [
+                    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+            });
+        });
+    </script>
+</head>
+<body>
+<h3>默认模式</h3>
+<form action="/topic/save" method="post">
+    <textarea name="content" style="width:700px;height:200px;visibility:hidden;">KindEditor</textarea>
+    <input type="submit" class="btn btn-info span2" value="发  表">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+@ layout("/admin/_layout.html"){
+<div>
+    <h4>最新回复列表：</h4>
+    @ for(reply in replyPage.list!){
+        <p></p>
+        <div>
+            <span class="span2">${printTime(reply.createTime)}</span>
+            <span class="span2"><a href="/user/${reply.user.id}">${reply.user.username}</a></span>
+            <span class="span8"><a href="/topic/${reply.topic.id}">${reply.topic.content}</a></span><br>
+        </div>
+        <div class="-content">
+            ${reply.content}
+            &nbsp;&nbsp;&nbsp;<a href="/reply/delete/${reply.id}-${replyPage.pageNumber}">删除</a>
+        </div>
+    @ }
+    @ include("/common/_paginate.html",
+    @ {"currentPage":replyPage.pageNumber,"totalPage":replyPage.totalPage,"actionUrl":"/admin/replyList/"}) {}
+</div>
+@ }

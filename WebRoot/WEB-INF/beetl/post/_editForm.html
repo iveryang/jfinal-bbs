@@ -1,0 +1,10 @@
+<div>
+    <input type="hidden" name="post.id" value="${post.id!}"/>
+    <input type="hidden" name="post.topicID" value="${post.topicID!}"/>
+    <div class="row">
+        <span class="span1 -label -inline-block">内容：</span>
+        <div class="-inline-block">
+            @ include("/common/_editer.html", {"textarea_name" : "post.content", "textarea_content" : post.content!}){}
+        </div>
+    </div>
+</div>

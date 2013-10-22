@@ -1,7 +1,6 @@
 package cn.iver.model;
 
-import cn.iver.kit.ModelKit;
-import com.jfinal.plugin.activerecord.Model;
+import cn.iver.ext.jfinal.Model;
 import com.jfinal.plugin.ehcache.CacheKit;
 
 import java.util.List;
@@ -14,19 +13,22 @@ import java.util.List;
 public class Module extends Model<Module> {
     public static final Module dao = new Module();
     private static final String MODULE_CACHE = "module";
-    private static final ModelKit mk = new ModelKit(dao, MODULE_CACHE);
     private static final String MODULE_LIST_CACHE = "moduleList";
+
+    public Module() {
+        super(MODULE_CACHE);
+    }
 
     /* get */
     public Module get(int id){
-        return mk.loadModel(id);
+        return loadModel(id);
     }
     public List<Module> getList(){
         return dao.findByCache(MODULE_LIST_CACHE, 1, "select * from module order by turn");
     }
 
-    /* TO DO */
-    public void removeCache(){
+    /* cache */
+    public void removeAllCache(){
         CacheKit.removeAll(MODULE_CACHE);
         CacheKit.removeAll(MODULE_LIST_CACHE);
     }

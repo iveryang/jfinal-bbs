@@ -2,6 +2,8 @@ package cn.iver.kit;
 
 import com.jfinal.kit.StringKit;
 import com.jfinal.plugin.activerecord.Model;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,8 +28,22 @@ public class HtmlTagKit {
     public static void processHtmlSpecialTag(Model model, String... attrNames){
         for (String attrName : attrNames) {
             String content = model.getStr(attrName);
+            model.set(attrName, processHtmlSpecialTag(content));
+        }
+    }
+
+    public static String processHtmlSpecialTag(String content){
+        if(StringKit.notBlank(content)){
+            return content.trim().replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+        }
+        return null;
+    }
+
+    public static void processHtmlXSSTag(Model model, String... attrNames){
+        for (String attrName : attrNames) {
+            String content = model.getStr(attrName);
             if(StringKit.notBlank(content)){
-                String temp = content.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+                String temp = Jsoup.clean(content, Whitelist.basicWithImages().addTags("embed"));
                 model.set(attrName, temp);
             }
         }

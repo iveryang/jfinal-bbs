@@ -6,7 +6,7 @@ import cn.iver.validator.PostValidator;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
-import com.jfinal.core.Controller;
+import cn.iver.ext.jfinal.Controller;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
@@ -26,7 +26,7 @@ public class PostController extends Controller {
     @Before({LoginInterceptor.class, PostValidator.class})
     public void save(){
         Post post = getModel(Post.class);
-        post.mySave();
+        post.set("userID", getSessionAttr("userID")).mySave();
         redirect("/post/" + post.getInt("topicID"));
     }
 
@@ -36,10 +36,15 @@ public class PostController extends Controller {
         render("/post/edit.html");
     }
 
+    @Before(AdminInterceptor.class)
+    public void delete(){
+        Post.dao.deleteByID(getParaToInt(0));
+        forwardAction("/admin/postList/" + getParaToInt(1));
+    }
+
     @Before({AdminInterceptor.class, PostValidator.class})
     public void update(){
-        Post post = getModel(Post.class);
-        post.myUpdate();
-        redirect("/post/" + post.getInt("topicID"));
+        getModel(Post.class, "id", "content", "topicID").myUpdate();
+        redirect("/post/" + getParaToInt("post.id"));
     }
 }

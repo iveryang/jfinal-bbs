@@ -1,0 +1,16 @@
+<div>
+    <div class="row">
+        <span class="span1 -label">标题：</span>
+        <input type="text" name="topic.content" class="span7">
+        <span class="-error-msg">${contentMsg!}</span>
+    </div>
+    <div class="row">
+        <span class="span1 -label">类别：</span><select name="topic.moduleID">
+        @ for(vv in moduleList!){
+            <option value="${vv.id}" ${isSame(vv.id!, topic.moduleID!, "selected='selected'")}>
+                ${vv.name!}
+            </option>
+        @ }
+    </select>
+    </div>
+</div>

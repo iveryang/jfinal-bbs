@@ -1,0 +1,53 @@
+@ 	if (totalPage <= 0 || currentPage > totalPage) return;
+@ 	var startPage = currentPage - 4;
+@ 	if(startPage < 1){
+@ 		startPage = 1;
+@ 	}
+@ 	var endPage = currentPage + 4;
+@ 	if(endPage > totalPage){
+@ 		endPage = totalPage;
+@ 	}
+
+	<div class="pagination">
+        <ul>
+		@ 	if(currentPage <= 8){
+        @ 	    startPage = 1;
+        @ 	}
+        @ 	if(totalPage - currentPage<8){
+        @ 		endPage = totalPage;
+        @ 	}
+        @ 	if(currentPage == 1){
+        	    <li><span>上页</span></li>
+        @ 	}else{
+			    <li><a href="${actionUrl}${currentPage - 1}${urlParas!}">上页</a></li>
+		@	}
+
+        @	if(currentPage > 8){
+                <li><a href="${actionUrl}1${urlParas!}">1</a></li>
+                <li><a href="${actionUrl}2${urlParas!}">2</a></li>
+				<li><span>...</span></li>
+        @	}
+
+        @ 	var index = startPage;
+        @ 	while(index <= endPage){
+            @ 	if(currentPage == index){
+                <li><span>${index}</span></li>
+            @ 	}else{
+                <li><a href="${actionUrl+index}${urlParas!}">${index}</a></li>
+            @ 	}
+        @ 	index= index+1;
+        @ 	}
+
+        @	if((totalPage - currentPage) >= 8){
+				<li><span>…</span></li>
+				<li><a href="${actionUrl}${totalPage - 1}${urlParas!}">${totalPage - 1}</a></li>
+				<li><a href="${actionUrl}${totalPage}${urlParas!}">${totalPage}</a></li>
+        @	}
+
+        @	if(currentPage == totalPage){
+				<li><span>下页</span></li>
+        @	}else{
+				<li><a href="${actionUrl}${currentPage + 1}${urlParas!}" rel="next">下页</a></li>
+        @	}
+        </ul>
+	</div>

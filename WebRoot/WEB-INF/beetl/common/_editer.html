@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/ext/kindeditor/themes/default/default.css" />
+<script src="/ext/kindeditor/kindeditor-min.js"></script>
+<script src="/ext/kindeditor/lang/zh_CN.js"></script>
+<style type="text/css">
+    .kind_content{width:600px;height:200px;visibility:hidden;}
+</style>
+<script>
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea[class="kind_content"]', {
+            pasteType : 1,
+            resizeType : 1,
+            allowImageUpload : false,
+            items : [
+                'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+        });
+    });
+</script>
+<textarea class="kind_content" name="${textarea_name!}">${textarea_content!}</textarea>

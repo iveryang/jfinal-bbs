@@ -1,8 +1,8 @@
 package cn.iver.model;
 
+import cn.iver.common.Const;
 import cn.iver.kit.HtmlTagKit;
-import cn.iver.kit.ModelKit;
-import com.jfinal.plugin.activerecord.Model;
+import cn.iver.ext.jfinal.Model;
 import com.jfinal.plugin.ehcache.CacheKit;
 
 import java.security.NoSuchAlgorithmException;
@@ -16,14 +16,17 @@ import java.util.Date;
 public class User extends Model<User> {
     public static final User dao = new User();
     private static final String USER_CACHE = "user";
-    private static final ModelKit mk = new ModelKit(dao, USER_CACHE);
+
+    public User() {
+        super(USER_CACHE);
+    }
 
     /* get */
     public User get(int id) {
-        return mk.loadModel(id);
+        return loadModel(id);
     }
     public User getByEmailAndPassword(String email, String password){
-        return dao.findFirst("select id, username, email, password from user where email=? and password=?", email, getMD5(password.getBytes()));
+        return dao.findFirst("select id, username, email, password from user where email=? and password=?", email, password);
     }
 
     /* other */
@@ -36,7 +39,7 @@ public class User extends Model<User> {
     public void myUpdate() {
         HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");
         this.update();
-        removeCache(this.getInt("id"));
+        removeThisCache(this.getInt("id"));
     }
     public boolean containEmail(String email) {
         return dao.findFirst("select email from user where email=? limit 1", email) != null;
@@ -51,6 +54,11 @@ public class User extends Model<User> {
         return dao.findFirst("select username from user where username=? and id!=? limit 1", username, userID) != null;
     }
 
+    /* getter */
+    public boolean getIsAdmin(String email) {
+        return Const.ADMIN_EMAIL.equals(email);
+    }
+
     /* private */
     private String getMD5(byte[] src){
         StringBuffer sb=new StringBuffer();
@@ -62,7 +70,9 @@ public class User extends Model<User> {
         } catch (NoSuchAlgorithmException e) {}
         return sb.toString();
     }
-    private void removeCache(int id){
+
+    /* cache */
+    private void removeThisCache(int id){
         CacheKit.remove(USER_CACHE, id);
     }
 }

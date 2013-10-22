@@ -1,13 +1,13 @@
 package cn.iver.model;
 
-import cn.iver.common.MyConstants;
+import cn.iver.common.Const;
 import cn.iver.kit.HtmlTagKit;
-import cn.iver.kit.ModelKit;
-import com.jfinal.plugin.activerecord.Model;
+import cn.iver.ext.jfinal.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,41 +17,52 @@ import java.util.Date;
 public class Topic extends Model<Topic>{
     public static final Topic dao = new Topic();
     private static final String TOPIC_CACHE = "topic";
-    private static final ModelKit mk = new ModelKit(dao, TOPIC_CACHE);
     private static final String TOPIC_PAGE_FOR_INDEX_CACHE = "topicPageForIndex";
     private static final String TOPIC_PAGE_FOR_MODULE_CACHE = "topicPageForModule";
     private static final String HOT_TOPIC_PAGE_CACHE = "hotTopicPage";
     private static final String NICE_TOPIC_PAGE_CACHE = "niceTopicPage";
+    private static final String TOPIC_PAGE_FOR_ADMIN_CACHE = "topicPageForAdmin";
 
+    public Topic(){
+        super(TOPIC_CACHE);
+    }
+    
     /* get */
     public Topic get(int id){
-        return mk.loadModel(id);
+        return loadModel(id);
     }
     public Page<Topic> getPage(int pageNumber){
         Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_INDEX_CACHE, pageNumber,
-                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+                pageNumber, Const.TOPIC_PAGE_SIZE,
                 "select id", "from topic order by createTime desc");
-        return mk.loadModelPage(topicPage);
+        return loadModelPage(topicPage);
     }
     public Page<Topic> getPageForModule(int moduleID, int pageNumber){
         Page<Topic> topicPage = dao.paginateByCache(TOPIC_PAGE_FOR_MODULE_CACHE, moduleID + "-" + pageNumber,
-                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+                pageNumber, Const.TOPIC_PAGE_SIZE,
                 "select id", "from topic where moduleID=? order by createTime desc", moduleID);
-        return mk.loadModelPage(topicPage);
+        return loadModelPage(topicPage);
     }
     public Page<Topic> getHotPage(int pageNumber){
         String cacheName = HOT_TOPIC_PAGE_CACHE;
         Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber,
-                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+                pageNumber, Const.TOPIC_PAGE_SIZE,
                 "select id", "from topic order by pv desc");
-        return mk.loadModelPage(topicPage);
+        return loadModelPage(topicPage);
     }
     public Page<Topic> getNicePage(int pageNumber){
         String cacheName = NICE_TOPIC_PAGE_CACHE;
         Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber,
-                pageNumber, MyConstants.TOPIC_PAGE_SIZE,
+                pageNumber, Const.TOPIC_PAGE_SIZE,
                 "select id", "from topic where isNice=true order by createTime desc");
-        return mk.loadModelPage(topicPage);
+        return loadModelPage(topicPage);
+    }
+    public Page<Topic> getPageForAdmin(Integer pageNumber) {
+        String cacheName = TOPIC_PAGE_FOR_ADMIN_CACHE;
+        Page<Topic> topicPage = dao.paginateByCache(cacheName, pageNumber,
+                pageNumber, Const.PAGE_SIZE_FOR_ADMIN,
+                "select id", "from topic order by createTime desc");
+        return loadModelPage(topicPage);
     }
 
     /* other */
@@ -71,16 +82,22 @@ public class Topic extends Model<Topic>{
     public void myUpdate(){
         HtmlTagKit.processHtmlSpecialTag(this, "content");
         this.update();
-        this.removeThisTopicCache();
-        removeAllTopicPageCache();
+        removeThisCache();
+        removeAllPageCache();
     }
-    public void mySave(Post post){
+    public void save(Post post){
         HtmlTagKit.processHtmlSpecialTag(this, "content");
         this.set("createTime", new Date());
         this.save();
         post.set("topicID", this.getInt("id")).set("createTime", new Date());
         post.save();
-        removeAllTopicPageCache();
+        removeAllPageCache();
+    }
+    public void deleteByID(int topicID){
+        dao.deleteById(topicID);
+        dao.removeAllPageCache();
+        Post.dao.removeAllPageCache();
+        Reply.dao.removeAllPageCache();
     }
 
     /* getter */
@@ -91,17 +108,21 @@ public class Topic extends Model<Topic>{
         return Module.dao.get(this.getInt("moduleID"));
     }
 
-    /* private */
-    private void removeThisTopicCache() {
+    /* cache */
+    public void removeThisCache() {
         CacheKit.remove(TOPIC_CACHE, this.getInt("id"));
     }
-    private void removeAllTopicPageCache() {
+    public void removeAllPageCache() {
         CacheKit.removeAll(TOPIC_PAGE_FOR_INDEX_CACHE);
         CacheKit.removeAll(TOPIC_PAGE_FOR_MODULE_CACHE);
         CacheKit.removeAll(HOT_TOPIC_PAGE_CACHE);
         CacheKit.removeAll(NICE_TOPIC_PAGE_CACHE);
+        CacheKit.removeAll(TOPIC_PAGE_FOR_ADMIN_CACHE);
     }
+
+    /* private */
     private void increaseTopicAttrInCache(int topicID, String attr) {
         CacheKit.put(TOPIC_CACHE, topicID, get(topicID).set(attr, get(topicID).getInt(attr) + 1));
     }
+
 }

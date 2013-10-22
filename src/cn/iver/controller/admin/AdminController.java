@@ -15,21 +15,17 @@ import com.jfinal.core.Controller;
 @Before(AdminInterceptor.class)
 public class AdminController extends Controller {
     public void index(){
-        render("/admin/login.html");
+        redirect("/admin/topicList");
     }
-//    public void deleteTopic(){
-//        Topic.dao.deleteByID(getParaToInt());
-//        forwardAction("/");
-//    }
-    public void editTopic(){
-        setAttr("topic", Topic.dao.get(getParaToInt()));
-        render("/admin/editTopic.html");
+    public void topicList(){
+        setAttr("topicPage", Topic.dao.getPageForAdmin(getParaToInt(0, 1)));
+        render("/admin/topicList.html");
     }
-    public void showPostList(){
+    public void postList(){
         setAttr("postPage", Post.dao.getPageForAdmin(getParaToInt(0, 1)));
         render("/admin/postList.html");
     }
-    public void showReplyList(){
+    public void replyList(){
         setAttr("replyPage", Reply.dao.getPageForAdmin(getParaToInt(0, 1)));
         render("/admin/replyList.html");
     }

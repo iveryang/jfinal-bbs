@@ -23,4 +23,7 @@ public class IndexController extends Controller {
     public void toLogin(){
         render("/user/login.html");
     }
+    public void test(){
+        render("/common/test.html");
+    }
 }

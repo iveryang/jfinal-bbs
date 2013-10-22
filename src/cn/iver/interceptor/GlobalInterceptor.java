@@ -1,6 +1,7 @@
 package cn.iver.interceptor;
 
-import cn.iver.common.MyConstants;
+import cn.iver.common.Const;
+import cn.iver.kit.ToolKit;
 import cn.iver.model.Module;
 import cn.iver.model.User;
 import com.jfinal.aop.Interceptor;
@@ -17,19 +18,27 @@ public class GlobalInterceptor implements Interceptor {
     @Override
     public void intercept(ActionInvocation ai) {
         Controller controller = ai.getController();
+
         controller.setAttr("moduleList", Module.dao.getList());
-        String email = controller.getCookie("email");
-        String password = controller.getCookie("password");
-        if(controller.getSessionAttr("user") == null && StringKit.notBlank(email, password)){
-            User user = User.dao.getByEmailAndPassword(email, password);
-            if(user != null){
-                controller.getSession().setMaxInactiveInterval(3600);
-                controller.setSessionAttr("user", user);
-                if(email.equals(MyConstants.ADMIN_EMAIL)){
-                    controller.setSessionAttr("isAdminLogin", "true");
+        // validate user info from bbs_id
+        if(controller.getSessionAttr("user") == null && StringKit.notBlank(controller.getCookie("bbsID"))){
+            String bbsID = controller.getCookie("bbsID");
+            if(StringKit.notBlank(bbsID)){
+                String[] userAndEmail = bbsID.split(Const.BBS_ID_SEPARATOR);
+                User user = null;
+                if(userAndEmail != null && userAndEmail.length == 2){
+                    user = User.dao.getByEmailAndPassword(userAndEmail[0], userAndEmail[1]);
+                }
+                if(user != null){
+                    controller.getSession().setMaxInactiveInterval(1800);
+                    controller.setSessionAttr("user", user);
+                    controller.setSessionAttr("userID", user.get("id"));
+                }else{
+                    ai.getController().removeCookie("bbsID");
                 }
             }
         }
         ai.invoke();
+        controller.setAttr("v", Const.TIMESTAMP);
     }
 }

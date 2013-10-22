@@ -1,0 +1,20 @@
+@ layout("/admin/_layout.html"){
+<div>
+    <h4>最新话题列表：</h4>
+    @ for(topic in topicPage.list!){
+        <p></p>
+        <div>
+            <span class="span2">${printTime(topic.createTime)}</span>
+            <span class="span2"><a href="/user/${topic.user.id}">${topic.user.username}</a></span>
+            <span class="span8"><a href="/topic/${topic.id}">${topic.content}</a></span><br>
+        </div>
+        <div class="-content">
+            ${topic.content}
+            &nbsp;&nbsp;&nbsp;<a href="/topic/edit/${topic.id}">编辑</a>
+            &nbsp;&nbsp;&nbsp;<a href="/topic/delete/${topic.id}-${topicPage.pageNumber}">删除</a>
+        </div>
+    @ }
+    @ include("/common/_paginate.html",
+    @ {"currentPage":topicPage.pageNumber,"totalPage":topicPage.totalPage,"actionUrl":"/admin/topicList/"}) {}
+</div>
+@ }

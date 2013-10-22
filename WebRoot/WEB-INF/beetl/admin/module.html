@@ -1,0 +1,27 @@
+@ layout("/admin/_layout.html"){
+    <div>
+        <table class="table table-hover -module-list">
+            <tr><th>主模块</th></tr>
+            <tr><th>名称</th><th>简要描述</th><th>操作</th></tr>
+            @ for(vv in moduleList!){
+                <tr><td>${vv.name}</td><td>${vv.detail}</td>
+                    <td class="span2">
+                        <a href="/admin/module/edit/${vv.id}" class="icon-edit" title="编辑"></a>
+                        <a href="/admin/module/delete/${vv.id}" class="icon-trash" title="删除" onclick="return confirm('确定删除？')"></a>
+                    </td>
+                </tr>
+            @ }
+        </table>
+        @ if(exist("module")){
+            <form action="/admin/module/update" method="post" class="-module-form">
+                <h4>修改</h4>
+                @ include("/admin/parts/_moduleForm.html"){}
+            </form>
+        @ }else{
+            <form action="/admin/module/save" method="post" class="-module-form">
+                <h4>新建</h4>
+                @ include("/admin/parts/_moduleForm.html"){}
+            </form>
+        @ }
+    </div>
+@ }

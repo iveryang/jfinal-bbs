@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false" monitoring="autodetect" dynamicConfig="false">
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+           maxElementsInMemory="3600"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <!-- module -->
+    <cache name="module"
+           maxElementsInMemory="30"
+           eternal="true"
+           overflowToDisk="false" />
+
+    <cache name="moduleList"
+           maxElementsInMemory="1"
+           eternal="true"
+           overflowToDisk="false" />
+
+    <!-- topic -->
+    <cache name="topic"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <cache name="topicPageForIndex"
+           maxElementsInMemory="300"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <cache name="topicPageForModule"
+           maxElementsInMemory="300"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <cache name="hotTopicPage"
+           maxElementsInMemory="300"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <cache name="niceTopicPage"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+
+    <!-- post -->
+    <cache name="post"
+           maxElementsInMemory="3000"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <cache name="postPage"
+           maxElementsInMemory="800"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <!-- reply -->
+    <cache name="reply"
+           maxElementsInMemory="3000"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <cache name="replyPage"
+           maxElementsInMemory="800"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+
+    <!-- user -->
+    <cache name="user"
+           maxElementsInMemory="108"
+           eternal="false"
+           timeToIdleSeconds="10800"
+           timeToLiveSeconds="10800"
+           overflowToDisk="false" />
+</ehcache>

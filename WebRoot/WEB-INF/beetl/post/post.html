@@ -1,0 +1,59 @@
+@ layout("/common/_layout.html"){
+    <div class="pull-left -main">
+        <div>
+            <h4>
+                <span class="muted">话题：</span><a href="/topic/${topic.id!}">${topic.content!}</a>
+            </h4>
+        </div>
+        @ for(post in postPage.list!){
+            <div class="-post -main-border">
+                <div class="muted -post-header">
+                    <div class="-post-header-top">
+                        <span>${ ((postPage.pageNumber - 1) * postPage.pageSize) + post_index + 1 } 楼 </span><br>
+                        <span class="-post-header-date">${printTime(post.createTime)}</span>
+                    </div>
+                    <div class="-post-header-bottom">
+                        <a href="/user/${post.userID!}" title="${post.user.username!}" target="_blank">
+                            <img width="50px" height="50px" src="${post.user.headImg!}">
+                        </a>
+                    </div>
+                </div>
+                <div class="-post-main">
+                    <div class="-post-content">${post.content}</div>
+                </div>
+                <div class="-post-footer">
+                    <div class="-reply-list">
+                        @ if(post.replyPage != null){
+                            @ include("/reply/_reply.html", {"replyPage":post.replyPage, "postID":post.id}){}
+                        @ }
+                    </div>
+                    <div class="-reply-form">
+                        <form action="/" method="post">
+                            <input type="hidden" name="reply.postID" value="${post.id!}"/>
+                            <input type="hidden" name="reply.topicID" value="${topic.id!}"/>
+                            <textarea name="reply.content" cols="72" rows="2"></textarea>
+                            <input type="submit" value="回复" class="btn btn-danger -reply-submit" onclick="return saveReply(this)">
+                            <span class="muted">&nbsp;&nbsp;&nbsp;不超过200字</span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @ }
+        <div>
+            @ include("/common/_paginate.html", {"currentPage":postPage.pageNumber,"totalPage":postPage.totalPage,"actionUrl":"/post/" + topic.id! + "-"}) {}
+            <div>
+                <form action="/post/save" method="post">
+                    <p>回复内容：</p>
+                    @ include("/common/_editer.html", {"textarea_name" : "post.content"}){}
+                    <input type="hidden" name="post.topicID" value="${topic.id!}"/>
+                    <br>
+                    <input type="submit" class="btn btn-info" value="回复" title="一起摇滚吧！">
+                    @ if(session.user == null){
+                        <span><a href="/user/login">登录</a>之后才可以回复哦：）</span>
+                    @}
+                </form>
+            </div>
+        </div>
+    </div>
+@ include("/common/_sidebar.html"){}
+@ }

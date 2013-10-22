@@ -7,7 +7,7 @@ import cn.iver.validator.TopicValidator;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
-import com.jfinal.core.Controller;
+import cn.iver.ext.jfinal.Controller;
 
 /**
  * Created with IntelliJ IDEA.
@@ -42,7 +42,10 @@ public class TopicController extends Controller {
     @Before({LoginInterceptor.class, TopicValidator.class, PostValidator.class})
     public void save(){
         Topic topic = getModel(Topic.class);
-        topic.mySave(getModel(Post.class));
+        topic.set("userID", getSessionAttr("userID")).set("topicID", null);
+        Post post = getModel(Post.class);
+        post.set("userID", getSessionAttr("userID"));
+        topic.save(post);
         redirect("/post/" + topic.getInt("id"));
     }
 
@@ -55,8 +58,13 @@ public class TopicController extends Controller {
 
     @Before({AdminInterceptor.class, TopicValidator.class})
     public void update(){
-        Topic topic = getModel(Topic.class);
-        topic.myUpdate();
-        redirect("/post/" + topic.getInt("id"));
+        getModel(Topic.class, "id", "content", "moduleID").myUpdate();
+        redirect("/post/" + getParaToInt("topic.id"));
+    }
+
+    @Before(AdminInterceptor.class)
+    public void delete(){
+        Topic.dao.deleteByID(getParaToInt(0));
+        forwardAction("/admin/topicList/" + getParaToInt(1));
     }
 }

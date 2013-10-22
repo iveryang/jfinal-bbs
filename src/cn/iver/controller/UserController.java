@@ -1,11 +1,11 @@
 package cn.iver.controller;
 
-import cn.iver.common.MyConstants;
+import cn.iver.common.Const;
+import cn.iver.interceptor.UserCheckInterceptor;
+import cn.iver.model.User;
 import cn.iver.validator.LoginValidator;
 import cn.iver.validator.RegistValidator;
 import cn.iver.validator.UpdateUserValidator;
-import cn.iver.interceptor.UserCheckInterceptor;
-import cn.iver.model.User;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 
@@ -26,14 +26,9 @@ public class UserController extends Controller {
         String password = getPara("password");
         User user = User.dao.getByEmailAndPassword(email, password);
         if (user != null){
-            setCookie("email", email, 3600*24*30);
-            if (getParaToBoolean("rememberPassword")){
-                setCookie("password", password, 3600*24*30);
-            }
+            String bbsID = email + Const.BBS_ID_SEPARATOR + password;
+            setCookie("bbsID", bbsID, 3600*24*30);
             setSessionAttr("user", user);
-            if(email.equals(MyConstants.ADMIN_EMAIL)){
-                setSessionAttr("isAdminLogin", "true");
-            }
             redirect("/");
         }else{
             setAttr("msg", "用户名或密码错误");
@@ -43,8 +38,7 @@ public class UserController extends Controller {
 
     public void logout(){
         removeSessionAttr("user");
-        removeCookie("email");
-        removeCookie("password");
+        removeCookie("bbsID");
         redirect("/");
     }
 

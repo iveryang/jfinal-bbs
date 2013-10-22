@@ -1,0 +1,63 @@
+::selection{ background: #FA8072; color: #000000; }
+/* 对已经存在的bootstrap css属性进行覆盖 */
+.container{ margin-top: 55px; width: 940px; border-bottom: 2px solid gray; }
+/* 通用的css属性 */
+.-main-border{ border: 1px solid #ddd; border-radius: 15px; margin-bottom: 15px; }
+.-clear{ clear: both; }
+.-inline-block{ display: inline-block; }
+.-error-msg{ color: red; }
+.-label{ height: 30px; line-height: 30px; margin-left: 0; }
+.-border{ border: 1px solid #eee; }
+/* 自定义的css属性 */
+/* ====================== navBar ====================== */
+.-navbar{ position: fixed; z-index: 1; margin: 0 auto; background-color: #50b7dc; color: #ffffff; top: 0;
+    height: 45px; left: 0; right: 0; }
+.-navbar-inner{ width: 940px; margin: 0 auto; }
+.-nav{ margin: 0; }
+.-nav a{ color: #ffffff; }
+.-nav a:hover{ text-decoration: none; }
+.-nav>li{ list-style: none; font-size: 18px; min-width: 30px; }
+.-nav a:hover{ font-weight: bold; background-color: #2aa4cf; }
+.-nav a{ font-weight: bold; padding: 0 20px; line-height: 45px; display: block;}
+/* ====================== main ====================== */
+.-main{ margin: 0; width: 650px; min-height: 300px; }
+/* topic */
+.-topic{ width: 100%; height: 60px; margin-top: 10px; border-bottom: 5px solid #eee; }
+.-topic-left{ height: 60px; width: 60px; overflow: hidden; }
+.-topic-main{ height: 60px; width: 500px; }
+.-topic-main a{ margin: 8px 18px; line-height: 30px; font-size: 18px; }
+.-topic-content{ height: 30px; overflow: hidden; }
+.-topic-info{ margin-top: 6px; }
+.-topic-info span{ font-size: 13px; margin-left: 20px; }
+.-topic-info a{ font-size: 12px; line-height: 13px; margin: 0 10px 0 10px; }
+.-topic-right{ margin: 5px 10px 0 0; }
+/* post */
+.-post-header{margin-left: -80px; margin-top: 15px; width: 80px; color: #fff; text-align: right; margin-bottom: 0; overflow: hidden; }
+.-post-header-top{ background: url(/img/bg_postdate.png) no-repeat; height: 48px; margin-bottom: 10px; }
+.-post-header-bottom{ width:50px; height: 50px; overflow: hidden; margin-left: 30px;}
+.-post-header-date{ font-size: 12px; margin-top: 10px; display: block; }
+.-post-main{ padding: 15px 36px; margin-top: -100px; }
+.-post-content p{ text-indent: 2em; line-height: 1.8em; font-size: 16px; }
+.-reply-submit{ margin-left: 15px; }
+.-post-footer{ background: #f7f7f7; border-top: 1px solid #eee; padding: 10px 40px 10px 40px; border-radius: 0 0 15px 15px;
+    font-size: 12px; }
+.-reply-info i{ margin-right: 10px; }
+.-reply-info span{ margin-right: 30px; }
+.-reply-form{ margin-left: 80px; }
+.-reply-content{ text-indent: 2em; border-bottom: 1px solid rgb(133, 197, 230); }
+.-reply-paginate{ margin-left: 400px; }
+/* ====================== sidebar ====================== */
+.-sidebar{ margin: 0 0 0 15px; width: 270px; }
+.-sidebar>div{ padding: 0 10px; }
+.-share{ height: 50px; }
+.-logo img{ display: block; width: 192; height: 90px; margin: 10px auto; }
+.-desc{ text-indent: 2em; }
+.-regist-or-login p{ margin: 10px 0; text-align: center; }
+.-module{ display: block; font-size: 16px; font-weight: bold; margin: 5px 10px; }
+.-module a{ display: block; }
+/* ====================== regist ====================== */
+.-label{ width: 80px; display: inline-block; font-size: 16px; text-align: right; }
+/* ====================== user-info ====================== */
+.-user{ padding: 10 60px; }
+.-user-info p{ width: 600px; }
+.-self-introduce{ padding: 0 100px; }
