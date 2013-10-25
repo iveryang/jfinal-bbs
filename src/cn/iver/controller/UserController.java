@@ -29,6 +29,7 @@ public class UserController extends Controller {
             String bbsID = email + Const.BBS_ID_SEPARATOR + password;
             setCookie("bbsID", bbsID, 3600*24*30);
             setSessionAttr("user", user);
+            setSessionAttr("userID", user.get("id"));
             redirect("/");
         }else{
             setAttr("msg", "用户名或密码错误");
@@ -38,6 +39,7 @@ public class UserController extends Controller {
 
     public void logout(){
         removeSessionAttr("user");
+        removeSessionAttr("userID");
         removeCookie("bbsID");
         redirect("/");
     }
