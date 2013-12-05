@@ -42,7 +42,7 @@ public class TopicController extends Controller {
     @Before({LoginInterceptor.class, TopicValidator.class, PostValidator.class})
     public void save(){
         Topic topic = getModel(Topic.class);
-        topic.set("userID", getSessionAttr("userID")).set("topicID", null);
+        topic.set("userID", getSessionAttr("userID"));
         Post post = getModel(Post.class);
         post.set("userID", getSessionAttr("userID"));
         topic.save(post);
