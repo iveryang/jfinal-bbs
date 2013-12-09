@@ -23,19 +23,18 @@ public class ModelKit {
         this.dao = dao;
         this.cacheNameForOneModel = cacheNameForOneModel;
     }
-    public <M> Page<M> loadModelPage(Page<M> page) {
+    public <M extends Model> Page<M> loadModelPage(Page<M> page) {
         List<M> modelList = page.getList();
         for(int i = 0; i < modelList.size(); i++){
-            Model model = (Model)modelList.get(i);
-            M topic = loadModel(model.getInt("id"));
-            modelList.set(i, topic);
+            M model = (M)loadModel(modelList.get(i).getInt("id"));
+            modelList.set(i, model);
         }
         return page;
     }
     public <M> M loadModel(int id) {
         final int ID = id;
         final Model DAO = dao;
-        return CacheKit.get(cacheNameForOneModel, ID, new IDataLoader() {
+        return (M)CacheKit.get(cacheNameForOneModel, ID, new IDataLoader() {
             @Override
             public Object load() {
                 return DAO.findById(ID);

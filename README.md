@@ -6,7 +6,7 @@
 
 ### 部署完毕的效果地址是：http://jfinalbbs.duapp.com/ （一个屌丝论坛）
 
-### 运行方法：导入sql，编译整个项目，运行MyConfig.java里的main方法即可；
+### 运行方法：导入sql，编译整个项目，运行Config.java里的main方法即可；
 
 #### 现在JFinal-BBS还有很多地方有待完善。
 

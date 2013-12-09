@@ -30,7 +30,7 @@ public class Model<M extends com.jfinal.plugin.activerecord.Model> extends com.j
 
     public M loadModel(int id) {
         final int ID = id;
-        return CacheKit.get(cacheNameForModel, ID, new IDataLoader() {
+        return (M)CacheKit.get(cacheNameForModel, ID, new IDataLoader() {
             @Override
             public Object load() {
                 return findById(ID);

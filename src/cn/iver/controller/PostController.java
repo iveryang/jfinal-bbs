@@ -44,7 +44,8 @@ public class PostController extends Controller {
 
     @Before({AdminInterceptor.class, PostValidator.class})
     public void update(){
-        getModel(Post.class, "id", "content", "topicID").myUpdate();
-        redirect("/post/" + getParaToInt("post.id"));
+        Post post = getModel(Post.class, "id", "content", "topicID");
+        post.myUpdate();
+        redirect("/topic/" + post.get("topicID"));
     }
 }
