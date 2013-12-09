@@ -12,17 +12,17 @@ public class Const {
     public static int REPLY_PAGE_SIZE = 5;      // 帖子回复分页大小
     public static int PAGE_SIZE_FOR_ADMIN = 30; // 管理员后台（查看帖子，回帖，跟帖）的分页大小
     // others
-    public static String ADMIN_EMAIL = "iveryang@sina.cn";  // 注册一个该email，登陆，即可成为管理员
+    public static String ADMIN_EMAIL = "XXOO@sina.cn";  // 注册一个该email，登陆，即可成为管理员
     public static String BBS_ID_SEPARATOR = "###";
     public static String TIMESTAMP = System.currentTimeMillis() + "";
     // 本地开发环境上 data source 的配置
     public static String DEV_JDBC_URL = "jdbc:mysql://localhost:3306/bbs";
     public static String DEV_USER = "root";
-    public static String DEV_PASSWORD = "go";
+    public static String DEV_PASSWORD = "XXOO";
     // 运行环境上 data source 的配置
-    public static String JDBC_URL = "jdbc:mysql://sqld.duapp.com:4050/swBRItlCGEZWzxEgEUTv";
-    public static String USER = "xYe695srW6xZFDAsrTTHpLcE";
-    public static String PASSWORD = "Hh0caQly4CxA8ZolfvAUZ36BVzLsI9Gq";
+    public static String JDBC_URL = "XXOO";
+    public static String USER = "XXOO";
+    public static String PASSWORD = "XXOO";
     // beetl
     public static String BEETL_ROOT_DIR = "/WEB-INF/beetl";
 
