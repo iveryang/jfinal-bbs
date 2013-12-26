@@ -17,7 +17,7 @@ public class AdminInterceptor implements Interceptor {
     public void intercept(ActionInvocation ai) {
         Controller controller = ai.getController();
         User user = controller.getSessionAttr("user");
-        if (Const.ADMIN_EMAIL.equals(user.getStr("email"))){
+        if (user != null && Const.ADMIN_EMAIL.equals(user.getStr("email"))){
             ai.invoke();
         }else{
             controller.setAttr("msg", "需要管理员权限");
