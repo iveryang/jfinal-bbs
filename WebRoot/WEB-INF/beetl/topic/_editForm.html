@@ -7,9 +7,9 @@
     </div>
     <div class="row">
         <span class="span1 -label">类别：</span><select name="topic.moduleID">
-        @ for(v in moduleList!){
-        <option value="${v.id}" moduleID="${v.id}" ${isSame(v.id!, topic.moduleID!, "selected='selected'")}>
-        ${v.name}
+        @ for(vv in moduleList!){
+        <option value="${vv.id}" moduleID="${vv.id}" ${isSame(vv.id!, topic.moduleID!, "selected='selected'")}>
+        ${vv.name}
         </option>
         @ }
     </select>
