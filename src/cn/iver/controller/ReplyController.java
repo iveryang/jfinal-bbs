@@ -9,8 +9,6 @@ import com.jfinal.core.Controller;
 
 /**
  * Created with IntelliJ IDEA.
- * Author: iver
- * Date: 13-4-2
  */
 public class ReplyController extends Controller {
     public void index(){

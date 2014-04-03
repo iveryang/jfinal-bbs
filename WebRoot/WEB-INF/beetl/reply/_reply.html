@@ -3,7 +3,7 @@
         <p class="-reply-info">
             <i class="icon-user"></i>
             <span>
-                <a href="/user/${reply.userID!'0'}" target="_blank">${reply.user.username!}</a>
+                <a href="${base}/user/${reply.userID!'0'}" target="_blank">${reply.user.username!}</a>
             </span>
             <i class="icon-time"></i><span>${printTime(reply.createTime)}</span>
             <i class="icon-hand-left"></i>
@@ -17,10 +17,10 @@
 @ }
 <p class="-reply-paginate">
     @ if(replyPage.pageNumber > 1){
-    <a data="/reply/${postID}-${ replyPage.pageNumber! - 1 }" href="javascript:;" class="btn btn-mini btn-success" onclick="replyPaginate(this)">上一页</a>
+    <a data="${base}/reply/${postID}-${ replyPage.pageNumber! - 1 }" href="javascript:;" class="btn btn-mini btn-success" onclick="replyPaginate(this)">上一页</a>
     @ }
     @ if(replyPage.pageNumber < replyPage.totalPage){
-    <a data="/reply/${postID}-${ replyPage.pageNumber! + 1 }" href="javascript:;" class="btn btn-mini btn-success" onclick="replyPaginate(this)">下一页</a>
+    <a data="${base}/reply/${postID}-${ replyPage.pageNumber! + 1 }" href="javascript:;" class="btn btn-mini btn-success" onclick="replyPaginate(this)">下一页</a>
     @ }
     @ if(replyPage.totalPage!'0' > 0){
         <span>&nbsp;&nbsp;共${replyPage.totalPage!}页</span>

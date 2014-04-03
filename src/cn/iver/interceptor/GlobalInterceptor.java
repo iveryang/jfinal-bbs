@@ -1,7 +1,6 @@
 package cn.iver.interceptor;
 
 import cn.iver.common.Const;
-import cn.iver.kit.ToolKit;
 import cn.iver.model.Module;
 import cn.iver.model.User;
 import com.jfinal.aop.Interceptor;

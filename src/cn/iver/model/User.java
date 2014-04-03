@@ -1,7 +1,6 @@
 package cn.iver.model;
 
 import cn.iver.common.Const;
-import cn.iver.kit.HtmlTagKit;
 import cn.iver.ext.jfinal.Model;
 import com.jfinal.plugin.ehcache.CacheKit;
 
@@ -31,13 +30,13 @@ public class User extends Model<User> {
 
     /* other */
     public void mySave(){
-        HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");
+        this.filterText("username", "headImg", "blogUrl", "feeling");
         String password = getMD5(this.getStr("password").getBytes());
         this.set("password", password).set("registDate", new Date());
         this.save();
     }
     public void myUpdate() {
-        HtmlTagKit.processHtmlSpecialTag(this, "username", "headImg", "blogUrl", "feeling");
+        this.filterText("username", "headImg", "blogUrl", "feeling");
         this.update();
         removeThisCache(this.getInt("id"));
     }

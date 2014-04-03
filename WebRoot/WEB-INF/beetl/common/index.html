@@ -2,19 +2,19 @@
 <div class="pull-left -main">
     <div class="-border">
     @ for(topic in topicPage.list!){
-        <div class="clearfix -topic" href="/topic/${topic.id}">
+        <div class="clearfix -topic" href="${base}/topic/${topic.id}">
             <div class="pull-left -topic-left">
-                <a href="/user/${topic.userID!}" title="${topic.user.username!}" target="_blank">
+                <a href="${base}/user/${topic.userID!}" title="${topic.user.username!}" target="_blank">
                     <img width="110px" height="110px" src="${topic.user.headImg!}">
                 </a>
             </div>
             <div class="pull-left -topic-main">
                 <div class="-topic-content">
-                    <a href="/topic/${topic.id}" title="${topic.content}" target="_blank">${topic.content}</a>
+                    <a href="${base}/topic/${topic.id}" title="${topic.content}" target="_blank">${topic.content}</a>
                 </div>
                 <div class="-topic-info">
-                    <span><a href="/topic/module/${topic.module.id}" class="btn btn-success" target="_blank" title="话题分类">${topic.module.name}</a></span>
-                    <span><a href="/user/${topic.userID!}" target="_blank" title="作者">${topic.user.username!}</a></span>
+                    <span><a href="${base}/topic/module/${topic.module.id}" class="btn btn-success" target="_blank" title="话题分类">${topic.module.name}</a></span>
+                    <span><a href="${base}/user/${topic.userID!}" target="_blank" title="作者">${topic.user.username!}</a></span>
                     <span>${printTime(topic.createTime)}</span>
                 </div>
             </div>

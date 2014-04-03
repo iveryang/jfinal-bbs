@@ -7,8 +7,6 @@ import com.jfinal.core.Controller;
 
 /**
  * Created with IntelliJ IDEA.
- * Author: iver
- * Date: 13-3-29
  */
 @Before(AdminInterceptor.class)
 public class ModuleController extends Controller {

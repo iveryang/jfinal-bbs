@@ -2,17 +2,15 @@ package cn.iver.controller;
 
 import cn.iver.interceptor.AdminInterceptor;
 import cn.iver.interceptor.LoginInterceptor;
-import cn.iver.validator.PostValidator;
-import cn.iver.validator.TopicValidator;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
+import cn.iver.validator.PostValidator;
+import cn.iver.validator.TopicValidator;
 import com.jfinal.aop.Before;
-import cn.iver.ext.jfinal.Controller;
+import com.jfinal.core.Controller;
 
 /**
  * Created with IntelliJ IDEA.
- * Author: iver
- * Date: 13-3-28
  */
 public class TopicController extends Controller {
     public void index(){
@@ -58,7 +56,7 @@ public class TopicController extends Controller {
 
     @Before({AdminInterceptor.class, TopicValidator.class})
     public void update(){
-        getModel(Topic.class, "id", "content", "moduleID").myUpdate();
+        getModel(Topic.class).myUpdate();
         redirect("/post/" + getParaToInt("topic.id"));
     }
 

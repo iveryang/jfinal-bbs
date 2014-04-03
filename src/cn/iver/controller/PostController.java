@@ -6,13 +6,11 @@ import cn.iver.validator.PostValidator;
 import cn.iver.model.Post;
 import cn.iver.model.Topic;
 import com.jfinal.aop.Before;
-import cn.iver.ext.jfinal.Controller;
+import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
  * Created with IntelliJ IDEA.
- * Author: StevenChow
- * Date: 13-3-30
  */
 public class PostController extends Controller {
     public void index(){
@@ -44,7 +42,7 @@ public class PostController extends Controller {
 
     @Before({AdminInterceptor.class, PostValidator.class})
     public void update(){
-        Post post = getModel(Post.class, "id", "content", "topicID");
+        Post post = getModel(Post.class);
         post.myUpdate();
         redirect("/topic/" + post.get("topicID"));
     }

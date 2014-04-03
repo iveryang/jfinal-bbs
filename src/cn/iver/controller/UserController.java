@@ -11,8 +11,6 @@ import com.jfinal.core.Controller;
 
 /**
  * Created with IntelliJ IDEA.
- * Author: StevenChow
- * Date: 13-5-6
  */
 public class UserController extends Controller {
     public void index(){

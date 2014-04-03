@@ -5,13 +5,13 @@
         <p></p>
         <div>
             <span class="span2">${printTime(post.createTime)}</span>
-            <span class="span2"><a href="/user/${post.user.id}">${post.user.username}</a></span>
-            <span class="span8"><a href="/topic/${post.topic.id}">${post.topic.content}</a></span><br>
+            <span class="span2"><a href="${base}/user/${post.user.id}">${post.user.username}</a></span>
+            <span class="span8"><a href="${base}/topic/${post.topic.id}">${post.topic.content}</a></span><br>
         </div>
         <div class="-content">
             ${post.content}
-            &nbsp;&nbsp;&nbsp;<a href="/post/edit/${post.id}">编辑</a>
-            &nbsp;&nbsp;&nbsp;<a href="/post/delete/${post.id}-${postPage.pageNumber}">删除</a>
+            &nbsp;&nbsp;&nbsp;<a href="${base}/post/edit/${post.id}">编辑</a>
+            &nbsp;&nbsp;&nbsp;<a href="${base}/post/delete/${post.id}-${postPage.pageNumber}">删除</a>
         </div>
     @ }
     @ include("/common/_paginate.html",

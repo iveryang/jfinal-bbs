@@ -1,7 +1,7 @@
 @ layout("/common/_layout.html"){
 <div class="span9">
     @ if(exist("post")){
-    <form action="/post/update" method="post">
+    <form action="${base}/post/update" method="post">
         @ include("/post/_editForm.html"){}
         <input type="submit" class="btn btn-info" value="保存修改">
     </form>

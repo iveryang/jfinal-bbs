@@ -9,8 +9,6 @@ import com.jfinal.core.Controller;
 
 /**
  * Created with IntelliJ IDEA.
- * Author: StevenChow
- * Date: 13-4-4
  */
 @Before(AdminInterceptor.class)
 public class AdminController extends Controller {

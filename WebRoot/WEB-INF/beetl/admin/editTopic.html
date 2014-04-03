@@ -1,6 +1,6 @@
 @ layout("/admin/_layout.html"){
 <div class="span9 _topic_save_edit">
-    <form action="/topic/update" method="post">
+    <form action="${base}/topic/update" method="post">
         <div>
             <input type="hidden" name="topic.id" value="${topic.id!}">
             <div class="row">

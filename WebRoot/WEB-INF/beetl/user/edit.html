@@ -1,6 +1,6 @@
 @ layout("/common/_layout.html"){
 <div id="login-box" class="row">
-    <form action="/user/update" method="post">
+    <form action="${base}/user/update" method="post">
         <p class="hide">邮箱或者密码错误 ：（</p>
         <input type="hidden" name="user.id" value="${user.id!}">
         <p>

@@ -4,7 +4,7 @@
             <p>
                 <span>本社区的第 ${user.id!} 位注册员会</span>
                 @ if(user.id! == session.user.id!){
-                    <a href="/user/edit/${user.id!}" class="btn btn-danger">编辑资料</a>
+                    <a href="${base}/user/edit/${user.id!}" class="btn btn-danger">编辑资料</a>
                 @ }
             </p>
             <p>

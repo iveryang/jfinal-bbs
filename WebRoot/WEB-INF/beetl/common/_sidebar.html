@@ -1,6 +1,6 @@
 <div class="pull-left -sidebar">
     <div class="-logo -border">
-        <p><img src="/img/logo.jpg"></p>
+        <p><img src="${base}/img/logo.jpg"></p>
         <p class="-desc">
             Welcome！：） JFinal-BBS（Beta1.1）是一个开源的java小型BBS系统。采用简单易学、高效快速的 WEB + ORM 框架
             <a href="http://www.oschina.net/p/jfinal" target="_blank">JFinal</a> 开发，视图层的模版引擎选用的是
@@ -10,18 +10,18 @@
     </div>
     <div class="-regist-or-login -border">
         @ if(session.user! == null){
-            <p><a class="btn btn-danger" href="/regist">马上注册</a></p>
-            <p>已注册用户请 <a class="btn btn-info" href="/toLogin">登录</a></p>
+            <p><a class="btn btn-danger" href="${base}/regist">马上注册</a></p>
+            <p>已注册用户请 <a class="btn btn-info" href="${base}/toLogin">登录</a></p>
         @ }else{
-            <p>欢迎： <a href="/user/${session.user.id}" target="_blank">${session.user.username}</a></p>
-            <p><a href="/user/logout">退出</a></p>
+            <p>欢迎： <a href="${base}/user/${session.user.id}" target="_blank">${session.user.username}</a></p>
+            <p><a href="${base}/user/logout">退出</a></p>
         @ }
     </div>
     <div class="-border">
         <h4 class="text-center muted">话题分类：</h4>
         @ for(module in moduleList!){
             <span class="-module">
-                <a href="/topic/module/${module.id}" class="btn btn-info">${module.name}</a>
+                <a href="${base}/topic/module/${module.id}" class="btn btn-info">${module.name}</a>
             </span>
         @ }
     </div>

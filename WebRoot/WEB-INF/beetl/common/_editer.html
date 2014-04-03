@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="/ext/kindeditor/themes/default/default.css" />
-<script src="/ext/kindeditor/kindeditor-min.js"></script>
-<script src="/ext/kindeditor/lang/zh_CN.js"></script>
+<link rel="stylesheet" href="${base}/ext/kindeditor/themes/default/default.css" />
+<script src="${base}/ext/kindeditor/kindeditor-min.js"></script>
+<script src="${base}/ext/kindeditor/lang/zh_CN.js"></script>
 <style type="text/css">
     .kind_content{width:600px;height:200px;visibility:hidden;}
 </style>
@@ -8,7 +8,6 @@
     var editor;
     KindEditor.ready(function(K) {
         editor = K.create('textarea[class="kind_content"]', {
-            pasteType : 1,
             resizeType : 1,
             allowImageUpload : false,
             items : [

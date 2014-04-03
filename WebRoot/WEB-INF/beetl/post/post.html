@@ -2,7 +2,7 @@
     <div class="pull-left -main">
         <div>
             <h4>
-                <span class="muted">话题：</span><a href="/topic/${topic.id!}">${topic.content!}</a>
+                <span class="muted">话题：</span><a href="${base}/topic/${topic.id!}">${topic.content!}</a>
             </h4>
         </div>
         @ for(post in postPage.list!){
@@ -13,7 +13,7 @@
                         <span class="-post-header-date">${printTime(post.createTime)}</span>
                     </div>
                     <div class="-post-header-bottom">
-                        <a href="/user/${post.userID!}" title="${post.user.username!}" target="_blank">
+                        <a href="${base}/user/${post.userID!}" title="${post.user.username!}" target="_blank">
                             <img width="50px" height="50px" src="${post.user.headImg!}">
                         </a>
                     </div>
@@ -32,7 +32,7 @@
                             <input type="hidden" name="reply.postID" value="${post.id!}"/>
                             <input type="hidden" name="reply.topicID" value="${topic.id!}"/>
                             <textarea name="reply.content" cols="72" rows="2"></textarea>
-                            <input type="submit" value="回复" class="btn btn-danger -reply-submit" onclick="return saveReply(this)">
+                            <input type="submit" value="回复" class="btn btn-danger -reply-submit" data="${base}/reply/save" onclick="return saveReply(this)">
                             <span class="muted">&nbsp;&nbsp;&nbsp;不超过200字</span>
                         </form>
                     </div>
@@ -49,7 +49,7 @@
                     <br>
                     <input type="submit" class="btn btn-info" value="回复" title="一起摇滚吧！">
                     @ if(session.user == null){
-                        <span><a href="/user/login">登录</a>之后才可以回复哦：）</span>
+                        <span><a href="${base}/user/login">登录</a>之后才可以回复哦：）</span>
                     @}
                 </form>
             </div>

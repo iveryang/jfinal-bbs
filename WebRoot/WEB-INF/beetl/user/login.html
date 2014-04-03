@@ -1,9 +1,9 @@
 @ layout("/common/_layout.html"){
     <div id="login-box" class="row">
-        <form action="/user/login" method="post">
+        <form action="${base}/user/login" method="post">
             <p>
                 <span class="-label">&nbsp;</span>
-                <span class="-error-msg">${msg!} 还没帐号？点击<a href="/regist">这里</a>注册</span>
+                <span class="-error-msg">${msg!} 还没帐号？点击<a href="${base}/regist">这里</a>注册</span>
             </p>
             <p>
                 <span class="-label">邮箱：</span><input type="text" name="email" placeholder="用邮箱来登录：)">

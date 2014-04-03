@@ -8,14 +8,22 @@ import cn.iver.interceptor.GlobalInterceptor;
 import cn.iver.model.*;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
+import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.dialect.OracleDialect;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 /**
+ * Created with IntelliJ IDEA.
  * 感谢 @波总 的JFinal，@闲.大赋 的beetl，向你们致敬！ ：）
+ * 感谢 mike_liu 和 dream_lu，和众群友支持。
  * 如有问题，可以加 JFinal-BBS QQ群：206034609 讨论
+ * 【4-3日，1.2版本】更新情况：
+ * beetl和的JFinal都升级为最新版；加入了对自定义项目路径的支持；重构了部分代码；
+ * 后续未来计划：
+ * 取消module，用tag取代他；加入七牛存储支持；升级bootstrap版本；界面的改写；
  */
 public class Config extends JFinalConfig {
     private boolean isLocal = isDevMode();
@@ -75,7 +83,9 @@ public class Config extends JFinalConfig {
     /**
      * 配置处理器
      */
-    public void configHandler(Handlers me) { }
+    public void configHandler(Handlers me) {
+        me.add(new ContextPathHandler("base"));
+    }
 
     /**
      * 初始化常量
@@ -88,6 +98,6 @@ public class Config extends JFinalConfig {
     }
 
     public static void main(String[] args) throws Exception {
-        JFinal.start("WebRoot", 80, "/", 5);
+        JFinal.start("WebRoot", 80, "/bbs", 5);
     }
 }

@@ -1,6 +1,6 @@
 @ layout("/admin/_layout.html"){
 <div class="span9">
-    <form action="/post/update" method="post">
+    <form action="${base}/post/update" method="post">
         <input type="hidden" name="post.id" value="${post.id!}">
         <div class="row">
             <span class="span1 -label -inline-block">内容：</span>

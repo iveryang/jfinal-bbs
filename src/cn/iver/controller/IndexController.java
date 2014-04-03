@@ -5,8 +5,6 @@ import com.jfinal.core.Controller;
 
 /**
  * Created with IntelliJ IDEA.
- * Author: iver
- * Date: 13-3-26
  */
 public class IndexController extends Controller {
     public void index(){

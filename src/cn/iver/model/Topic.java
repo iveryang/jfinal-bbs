@@ -1,13 +1,11 @@
 package cn.iver.model;
 
 import cn.iver.common.Const;
-import cn.iver.kit.HtmlTagKit;
 import cn.iver.ext.jfinal.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 
 import java.util.Date;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -80,15 +78,12 @@ public class Topic extends Model<Topic>{
         increaseTopicAttrInCache(topicID, "postCount");
     }
     public void myUpdate(){
-        HtmlTagKit.processHtmlSpecialTag(this, "content");
-        this.update();
+        this.filterText("content").update();
         removeThisCache();
         removeAllPageCache();
     }
     public void save(Post post){
-        HtmlTagKit.processHtmlSpecialTag(this, "content");
-        this.set("createTime", new Date());
-        this.save();
+        this.set("createTime", new Date()).filterText("content").save();
         post.set("topicID", this.getInt("id")).set("createTime", new Date());
         post.save();
         removeAllPageCache();

@@ -1,7 +1,7 @@
 @ layout("/common/_layout.html"){
 <div class="container">
     <div class="-regist row">
-        <form action="/user/save" method="post">
+        <form action="${base}/user/save" method="post">
             <p>
                 <span class="-label">邮箱：</span><input type="text" name="user.email" value="${user.email!}" placeholder="用该邮箱来登录：)">
                 <span>您可以通过它登录和找回密码：)</span><span class="-error-msg">${emailMsg!}</span>

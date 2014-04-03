@@ -1,8 +1,8 @@
 package cn.iver.model;
 
 import cn.iver.common.Const;
-import cn.iver.kit.HtmlTagKit;
 import cn.iver.ext.jfinal.Model;
+import cn.iver.kit.HtmlKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 
@@ -47,15 +47,13 @@ public class Post extends Model<Post> {
         }
     }
     public void mySave(){
-        HtmlTagKit.processHtmlXSSTag(this, "content");
-        this.save();
+        this.filterBasicHtmlAndImage("content").save();
         int topicID = this.getInt("topicID");
         Topic.dao.increaseTopicPostCount(topicID);
         removeAllPageCache();
     }
     public void myUpdate(){
-        HtmlTagKit.processHtmlXSSTag(this, "content");
-        this.update();
+        this.filterBasicHtmlAndImage("content").update();
         this.removeThisCache();
     }
     public void deleteByID(int postID){

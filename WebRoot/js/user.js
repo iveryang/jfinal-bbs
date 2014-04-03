@@ -3,7 +3,7 @@ $(function(){
 });
 function saveReply(v){
     $.post(
-        "/reply/save",
+        $(v).attr("data"),
         $(v).parent().serialize(),
         function(data){
             if(data == "error"){

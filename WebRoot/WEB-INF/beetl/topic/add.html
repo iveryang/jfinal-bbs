@@ -1,7 +1,7 @@
 @ layout("/common/_layout.html"){
 <div class="">
     <!-- save包含：topic + post -->
-    <form action="/topic/save" method="post">
+    <form action="${base}/topic/save" method="post">
         @ include("/topic/_form.html"){}
         @ include("/post/_form.html"){}
         <hr>

@@ -1,7 +1,6 @@
 package cn.iver.model;
 
 import cn.iver.common.Const;
-import cn.iver.kit.HtmlTagKit;
 import cn.iver.ext.jfinal.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
@@ -47,9 +46,7 @@ public class Reply extends Model<Reply> {
     /* other */
     public void mySave(int postID){
         Post.dao.setHasReplyTrue(postID);
-        HtmlTagKit.processHtmlSpecialTag(this, "content");
-        this.set("createTime", new Date());
-        this.save();
+        this.set("createTime", new Date()).filterText("content").save();
         removeAllPageCache();
     }
     public void deleteByID(int id){
