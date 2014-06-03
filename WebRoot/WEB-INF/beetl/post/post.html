@@ -28,7 +28,7 @@
                         @ }
                     </div>
                     <div class="-reply-form">
-                        <form action="/" method="post">
+                        <form action="${base}/" method="post">
                             <input type="hidden" name="reply.postID" value="${post.id!}"/>
                             <input type="hidden" name="reply.topicID" value="${topic.id!}"/>
                             <textarea name="reply.content" cols="72" rows="2"></textarea>
@@ -40,9 +40,9 @@
             </div>
         @ }
         <div>
-            @ include("/common/_paginate.html", {"currentPage":postPage.pageNumber,"totalPage":postPage.totalPage,"actionUrl":"/post/" + topic.id! + "-"}) {}
+            @ include("/common/_paginate.html", {"currentPage":postPage.pageNumber,"totalPage":postPage.totalPage,"actionUrl":"${base}/post/" + topic.id! + "-"}) {}
             <div>
-                <form action="/post/save" method="post">
+                <form action="${base}/post/save" method="post">
                     <p>回复内容：</p>
                     @ include("/common/_editer.html", {"textarea_name" : "post.content"}){}
                     <input type="hidden" name="post.topicID" value="${topic.id!}"/>
