@@ -40,7 +40,7 @@
             </div>
         @ }
         <div>
-            @ include("/common/_paginate.html", {"currentPage":postPage.pageNumber,"totalPage":postPage.totalPage,"actionUrl":"${base}/post/" + topic.id! + "-"}) {}
+            @ include("/common/_paginate.html", {"currentPage":postPage.pageNumber,"totalPage":postPage.totalPage,"actionUrl":"/post/" + topic.id! + "-"}) {}
             <div>
                 <form action="${base}/post/save" method="post">
                     <p>回复内容：</p>
