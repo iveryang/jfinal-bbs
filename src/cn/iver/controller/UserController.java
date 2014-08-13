@@ -56,7 +56,7 @@ public class UserController extends Controller {
         render("/user/edit.html");
     }
 
-    @Before(UpdateUserValidator.class)
+    @Before({ UserCheckInterceptor.class, UpdateUserValidator.class })
     public void update(){
         User user = getModel(User.class);
         user.myUpdate();
