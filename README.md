@@ -4,17 +4,15 @@
 
 最后，向开源前辈们致敬。
 
-### 部署完毕的效果地址是：http://jfinalbbs.duapp.com/
-
-### 运行方法：导入sql，编译整个项目，配置相应的参数，运行Config.java里的main方法即可；
-
-#### 现在JFinal-BBS还有很多地方有待完善。
+### 常见问题：
+#### 如何运行：导入sql，配置相应的参数（Const.java），运行Config.java里的main方法即可；
+#### 如何进入管理员后台：配置一下Const.java里的ADMIN_EMAIL，比如配置为xiaoming@qq.com，之后注册一个该账户的用户，再登录"项目名称/admin"这个URL即可。
 
 ### 1.1
 修复了几处bug；增加了外键和删除级联；重构了部分model代码，配合ehcache更省代码，更加方便读取数据；取消了游客的留言权限；增加了后台管理的操作；
 
 ### 1.2
-修复了小bug；加入了jsoup以抵御xss攻击；加入了自定义路径的支持；
+修复了小bug；加入了jsoup以增强xss攻击过滤；加入了自定义路径的支持；
 
 ### 关于jfinal
 
